@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<StackPane fx:id="stpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="1154.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminScreenController">
+   <children>
+      <BorderPane fx:id="bpane" prefHeight="621.0" prefWidth="791.0">
+         <left>
+            <VBox fx:id="vboxr" prefHeight="623.0" prefWidth="205.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane prefHeight="106.0" prefWidth="205.0" />
+                  <BorderPane prefHeight="106.0" prefWidth="205.0" />
+                  <BorderPane prefHeight="116.0" prefWidth="205.0" />
+                  <BorderPane prefHeight="106.0" prefWidth="205.0" />
+                  <BorderPane prefHeight="106.0" prefWidth="205.0" />
+               </children>
+            </VBox>
+         </left>
+         <top>
+            <BorderPane prefHeight="184.0" prefWidth="1154.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Pane fx:id="imgview" prefHeight="194.0" prefWidth="205.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="UserScreen" layoutX="14.0" layoutY="117.0" text="Label" />
+                     </children></Pane>
+               </left>
+               <right>
+                  <StackPane fx:id="stpanetop" prefHeight="139.0" prefWidth="949.0" BorderPane.alignment="CENTER" />
+               </right>
+               <top>
+                  <HBox fx:id="hboxmenu" prefHeight="0.0" prefWidth="1154.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <MenuBar fx:id="menubar1">
+                          <menus>
+                            <Menu fx:id="menu1" mnemonicParsing="false" text="Nuevo">
+                              <items>
+                                <MenuItem fx:id="useritem" mnemonicParsing="false" text="Usuario" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
+                        <MenuBar fx:id="menubar2">
+                          <menus>
+                            <Menu fx:id="menu2" mnemonicParsing="false" text="Opciones">
+                              <items>
+                                <MenuItem fx:id="updateitemf" mnemonicParsing="false" text="Actualizar Firma Digital" />
+                                    <MenuItem fx:id="bfirma" mnemonicParsing="false" text="Verificacion de Firma Digital" />
+                                    <MenuItem fx:id="actfechareq" mnemonicParsing="false" text="Actualizacion de Fecha Recepcion Requisicion" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
+                     </children>
+                  </HBox>
+               </top>
+            </BorderPane>
+         </top>
+         <center>
+            <StackPane fx:id="stimage" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="681.0" prefWidth="949.0">
+                     <children>
+                        <Text fx:id="bienvenidostx" layoutX="332.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" QUORA  V1.0.1" />
+                        <HBox layoutY="71.0" prefHeight="197.0" prefWidth="949.0">
+                           <children>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <ImageView fx:id="btnimg1" fitHeight="167.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../imagenes/typewriter%20(2).png" />
+                                       </image>
+                                    </ImageView>
+                                 </center>
+                                 <bottom>
+                                    <Label fx:id="ticket" prefHeight="21.0" prefWidth="116.0" text="Generar Ticket" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                              <Pane prefHeight="197.0" prefWidth="120.0" />
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <ImageView fx:id="btnimg5" fitHeight="167.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../imagenes/database.png" />
+                                       </image>
+                                    </ImageView>
+                                 </center>
+                                 <bottom>
+                                    <Label fx:id="incidentes" text="Administracion de Incidentes" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                              <Pane prefHeight="197.0" prefWidth="108.0" />
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <ImageView fx:id="btnimg4" fitHeight="167.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../imagenes/list.png" />
+                                       </image>
+                                    </ImageView>
+                                 </center>
+                                 <bottom>
+                                    <Label fx:id="gseguimiento" text="Gestion De Seguimiento" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                        <HBox layoutY="295.0" prefHeight="173.0" prefWidth="929.0">
+                           <children>
+                              <Pane prefHeight="173.0" prefWidth="52.0" />
+                              <BorderPane prefHeight="173.0" prefWidth="185.0">
+                                 <bottom>
+                                    <Label fx:id="ind" text="Indicadores" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                                 <center>
+                                    <ImageView fx:id="btnimg3" fitHeight="167.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../imagenes/diagram%20(1).png" />
+                                       </image>
+                                    </ImageView>
+                                 </center>
+                              </BorderPane>
+                              <Pane prefHeight="173.0" prefWidth="40.0" />
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <ImageView fx:id="btnimg2" fitHeight="167.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../imagenes/planning.png" />
+                                       </image>
+                                    </ImageView>
+                                 </center>
+                                 <bottom>
+                                    <Label fx:id="gcalidad" text="Gestion de Calidad" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                              <Pane prefHeight="173.0" prefWidth="31.0" />
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <ImageView fx:id="btnimg6" fitHeight="167.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../imagenes/deuda%20(1).png" />
+                                       </image>
+                                    </ImageView>
+                                 </center>
+                                 <bottom>
+                                    <Label fx:id="gcartera" text="Gestión de Cartera" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                              <Pane prefHeight="173.0" prefWidth="40.0" />
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <ImageView fx:id="btnimg7" fitHeight="167.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                       <image>
+                                          <Image url="@../../bin/imagenes/testing.png" />
+                                       </image>
+                                    </ImageView>
+                                 </center>
+                                 <bottom>
+                                    <Label fx:id="requisiciones" text="Requisiciones" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children></StackPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

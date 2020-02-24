@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="staupdatefdigital" prefHeight="434.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ActualizacionFDigitalController">
+   <children>
+      <BorderPane prefHeight="433.0" prefWidth="678.0">
+         <center>
+            <GridPane maxHeight="341.0" maxWidth="414.0" minHeight="20.0" minWidth="20.0" prefHeight="308.0" prefWidth="414.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="214.0" minWidth="10.0" prefWidth="197.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="217.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="168.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="cclabel" prefHeight="25.0" prefWidth="90.0" text="Cedula" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="cedulacap" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="nombrelabel" prefHeight="25.0" prefWidth="90.0" text="Nombre" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="nombrecap" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="cargolabel" prefHeight="25.0" prefWidth="90.0" text="Cargo" GridPane.rowIndex="4" />
+                  <JFXTextField fx:id="cargocap" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ImageView fx:id="updatefdigital" fitHeight="68.0" fitWidth="193.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5" />
+                  <JFXButton fx:id="cargaimagen" prefHeight="40.0" prefWidth="200.0" text="Cargar Imagen" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <JFXButton fx:id="actualizadatos" prefHeight="40.0" prefWidth="200.0" text="Actualizar" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <JFXButton fx:id="Buscausuario" prefHeight="40.0" prefWidth="200.0" text="Buscar Usuario" />
+               </children>
+            </GridPane>
+         </center></BorderPane>
+   </children>
+</StackPane>

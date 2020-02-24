@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackrevreq" prefHeight="666.0" prefWidth="613.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RevisionReqController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <bottom>
+            <TableView fx:id="itemsdetalle" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="items" minWidth="284.0" prefWidth="299.0" text="ITEMS" />
+                <TableColumn fx:id="cantidad" minWidth="400.0" prefWidth="501.0" text="CANTIDAD" />
+              </columns>
+            </TableView>
+         </bottom>
+         <center>
+            <GridPane prefHeight="441.0" prefWidth="432.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="219.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="419.0" minWidth="0.0" prefWidth="229.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="419.0" minWidth="10.0" prefWidth="37.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="67.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="73.0" minHeight="1.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="70.0" minHeight="0.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="Consecutivolabel" prefHeight="35.0" prefWidth="115.0" text="Consecutivo" GridPane.rowIndex="1" />
+                  <Label fx:id="sollabel" prefHeight="34.0" prefWidth="115.0" text="Solicitante" GridPane.rowIndex="2" />
+                  <Label fx:id="arlabel" prefHeight="34.0" prefWidth="115.0" text="Area" GridPane.rowIndex="3" />
+                  <Label fx:id="crlabel" prefHeight="34.0" prefWidth="115.0" text="Cargo" GridPane.rowIndex="4" />
+                  <Label fx:id="fslabel" prefHeight="34.0" prefWidth="115.0" text="Fecha Solicitud" GridPane.rowIndex="5" />
+                  <JFXTextField fx:id="reqcon" prefHeight="25.0" prefWidth="276.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="solreqfield" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="areareqfield" prefHeight="25.0" prefWidth="373.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="cargoreqfield" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <JFXTextField fx:id="fechasolreqfield" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <JFXButton fx:id="genrevreq" prefHeight="44.0" prefWidth="135.0" text="Generar Revision" GridPane.rowIndex="7" />
+                  <Label fx:id="idlabel" prefHeight="34.0" prefWidth="115.0" text="Id" />
+                  <JFXTextField fx:id="reqid" GridPane.columnIndex="1" />
+                  <ImageView fx:id="getimagecaptura" fitHeight="74.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="vobo" prefHeight="34.0" prefWidth="115.0" text="Revision (VoBo)" GridPane.rowIndex="6" />
+                  <JFXButton fx:id="cargardatos" prefHeight="44.0" prefWidth="133.0" text="Cargar Datos" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <JFXButton fx:id="noaprobarrev" prefHeight="44.0" prefWidth="135.0" text="No Aprobar" GridPane.rowIndex="8" />
+               </children>
+            </GridPane>
+         </center>
+         <left>
+            <Pane prefHeight="426.0" prefWidth="111.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="426.0" prefWidth="70.0" BorderPane.alignment="CENTER" />
+         </right>
+         <top>
+            <Pane prefHeight="40.0" prefWidth="676.0" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Scripts de SQLServer1">
+  <Items>
+    <LogicalFolder Name="Conexiones" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="LAPTOP-8L00K632:sa">
+          <Created>2020-01-21T20:17:55.6151125-05:00</Created>
+          <Type>SQL</Type>
+          <Server>LAPTOP-8L00K632</Server>
+          <UserName>sa</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Consultas" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="CASE MULTIPLE ITEMS.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CASE MULTIPLE ITEMS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CONTEO DE SOPORTES.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>CONTEO DE SOPORTES.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PIVOT ITEM 2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>PIVOT ITEM 2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="PIVOTE ITEMS.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>PIVOTE ITEMS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SELECT ITEMS APROBADOS.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SELECT ITEMS APROBADOS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE ACTUALIZADATOS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE ACTUALIZADATOS.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE ACTULIZAF.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE ACTULIZAF.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE CALCULOTIEMPO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE CALCULOTIEMPO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE DELETEALL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE DELETEALL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE FIRMAREQUISICION.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE FIRMAREQUISICION.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE INSERTAFINALDATACOPY.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE INSERTAFINALDATACOPY.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE INSERTAREQ.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE INSERTAREQ.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE LIMPIATABLA.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE LIMPIATABLA.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE VINCULAR.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE VINCULAR.sql</FullPath>
+        </FileNode>
+        <FileNode Name="TRIGGER PREVIENE DUPLICADOS.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>TRIGGER PREVIENE DUPLICADOS.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Varios" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

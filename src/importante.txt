@@ -1,0 +1,685 @@
+   /*requisicionesgen gen = genreq.getSelectionModel().getSelectedItem();
+		   tableviewdata= gen.getConsecutivogenreq();*/
+		  
+		   /*if(tableviewdata.isEmpty()) {
+			   Text cabecera = new Text();
+				cabecera.setText("INFORMACION");
+				cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+				Text mensaje= new Text();
+				mensaje.setText("SELECCIONE EL CONSECUTIVO");
+				mensaje.setStyle("-fx-fill:white;-fx-font-weight:bold");
+				JFXDialogLayout contenido = new JFXDialogLayout();
+			    contenido.setHeading((cabecera));
+				contenido.setBody(mensaje);
+				contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+				JFXDialog dialogo = new JFXDialog(stpanerequi,contenido, JFXDialog.DialogTransition.CENTER);
+				JFXButton cerrar = new JFXButton("CERRAR");
+				cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+				cerrar.setOnAction(e3->{
+				dialogo.close();
+				});
+				contenido.setActions(cerrar);
+				dialogo.show();   
+		   }
+		   else {
+		   
+	   try {
+ 			 rutaimagen = "C:\\Logo\\login3.png";
+ 			 XWPFDocument requisicionesaprobadas= new XWPFDocument();
+ 			 XWPFParagraph parraencabezado = requisicionesaprobadas.createParagraph();
+ 			 XWPFHeaderFooterPolicy headerFooterPolicy = requisicionesaprobadas.createHeaderFooterPolicy();
+ 			 XWPFHeader cabecera = headerFooterPolicy.createHeader(XWPFHeaderFooterPolicy.DEFAULT);
+ 			 parraencabezado = cabecera.getParagraphArray(0);
+ 			 int calculotipografia = 1440;
+ 			 if (parraencabezado == null) {
+ 				 parraencabezado = cabecera.createParagraph();
+ 				 XWPFTable tablaparrafoencabezado = cabecera.createTable(3,4);
+ 				 tablaparrafoencabezado.setWidth((int) (6.5 * calculotipografia));
+ 				 setTableAlign(tablaparrafoencabezado, ParagraphAlignment.CENTER);
+ 				 XWPFTableRow tablafilauno = tablaparrafoencabezado.getRow(0);
+ 				 XWPFTableRow tablafilados = tablaparrafoencabezado.getRow(1);
+ 				 XWPFTableRow tablafilatres = tablaparrafoencabezado.getRow(2);
+ 				 tablafilauno.setHeight((int) (calculotipografia*0.3));
+ 				 tablafilados.setHeight((int) (calculotipografia*0.3));
+ 				 tablafilatres.setHeight((int) (calculotipografia*0.3));
+ 				 
+ 				//-----------------ancho fila uno de la tabla-----------------// 
+ 				 XWPFTableCell cell = tablafilauno.getCell(0);
+ 				 if (cell == null )
+ 				     {
+ 					 cell = tablafilauno.createCell();
+ 					 }
+ 				 CTTblWidth ancho = cell.getCTTc().addNewTcPr().addNewTcW();
+ 				 ancho.setW(BigInteger.valueOf(4 * calculotipografia));//-------se coloca 4 por que aqui va la imagen----//
+ 				 ancho.setType(STTblWidth.DXA);
+ 				 
+ 				 //---------------------fin del ancho de la fila uno---------------//
+ 				 
+ 				 //------------------recorro fila uno y aplico ancho de celdas de la fila uno----//
+ 				 for(int i=1; i<4; i++) {
+ 					 XWPFTableCell cellfilai = tablafilauno.getCell(i);
+ 					 if (cellfilai == null) {
+ 						 cellfilai = tablafilauno.createCell(); 
+ 					 }
+ 					 CTTblWidth anchoi = cellfilai.getCTTc().addNewTcPr().addNewTcW();
+ 					 anchoi.setW(BigInteger.valueOf((long) (2.5 * calculotipografia)));
+ 					 anchoi.setType(STTblWidth.DXA);
+ 				     }
+ 				 //---------------------fin del ancho de la fila uno--------------------------//
+ 				
+ 				 //------------------recorro fila dos y aplico ancho de celdas de la fila dos----//
+ 				 for (int x=1; x<4; x++) {
+ 					 XWPFTableCell cellfilax = tablafilados.getCell(x); 
+ 					 XWPFTableCell cellfilaxx = tablafilatres.getCell(x); 
+ 					 if (cellfilax == null && cellfilaxx == null) {
+ 						 cellfilax = tablafilados.createCell(); 
+ 						 cellfilaxx = tablafilatres.createCell(); 
+ 					 }
+ 					 CTTblWidth anchox = cellfilax.getCTTc().addNewTcPr().addNewTcW();
+ 					 anchox.setW(BigInteger.valueOf((long) (1.5 * calculotipografia)));
+ 					 anchox.setType(STTblWidth.DXA); 
+ 					 
+ 					 CTTblWidth anchoxx = cellfilaxx.getCTTc().addNewTcPr().addNewTcW();
+ 					 anchoxx.setW(BigInteger.valueOf((long) (1.5 * calculotipografia)));
+ 					 anchoxx.setType(STTblWidth.DXA); 
+ 				     }
+ 				//---------------------fin del ancho de la fila dos--------------------------//
+ 				 
+ 			//----------------------creacion de parrafos dentro de las filas de la tabla del encabezado----//
+ 				 tablafilauno.getCell(0).removeParagraph(0);
+ 				 parrafo = tablafilauno.getCell(0).addParagraph();
+ 				 XWPFRun run2=parrafo.createRun();
+ 				 parrafo.setAlignment(ParagraphAlignment.CENTER);
+ 				 run2.addPicture( new FileInputStream("/C:/Logo/login3.png"), XWPFDocument.PICTURE_TYPE_PNG, rutaimagen, Units.toEMU(167), Units.toEMU(64));
+
+ 				 tablafilauno.getCell(1).removeParagraph(0);
+ 			     parrafo2 = tablafilauno.getCell(1).addParagraph();
+ 			     XWPFRun run3=parrafo2.createRun();
+ 			     parrafo2.setAlignment(ParagraphAlignment.CENTER);
+ 			     run3.setFontFamily("Verdana");
+ 			     run3.setText("REQUISICIÓN");
+ 			     run3.setFontSize(11);
+ 			     run3.setBold(true);
+ 			    
+ 			     tablafilados.getCell(1).removeParagraph(0);
+ 			     parrafo3 = tablafilados.getCell(1).addParagraph();
+ 			     XWPFRun run4=parrafo3.createRun();
+ 			     parrafo3.setAlignment(ParagraphAlignment.CENTER);
+ 			     run4.setFontFamily("Verdana");
+ 			     run4.setText("Código");
+ 			     run4.setFontSize(9);
+ 			     run4.setBold(true);
+ 			     
+ 			     tablafilados.getCell(2).removeParagraph(0);
+ 			     parrafo4 = tablafilados.getCell(2).addParagraph();
+ 			     XWPFRun run5=parrafo4.createRun();
+ 			     parrafo4.setAlignment(ParagraphAlignment.CENTER);
+ 			     run5.setFontFamily("Verdana");
+ 			     run5.setText("Versión");
+ 			     run5.setFontSize(9);
+ 			     run5.setBold(true);
+ 			     
+ 			     tablafilados.getCell(3).removeParagraph(0);
+ 			     parrafo5 = tablafilados.getCell(3).addParagraph();
+ 			     XWPFRun run6=parrafo5.createRun();
+ 			     parrafo5.setAlignment(ParagraphAlignment.CENTER);
+ 			     run6.setFontFamily("Verdana");
+ 			     run6.setText("Fecha de Emisión");
+ 			     run6.setFontSize(9);
+ 			     run6.setBold(true);
+ 			     
+ 			     tablafilatres.getCell(1).removeParagraph(0);
+ 			     parrafo6 = tablafilatres.getCell(1).addParagraph();
+ 			     XWPFRun run7=parrafo6.createRun();
+ 			     parrafo6.setAlignment(ParagraphAlignment.CENTER);
+ 			     run7.setFontFamily("Verdana");
+ 			     run7.setText("FO-400-34");
+ 			     run7.setFontSize(9);
+ 			     run7.setBold(true);
+ 			     
+ 			     tablafilatres.getCell(2).removeParagraph(0);
+ 			     parrafo7 = tablafilatres.getCell(2).addParagraph();
+ 			     XWPFRun run8=parrafo7.createRun();
+ 			     parrafo7.setAlignment(ParagraphAlignment.CENTER);
+ 			     run8.setFontFamily("Verdana");
+ 			     run8.setText("4");
+ 			     run8.setFontSize(9);
+ 			     run8.setBold(true);
+ 			     
+ 			     tablafilatres.getCell(3).removeParagraph(0);
+ 			     parrafo8 = tablafilatres.getCell(3).addParagraph();
+ 			     XWPFRun run9=parrafo8.createRun();
+ 			     parrafo8.setAlignment(ParagraphAlignment.CENTER);
+ 			     run9.setFontFamily("Verdana");
+ 			     run9.setText("12/05/2015");
+ 			     run9.setFontSize(9);
+ 			     run9.setBold(true);
+ 		
+ 			     combinarceldasverticalmente(tablaparrafoencabezado, 0, 0, 2);
+ 			     mergeCellsHorizontal(tablaparrafoencabezado,0,1,3);
+ 			    
+ 			   //----------------------fin de creacion de parrafos---------------------------//	 
+ 			 }
+ 			 
+ 			//-----------------------termina creacion de encabezado------------------// 
+ 			 
+ 			 //--------------------------creacion de la tabla que contiene informacion del solicitante  y cargo------//
+ 			     XWPFTable tablasolicitantecargo= requisicionesaprobadas.createTable(2,2);
+ 			     XWPFTableRow tablafilaunos = tablasolicitantecargo.getRow(0);
+ 				 XWPFTableRow tablafiladoss = tablasolicitantecargo.getRow(1);
+ 				 tablafilaunos.setHeight((int) (calculotipografia*0.19));
+ 				 tablafiladoss.setHeight((int) (calculotipografia*0.19));
+ 				 tablasolicitantecargo.setWidth((int) (6.5 * calculotipografia));
+ 				 setTableAlign(tablasolicitantecargo, ParagraphAlignment.CENTER);
+ 				
+ 				 for (int y=0; y<2; y++) {
+ 					 XWPFTableCell cellfilay = tablafilaunos.getCell(y); 
+ 					 if (cellfilay == null) {
+ 						 cellfilay= tablafilaunos.createCell(); 
+ 						 
+ 					 }
+ 				 CTTblWidth anchoy = cellfilay.getCTTc().addNewTcPr().addNewTcW();
+ 				 anchoy.setW(BigInteger.valueOf((long) (3.2 * calculotipografia)));
+ 				 anchoy.setType(STTblWidth.DXA);
+ 				 tablafilaunos.getCell(y).getCTTc().addNewTcPr().addNewShd().setFill("999999");
+ 				
+ 				 }
+					 XWPFTableCell cellfilauno = tablafiladoss.getCell(0); 
+					 XWPFTableCell cellfilados = tablafiladoss.getCell(1); 
+					
+					   String Bd="jdbc:sqlserver://DESKTOP-8PJDQNJ:1433;databaseName=QUORA";
+		          		String Usuario="sa";
+		          		String Pass="milkas87";
+		          		String Query= "SELECT SOLICITANTE, CARGO, AREA,CONVERT(VARCHAR(16),FECHA_SOLICITUD,20) AS FECHA_SOLICITUD FROM REQUISICIONES WHERE CNSREQ='"+tableviewdata+"'";
+		          		Connection Conexiontablareq = null;
+		              	try {
+		              		Conexiontablareq=DriverManager.getConnection(Bd, Usuario, Pass);
+		          			PreparedStatement ps =Conexiontablareq.prepareStatement(Query);
+		          	       	ResultSet rs = ps.executeQuery();
+		          	        while(rs.next()) {
+		          	        	solicitante=rs.getString("SOLICITANTE");
+		          	        	micargo=rs.getString("CARGO"); 
+		          	        	miarea=rs.getString("AREA");
+		          	        	mifecha=rs.getString("FECHA_SOLICITUD");
+		          			         }
+		              	}catch(SQLException ee) {
+		              		ee.printStackTrace();
+		              	}
+
+ 				//--------------------------------creacion de los parrafos------------------//
+ 				 tablafilaunos.getCell(0).removeParagraph(0);
+ 				 parrafo9 = tablafilaunos.getCell(0).addParagraph();
+ 			     XWPFRun run10=parrafo9.createRun();
+ 			     parrafo9.setAlignment(ParagraphAlignment.CENTER);
+ 			     run10.setFontFamily("Verdana");
+ 			     run10.setText("Solicitante");
+ 			     run10.setFontSize(9);
+ 			     run10.setBold(true);
+
+ 			     cellfilados.removeParagraph(0);
+				 parrafo24 = cellfilados.addParagraph();
+			     XWPFRun run78=parrafo24.createRun();
+			     parrafo24.setAlignment(ParagraphAlignment.CENTER);
+			     run78.setFontFamily("Verdana");
+			     run78.setText(micargo);
+			     run78.setFontSize(9);
+			     run78.setBold(true);
+ 		
+			     
+			     cellfilauno.removeParagraph(0);
+				 parrafo23 = cellfilauno.addParagraph();
+			     XWPFRun run77=parrafo23.createRun();
+			     parrafo23.setAlignment(ParagraphAlignment.CENTER);
+			     run77.setFontFamily("Verdana");
+			     run77.setText(solicitante);
+			     run77.setFontSize(9);
+			     run77.setBold(true);
+ 		
+			     
+			     
+ 			     tablafilaunos.getCell(1).removeParagraph(0);
+ 			     parrafo10 = tablafilaunos.getCell(1).addParagraph();
+ 			     XWPFRun run11=parrafo10.createRun();
+ 			     parrafo10.setAlignment(ParagraphAlignment.CENTER);
+ 			     run11.setFontFamily("Verdana");
+ 			     run11.setText("Cargo");
+ 			     run11.setFontSize(9);
+ 			     run11.setBold(true);
+ 			     //-----------------------------fin parrafos----------------------------------//
+ 			    
+ 				 //-------------fin -creacion de la tabla que contiene informacion del solicitante  y cargo---------//
+ 			     //--------------------------creacion de la tabla que contiene el area y la fecha-----//
+ 			     tablasolicitantecargo = requisicionesaprobadas.getTableArray(0);
+ 			     org.apache.xmlbeans.XmlCursor cursor = tablasolicitantecargo.getCTTbl().newCursor();
+ 			     cursor.toEndToken();
+ 			     while(cursor.toNextToken() != org.apache.xmlbeans.XmlCursor.TokenType.START);
+ 			     XWPFParagraph parrafo = requisicionesaprobadas.insertNewParagraph(cursor);
+ 			     @SuppressWarnings("unused")
+ 				 XWPFRun run = parrafo.createRun(); 
+
+ 			     XWPFTable tablarea= requisicionesaprobadas.createTable(1,4);
+ 			     XWPFTableRow tablafilaarea = tablarea.getRow(0);
+ 			     tablafilaarea.setHeight((int) (calculotipografia*0.19));
+ 			     tablarea.setWidth((int) (6.5 * calculotipografia));
+ 			     @SuppressWarnings("unused")
+ 				XWPFTableCell cellareab = tablafilaarea.getCell(1);
+ 			     setTableAlign(tablarea, ParagraphAlignment.CENTER);
+
+ 				 for (int j=0; j<3; j++) {
+ 					 XWPFTableCell cellfilaj = tablafilaarea.getCell(j); 
+ 					 if (cellfilaj == null) {
+ 						 cellfilaj= tablafilaarea.createCell(); 
+ 					 }
+ 					 
+ 					if(tablafilaarea.getCell(1)==null ||tablafilaarea.getCell(1)!=null) {
+ 					tablafilaarea.getCell(1).getCTTc().addNewTcPr().addNewShd().setFill("FFFFFF");
+ 					 }
+ 					 
+ 				 CTTblWidth anchoj = cellfilaj.getCTTc().addNewTcPr().addNewTcW();
+ 				 anchoj.setW(BigInteger.valueOf((long) (1.5 * calculotipografia)));
+ 				 anchoj.setType(STTblWidth.DXA);
+ 				 tablafilaarea.getCell(j).getCTTc().addNewTcPr().addNewShd().setFill("999999");
+ 				 }
+ 			     
+ 			     //--------------------------------creacion de los parrafos------------------//
+ 				
+ 				 tablafilaarea.getCell(0).removeParagraph(0);
+ 				 parrafo11 = tablafilaarea.getCell(0).addParagraph();
+ 			     XWPFRun run12=parrafo11.createRun();
+ 			     parrafo11.setAlignment(ParagraphAlignment.CENTER);
+ 			     run12.setFontFamily("Verdana");
+ 			     run12.setText("Área");
+ 			     run12.setFontSize(9);
+ 			     run12.setBold(true);
+ 			    
+ 			     tablafilaarea.getCell(1).removeParagraph(0);
+				 parrafo21 = tablafilaarea.getCell(1).addParagraph();
+			     XWPFRun run21=parrafo21.createRun();
+			     parrafo21.setAlignment(ParagraphAlignment.CENTER);
+			     run21.setFontFamily("Verdana");
+			     run21.setText(miarea);
+			     run21.setFontSize(9);
+			     run21.setBold(true);
+ 			     
+ 			     
+ 			     tablafilaarea.getCell(2).removeParagraph(0);
+ 			     parrafo12 = tablafilaarea.getCell(2).addParagraph();
+ 			     XWPFRun run13=parrafo12.createRun();
+ 			     parrafo12.setAlignment(ParagraphAlignment.CENTER);
+ 			     run13.setFontFamily("Verdana");
+ 			     run13.setText("Fecha De Solicitud");
+ 			     run13.setFontSize(9);
+ 			     run13.setBold(true);
+ 			     
+ 			     
+ 			     tablafilaarea.getCell(3).removeParagraph(0);
+			     parrafo22 = tablafilaarea.getCell(3).addParagraph();
+			     XWPFRun run33=parrafo22.createRun();
+			     parrafo22.setAlignment(ParagraphAlignment.CENTER);
+			     run33.setFontFamily("Verdana");
+			     run33.setText(mifecha);
+			     run33.setFontSize(9);
+			     run33.setBold(true);
+ 			     
+ 			     //-----------------------------fin parrafos----------------------------------//
+ 			    //-----------------------fin creacion de la tabla que contiene el area y la fecha-----//
+ 			     XWPFTable tabladatos= requisicionesaprobadas.createTable(19,5); 
+ 			     XmlCursor cursora =  tabladatos.getCTTbl().newCursor(); 
+ 			     XWPFParagraph newParagraph = requisicionesaprobadas.insertNewParagraph(cursora); 
+ 			     @SuppressWarnings("unused")
+ 				 XWPFRun runa = newParagraph.createRun();
+
+ 			     for( fila = 0; fila<19 ; fila++) {
+ 			     tablafiladatos = tabladatos.getRow(fila);
+ 			     tablafiladatos.setHeight((int) (calculotipografia*0.1));
+ 			     XWPFTableCell celldatos = tablafiladatos.getCell(1);
+ 			     CTTblWidth anchodatos = celldatos.getCTTc().addNewTcPr().addNewTcW();
+ 			     anchodatos.setW(BigInteger.valueOf((long) (3.2 * calculotipografia)));
+ 			     anchodatos.setType(STTblWidth.DXA);
+ 			     XWPFTableCell celldatos0 = tablafiladatos.getCell(0);
+ 			     CTTblWidth anchodatos0 = celldatos0.getCTTc().addNewTcPr().addNewTcW();
+ 			     anchodatos0.setW(BigInteger.valueOf((long) (0.7 * calculotipografia)));
+ 			     anchodatos0.setType(STTblWidth.DXA);
+ 			     XWPFTableCell celldatos2 = tablafiladatos.getCell(2);
+ 			     CTTblWidth anchodatos2 = celldatos2.getCTTc().addNewTcPr().addNewTcW();
+ 			     anchodatos2.setW(BigInteger.valueOf((long) (1.05 * calculotipografia)));
+ 			     anchodatos2.setType(STTblWidth.DXA);
+ 			     XWPFTableCell celldatos3 = tablafiladatos.getCell(3);
+ 			     CTTblWidth anchodatos3 = celldatos3.getCTTc().addNewTcPr().addNewTcW();
+ 			     anchodatos3.setW(BigInteger.valueOf((long) (1.2 * calculotipografia)));
+ 			     anchodatos3.setType(STTblWidth.DXA);
+ 			     XWPFTableCell celldatos4 = tablafiladatos.getCell(4);
+ 			     CTTblWidth anchodatos4 = celldatos4.getCTTc().addNewTcPr().addNewTcW();
+ 			     anchodatos4.setW(BigInteger.valueOf((long) (1.2 * calculotipografia)));
+ 			     anchodatos4.setType(STTblWidth.DXA);
+ 			     for(int filax = 0; filax<1 ; filax++) {
+ 			    	 int cellt;
+ 			    	 for( cellt = 0 ; cellt<5; cellt++) {
+ 			    	 tabladatos.getRow(filax).getCell(cellt).setColor("999999");
+ 			         } 
+ 			         }
+ 			         }
+ 			    		String QueryD= "SELECT ITEMSREQ.CANTIDAD, ITEMSREQ.ITEM ,   (CASE WHEN ITEMSREQ.ITEMAPROBADO IS NULL THEN 'ITEM AUN SIN APROBACION' WHEN ITEMSREQ.ITEMAPROBADO=0 THEN 'NO APROBADO' WHEN ITEMSREQ.ITEMAPROBADO=1 THEN 'APROBADO' END ) AS ITEMAPROBADOREQ  FROM ITEMSREQ  INNER JOIN REQUISICIONESDT ON  REQUISICIONESDT.CNSREQ = ITEMSREQ.CNSREQ WHERE ITEMSREQ.CNSREQ='"+tableviewdata+"'";
+ 		          		String QueryF="SELECT count(ITEMSREQ.id) as itemreqid FROM ITEMSREQ  INNER JOIN REQUISICIONESDT ON  REQUISICIONESDT.CNSREQ = ITEMSREQ.CNSREQ WHERE ITEMSREQ.CNSREQ='"+tableviewdata+"'";
+ 			    		String QueryH="SELECT FIRMA_REVISION FROM REQUISICIONESDT WHERE CNSREQ = '"+tableviewdata+"'";
+ 			    		String Queryz="SELECT FIRMA_APROBACION FROM REQUISICIONESDT WHERE CNSREQ = '"+tableviewdata+"'";
+ 		          		Connection Conexiontablaitems = null;
+ 		          		try {
+ 		              		Conexiontablaitems=DriverManager.getConnection(Bd, Usuario, Pass);
+ 		          			PreparedStatement psset =Conexiontablaitems.prepareStatement(QueryH);
+ 		          			ResultSet rsset = psset.executeQuery();
+ 		          		 while (rsset.next()) {
+ 		          			 mifirmarevision= rsset.getBinaryStream("FIRMA_REVISION");
+ 		          			 OutputStream osd = new FileOutputStream(new File("firma.jpg"));
+ 		                    byte[]contenidod = new byte[1024];
+ 		                    int tamm = 0;
+ 		                   while((tamm=mifirmarevision.read(contenidod))!= -1)
+ 		                   {
+ 		                   osd.write(contenidod,0,tamm);
+ 		                   }
+ 		                   osd.close();
+ 		                   mifirmarevision.close();
+ 		                   firmar = new Image("file:firma.jpg",311,114,true,true); 
+ 		                   
+ 		          		 }
+ 		              	}catch(SQLException ee) {
+		              		ee.printStackTrace();
+		              	}
+ 		         		try {
+ 		              		Conexiontablaitems=DriverManager.getConnection(Bd, Usuario, Pass);
+ 		          			PreparedStatement pssett =Conexiontablaitems.prepareStatement(Queryz);
+ 		          			ResultSet rssett = pssett.executeQuery();
+ 		          		 while (rssett.next()) {
+ 		          			 mifirmaaprobacion= rssett.getBinaryStream("FIRMA_APROBACION");
+ 		                   
+ 		             	   OutputStream ost = new FileOutputStream(new File("firmapro.jpg"));
+		                    byte[]contenidoost = new byte[1024];
+		                    int tam1 = 0;
+		                   while((tam1=mifirmaaprobacion.read(contenidoost))!= -1)
+		                   {
+		                   ost.write(contenidoost,0,tam1);
+		                   }
+		                   ost.close();
+		                   mifirmaaprobacion.close();
+		                   firmapro = new Image("file:firmaapro.jpg",311,114,true,true); 
+ 		          		 }
+ 		              	}catch(SQLException ee) {
+		              		ee.printStackTrace();
+		              	}
+ 		              	try {
+ 		              		Conexiontablaitems=DriverManager.getConnection(Bd, Usuario, Pass);
+ 		          			PreparedStatement pss =Conexiontablaitems.prepareStatement(QueryF);
+ 		          			ResultSet rss = pss.executeQuery();
+ 		          		 while (rss.next()) {
+ 		          			 micantidaddefilas= rss.getInt("itemreqid");
+ 		          		 }
+ 		              	}catch(SQLException ee) {
+		              		ee.printStackTrace();
+		              	}
+
+ 		               for( fila = 1; fila<micantidaddefilas+1 ; fila++) {
+ 		          		 try {
+ 		          			Conexiontablaitems=DriverManager.getConnection(Bd, Usuario, Pass);
+ 		          			PreparedStatement ps =Conexiontablaitems.prepareStatement(QueryD);
+ 		          	       	ResultSet rs = ps.executeQuery();
+ 		          	        while (rs.next()) {
+ 		          	         tablafiladatos = tabladatos.getRow(fila);
+ 		          	         tablafiladatos.getCell(0).removeParagraph(0);
+ 		          	         parrafo27= tabladatos.getRow(fila).getCell(0).addParagraph();
+ 		          	         XWPFRun run70=parrafo27.createRun();
+ 		          	         parrafo27.setAlignment(ParagraphAlignment.CENTER);
+ 		          	         run70.setFontFamily("Verdana");
+ 		 			         run70.setText(rs.getString("CANTIDAD")) ;
+ 		 			         run70.setFontSize(9);
+ 		 			         run70.setBold(true);
+ 		 			         tablafiladatos.getCell(1).removeParagraph(0);
+		          	         parrafo28= tabladatos.getRow(fila).getCell(1).addParagraph();
+		          	         XWPFRun run71=parrafo28.createRun();
+		          	         parrafo28.setAlignment(ParagraphAlignment.CENTER);
+		          	         run71.setFontFamily("Verdana");
+		 			         run71.setText(rs.getString("ITEM"));
+		 			         run71.setFontSize(9);
+		 			         run71.setBold(true);
+		 			         tablafiladatos.getCell(2).removeParagraph(0);
+		          	         parrafo29= tabladatos.getRow(fila).getCell(2).addParagraph();
+		          	         XWPFRun run72=parrafo29.createRun();
+		          	         parrafo29.setAlignment(ParagraphAlignment.CENTER);
+		          	         run72.setFontFamily("Verdana");
+		 			         run72.setText(rs.getString("ITEMAPROBADOREQ"));
+		 			         run72.setFontSize(9);
+		 			         run72.setBold(true);
+ 		          	         fila++;
+ 		          			         }
+ 		              	}catch(SQLException ee) {
+ 		              		ee.printStackTrace();
+ 		              	}
+ 		               }
+ 			    
+ 			     tabladatos.setWidth((int) (6.6 * calculotipografia));
+ 			     setTableAlign(tabladatos, ParagraphAlignment.CENTER);
+ 			     
+ 			     tabladatos.getRow(0).getCell(0).removeParagraph(0);
+ 			     parrafo13 = tabladatos.getRow(0).getCell(0).addParagraph();
+ 			     XWPFRun run14=parrafo13.createRun();
+ 			     parrafo13.setAlignment(ParagraphAlignment.CENTER);
+ 			     run14.setFontFamily("Verdana");
+ 			     run14.setText("Cantidad");
+ 			     run14.setFontSize(9);
+ 			     run14.setBold(true);
+ 			     
+ 			     tabladatos.getRow(0).getCell(1).removeParagraph(0);
+ 			     parrafo14 = tabladatos.getRow(0).getCell(1).addParagraph();
+ 			     XWPFRun run15=parrafo14.createRun();
+ 			     parrafo14.setAlignment(ParagraphAlignment.CENTER);
+ 			     run15.setFontFamily("Verdana");
+ 			     run15.setText("Descripción");
+ 			     run15.setFontSize(9);
+ 			     run15.setBold(true);
+ 			     
+ 			     tabladatos.getRow(0).getCell(2).removeParagraph(0);
+ 			     parrafo15 = tabladatos.getRow(0).getCell(2).addParagraph();
+ 			     XWPFRun run16=parrafo15.createRun();
+ 			     parrafo15.setAlignment(ParagraphAlignment.CENTER);
+ 			     run16.setFontFamily("Verdana");
+ 			     run16.setText("Ítem Aprobado");
+ 			     run16.setFontSize(9);
+ 			     run16.setBold(true);
+ 			     
+ 			     tabladatos.getRow(0).getCell(3).removeParagraph(0);
+ 			     parrafo16 = tabladatos.getRow(0).getCell(3).addParagraph();
+ 			     XWPFRun run17=parrafo16.createRun();
+ 			     parrafo16.setAlignment(ParagraphAlignment.CENTER);
+ 			     run17.setFontFamily("Verdana");
+ 			     run17.setText("*Fecha de entrega");
+ 			     run17.setFontSize(9);
+ 			     run17.setBold(true);
+ 			     
+ 			     tabladatos.getRow(0).getCell(4).removeParagraph(0);
+ 			     parrafo17 = tabladatos.getRow(0).getCell(4).addParagraph();
+ 			     XWPFRun run18=parrafo17.createRun();
+ 			     parrafo17.setAlignment(ParagraphAlignment.CENTER);
+ 			     run18.setFontFamily("Verdana");
+ 			     run18.setText("*Firma de quien recibe");
+ 			     run18.setFontSize(9);
+ 			     run18.setBold(true);
+ 			     
+ 			     tabladatos.getRow(13).getCell(0).removeParagraph(0);
+ 			     parrafo18 = tabladatos.getRow(13).getCell(0).addParagraph();
+ 			     XWPFRun run19=parrafo18.createRun();
+ 			     parrafo18.setAlignment(ParagraphAlignment.LEFT);
+ 			     run19.setFontFamily("Verdana");
+ 			     run19.setText("Observaciones");
+ 			     run19.setFontSize(9);
+ 			     run19.setBold(true);
+ 			     tabladatos.getRow(13).getCell(0).setColor("999999");
+ 			     
+ 			     tabladatos.getRow(16).getCell(0).removeParagraph(0);
+ 			     parrafo19 = tabladatos.getRow(16).getCell(0).addParagraph();
+ 			     XWPFRun run20=parrafo19.createRun();
+ 			     parrafo19.setAlignment(ParagraphAlignment.CENTER);
+ 			     run20.setFontFamily("Verdana");
+ 			     run20.setText("Firma Jefe de Área (VoBo)");
+ 			     run20.setFontSize(9);
+ 			     run20.setBold(true);
+ 			     tabladatos.getRow(16).getCell(0).setColor("999999");
+ 			     
+ 			     tabladatos.getRow(16).getCell(2).removeParagraph(0);
+			     parrafo20= tabladatos.getRow(16).getCell(2).addParagraph();
+			     XWPFRun run22=parrafo20.createRun();
+			     parrafo20.setAlignment(ParagraphAlignment.CENTER);
+			     run22.setFontFamily("Verdana");
+			     run22.setText("Firma Directora Administrativa y Financiera");
+			     run22.setFontSize(9);
+			     run22.setBold(true);
+			     tabladatos.getRow(16).getCell(2).setColor("999999");
+ 			     
+ 			     tabladatos.getRow(17).getCell(0).removeParagraph(0);
+ 			     parrafo24 = tabladatos.getRow(17).getCell(0).addParagraph();
+				 XWPFRun run50=parrafo24.createRun();
+				 parrafo24.setAlignment(ParagraphAlignment.CENTER);
+				 run50.addPicture( new FileInputStream(new File("firma.jpg")), XWPFDocument.PICTURE_TYPE_PNG, null, Units.toEMU(145), Units.toEMU(60));
+
+				 tabladatos.getRow(17).getCell(2).removeParagraph(0);
+ 			     parrafo25 = tabladatos.getRow(17).getCell(2).addParagraph();
+				 XWPFRun run51=parrafo25.createRun();
+				 parrafo25.setAlignment(ParagraphAlignment.CENTER);
+				 run51.addPicture( new FileInputStream(new File("firmapro.jpg")), XWPFDocument.PICTURE_TYPE_PNG, null, Units.toEMU(145), Units.toEMU(60));
+
+ 			     mergeCellsHorizontal(tabladatos,13,0,4);
+ 			     combinarceldasverticalmente(tabladatos, 0, 14, 15);
+ 			     combinarceldasverticalmente(tabladatos, 0, 17, 18);
+ 			     combinarceldasverticalmente(tabladatos, 1, 14, 15);
+ 			     combinarceldasverticalmente(tabladatos, 2, 14, 15);
+ 			     combinarceldasverticalmente(tabladatos, 3, 14, 15);
+ 			     combinarceldasverticalmente(tabladatos, 4, 14, 15);
+ 			     mergeCellsHorizontal(tabladatos,14,0,4);
+ 			     mergeCellsHorizontal(tabladatos,14,0,4);
+ 			     mergeCellsHorizontal(tabladatos,15,0,4);
+ 			     mergeCellsHorizontal(tabladatos,16,0,1);
+ 			     mergeCellsHorizontal(tabladatos,16,2,4);
+ 			     mergeCellsHorizontal(tabladatos,17,0,1);
+ 			     mergeCellsHorizontal(tabladatos,18,0,1);
+ 			     mergeCellsHorizontal(tabladatos,17,2,4);
+ 			     mergeCellsHorizontal(tabladatos,18,2,4);
+ 			     combinarceldasverticalmente(tabladatos, 0, 17, 18);
+ 			     combinarceldasverticalmente(tabladatos, 2, 17, 18);
+
+ 			      String dia;
+ 				  String QueryDate="SELECT CONVERT(VARCHAR(16),FECHA_DE_FIRMA,23) AS FECHA_FIRMA FROM REQUISICIONESDT WHERE CNSREQ = '"+tableviewdata+"'";
+ 					Connection ConexionDate = null;
+ 					try {
+ 						
+ 						ConexionDate=DriverManager.getConnection(Bd, Usuario, Pass);
+ 						PreparedStatement pst =ConexionDate.prepareStatement(QueryDate);
+ 						ResultSet rset = pst.executeQuery();
+ 					     while (rset.next()) {
+ 						  date1= rset.getString("FECHA_FIRMA");
+ 					     }
+ 			    	}catch(SQLException ee) {
+ 			   		ee.printStackTrace();
+ 			   	    }
+ 					Calendar cal2 = new GregorianCalendar();  
+ 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ 					
+ 					sdf.setCalendar(cal2);
+ 					String date =sdf.format(cal2.getTime());
+ 					System.out.println("date es:"+date);
+ 					System.out.println("date1 es:"+date1);
+ 					if(date1.equals(date)) {
+ 						 dia=cal2.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
+ 						 System.out.println(dia);
+ 						 if(dia.equals("mar")) {
+ 							SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+ 							cal2 = Calendar.getInstance();
+ 							cal2.setTime(sdf1.parse(date1));
+ 							cal2.add(Calendar.DATE, 1);  // number of days to add
+ 							String newdate = sdf1.format(cal2.getTime());
+ 							System.out.print(newdate);
+ 						 }
+ 					}
+ 					else {
+ 						System.out.println("dia diferente");
+ 					}
+
+ 			  FileChooser guardareqaprobadas = new FileChooser();
+              FileChooser.ExtensionFilter wordlfiltro = new FileChooser.ExtensionFilter("Archivos De Word (*.docx)", "*.doc");
+              guardareqaprobadas.getExtensionFilters().add(wordlfiltro);
+              File midocword = guardareqaprobadas.showSaveDialog(null);
+              if (midocword != null) {
+                  try (FileOutputStream outputStream = new FileOutputStream(midocword.getAbsolutePath())) {
+                 	 requisicionesaprobadas.write(outputStream);
+                 	 requisicionesaprobadas.close();
+                  }
+                  catch (IOException e1) {    
+                  }
+              }
+ 			 }catch(Exception e1) { 
+ 			 }
+	   
+	     int i;
+	     for( i=0; i<genreq.getItems().size();i++) {
+	    	 Object data =genreq.getColumns().get(0).getCellData(i);
+	    	 midatat.add(data);
+	     int x; 
+	     for ( x=0;x< midatat.size();x++) {
+  	    	 datay = midatat.get(x).toString();
+	     }
+	    	 
+	     if(tableviewdata.equals(genreq.getColumns().get(0).getCellData(i))) {
+	    	 ii =genreq.getSelectionModel().getFocusedIndex();
+	    	
+	    	System.out.println(genreq.getSelectionModel().getSelectedCells().contains(t));
+	    	 ii++;
+	    	 System.out.println(ii++);
+	     }
+	     }
+	     if(tableviewdata.equals(genreq.getColumns().get(0).getCellData(i))&&ii++>1) {
+	    		    Text cabecera = new Text();
+					cabecera.setText("INFORMACION");
+					cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+					Text mensaje= new Text();
+					mensaje.setText("REQUISICION YA GENERARA PARA ESTE DATO");
+					mensaje.setStyle("-fx-fill:white;-fx-font-weight:bold");
+					JFXDialogLayout contenido = new JFXDialogLayout();
+				    contenido.setHeading((cabecera));
+					contenido.setBody(mensaje);
+					contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+					JFXDialog dialogo = new JFXDialog(stpanerequi,contenido, JFXDialog.DialogTransition.CENTER);
+					JFXButton cerrar = new JFXButton("CERRAR");
+					cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+					cerrar.setOnAction(e3->{
+					dialogo.close();
+					});
+					contenido.setActions(cerrar);
+					dialogo.show(); 
+	     }
+		   }*/
+	  
+
+
+
+
+
+
+   RequisicionesAprobacionDetalleController mireq = cargareqfinal.<RequisicionesAprobacionDetalleController>getController();
+	        requisicionesgen gen = genreq.getSelectionModel().getSelectedItem();
+			
+		    String consecutivo1= gen.getConsecutivogenreq();
+		    mireq.consecutivoreqapro.setText(consecutivo1);
+		    
+		    String sol1 = gen.getSolicitantegenreq();
+		    mireq.solicitantereapro.setText(sol1);
+		    
+		    String area1 = gen.getAreagenreq();
+		   mireq.areareqapro.setText(area1);
+		    
+		    String Cargo1 = gen.getCargogenreq();
+		    mireq.cargoreqapro.setText(Cargo1);
+		    
+		    String fechaapro = gen.getFechaaprogenreq();
+		    mireq.fecaprobacionreqapro.setText(fechaapro);
+		    
+		    Integer item1= gen.getItemapro();
+		    mireq.itemsreqaprofinal.setText(item1.toString());
+		    Integer item2= gen.getItemnoapro();
+		    mireq.itemsresnoaprofinal.setText(item2.toString());

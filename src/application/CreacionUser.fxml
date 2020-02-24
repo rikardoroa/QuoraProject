@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stpanecuser" prefHeight="587.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CreacionUserController">
+   <children>
+      <BorderPane prefHeight="704.0" prefWidth="503.0">
+         <center>
+            <GridPane maxHeight="664.0" maxWidth="487.0" minHeight="30.0" minWidth="50.0" prefHeight="509.0" prefWidth="487.0" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXTextField fx:id="nombreuser" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="nuser" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="nnuser" prefHeight="17.0" prefWidth="136.0" text="Nombre" />
+                  <Label fx:id="uuser" prefHeight="17.0" prefWidth="136.0" text="Usuario" GridPane.rowIndex="1" />
+                  <Label fx:id="contrasenauser" prefHeight="17.0" prefWidth="136.0" text="Contraseña" GridPane.rowIndex="3" />
+                  <Label fx:id="roluserc" prefHeight="17.0" prefWidth="136.0" text="Rol" GridPane.rowIndex="4" />
+                  <Label fx:id="areacuser" prefHeight="17.0" prefWidth="136.0" text="Area" GridPane.rowIndex="6" />
+                  <JFXComboBox fx:id="areauser" prefHeight="31.0" prefWidth="327.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <JFXPasswordField fx:id="passuser" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXComboBox fx:id="roluser" prefHeight="31.0" prefWidth="353.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <JFXButton fx:id="creauser" prefHeight="36.0" prefWidth="155.0" text="Crear Usuario" GridPane.rowIndex="10" />
+                  <Label fx:id="cargocuser" prefHeight="17.0" prefWidth="136.0" text="Cargo" GridPane.rowIndex="5" />
+                  <JFXComboBox fx:id="cargouser" prefHeight="25.0" prefWidth="347.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="firmacuser" prefHeight="17.0" prefWidth="90.0" text="Firma Digital" GridPane.rowIndex="8" />
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
+                     <center>
+                        <ImageView fx:id="fdigital" fitHeight="100.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <JFXButton fx:id="cargafirma" prefHeight="43.0" prefWidth="155.0" text="Cargar Imagen" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label fx:id="ccuser" prefHeight="17.0" prefWidth="136.0" text="Cedula" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="capcedula" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="coperacionlabel" prefHeight="17.0" prefWidth="136.0" text="Centro De Operacion" GridPane.rowIndex="7" />
+                  <JFXComboBox fx:id="coperacioncombo" prefHeight="25.0" prefWidth="402.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="179.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="200.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="89.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="89.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="89.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="70.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="76.0" minHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="126.0" minHeight="0.0" prefHeight="76.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="135.0" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </center>
+         <bottom>
+            <Pane prefHeight="47.0" prefWidth="542.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <top>
+            <Pane prefHeight="17.0" prefWidth="526.0" BorderPane.alignment="CENTER" />
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>

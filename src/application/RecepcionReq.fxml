@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackreqrep" prefHeight="547.0" prefWidth="1012.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RecepcionReqController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <BorderPane prefHeight="60.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+               <center>
+                  <Label fx:id="detallerep" prefHeight="17.0" prefWidth="175.0" text="Detalle De La Recepcion" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </top>
+         <left>
+            <BorderPane prefHeight="487.0" prefWidth="411.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Pane prefHeight="487.0" prefWidth="34.0" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <GridPane maxHeight="335.0" maxWidth="374.0" minHeight="5.0" minWidth="5.0" prefHeight="334.0" prefWidth="94.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.0" minWidth="10.0" prefWidth="153.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="172.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="200.0" minHeight="1.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="223.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="cargorep" prefHeight="17.0" prefWidth="96.0" text="Cargo" />
+                        <Label fx:id="nombrerep" prefHeight="17.0" prefWidth="96.0" text="Nombre" GridPane.rowIndex="2" />
+                        <Label fx:id="requisicionrep" prefHeight="17.0" prefWidth="96.0" text="Requisicion" GridPane.rowIndex="3" />
+                        <JFXTextField fx:id="cargoreptx" GridPane.columnIndex="1" />
+                        <JFXTextField fx:id="nombrereptx" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="reqreptx" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <JFXButton fx:id="cargardatosrep" prefHeight="25.0" prefWidth="137.0" text="Cargar Datos" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="arearep" prefHeight="17.0" prefWidth="96.0" text="Area" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="areareptx" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="fechaentregarep" prefHeight="17.0" prefWidth="96.0" text="Fecha Entrega" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="fechaentregareptx" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <JFXButton fx:id="confirmareqrep" prefHeight="25.0" prefWidth="137.0" text="Confirmar Todo" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     </children>
+                  </GridPane>
+               </center>
+               <right>
+                  <Pane prefHeight="433.0" prefWidth="52.0" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </left>
+         <bottom>
+            <Pane prefHeight="54.0" prefWidth="1012.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <TableView fx:id="tablereqrep" prefHeight="433.0" prefWidth="509.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="cnsitemrep" prefWidth="160.0" text="CONSECUTIVO" />
+                  <TableColumn fx:id="itemrep" prefWidth="160.0" text="ITEMS" />
+                <TableColumn fx:id="cantidadrep" prefWidth="102.0" text="CANTIDAD" />
+                  <TableColumn fx:id="estadorep" prefWidth="143.0" text="ESTADO" />
+                  <TableColumn fx:id="recibidorep" prefWidth="160.0" text="RECIBIDO" />
+              </columns>
+            </TableView>
+         </center>
+         <right>
+            <Pane prefHeight="433.0" prefWidth="39.0" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+   </children>
+</StackPane>

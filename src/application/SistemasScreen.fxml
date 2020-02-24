@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<StackPane fx:id="stpaner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="761.0" prefWidth="1154.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SistemasController">
+   <children>
+      <BorderPane fx:id="bpaneadm" prefHeight="621.0" prefWidth="791.0">
+         <left>
+            <VBox fx:id="vboxadm" prefHeight="576.0" prefWidth="205.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane prefHeight="106.0" prefWidth="205.0">
+                     <center>
+                        <Button fx:id="inicioadm" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" text="Inicio" BorderPane.alignment="CENTER" />
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="106.0" prefWidth="205.0" />
+                  <BorderPane prefHeight="116.0" prefWidth="205.0" />
+                  <BorderPane prefHeight="106.0" prefWidth="205.0" />
+                  <BorderPane prefHeight="106.0" prefWidth="205.0" />
+               </children>
+            </VBox>
+         </left>
+         <top>
+            <BorderPane fx:id="bpaneeadm" prefHeight="145.0" prefWidth="791.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Pane fx:id="imgvieww" prefHeight="145.0" prefWidth="205.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="sistemaslabel" layoutX="8.0" layoutY="123.0" text="Label" />
+                     </children></Pane>
+               </left>
+               <center>
+                  <StackPane fx:id="stpanetopadm" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </top>
+         <center>
+            <StackPane fx:id="stpanetadm" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane fx:id="bodeerp1adm" prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TabPane fx:id="mitabpaneadm" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab fx:id="mtab2" text="Respuesta">
+                                    <content>
+                                      <AnchorPane fx:id="tab2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <HBox layoutX="20.0" layoutY="129.0" prefHeight="132.0" prefWidth="921.0">
+                                                   <children>
+                                                      <GridPane prefHeight="102.0" prefWidth="321.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="165.0" />
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="10.0" prefWidth="156.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="95.0" minHeight="8.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Label fx:id="sfeceje" prefHeight="21.0" prefWidth="129.0" text="Fecha Ejecutada" />
+                                                            <Label fx:id="shorasol" prefHeight="21.0" prefWidth="129.0" text="Hora De Solucion" GridPane.rowIndex="1" />
+                                                            <DatePicker fx:id="dtdos" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" />
+                                                            <JFXComboBox fx:id="horas" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                      <VBox prefHeight="132.0" prefWidth="105.0" />
+                                                      <GridPane prefHeight="132.0" prefWidth="328.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="157.0" />
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="171.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="95.0" minHeight="8.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Label fx:id="stareje" prefHeight="21.0" prefWidth="129.0" text="Tarea Ejecutada" />
+                                                            <JFXComboBox fx:id="tejecutada" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" />
+                                                            <Label fx:id="svercor" prefHeight="21.0" prefWidth="129.0" text="Verificacion" GridPane.rowIndex="1" />
+                                                            <JFXComboBox fx:id="verificacion" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </HBox>
+                                                <HBox layoutX="20.0" layoutY="304.0" prefHeight="133.0" prefWidth="906.0">
+                                                   <children>
+                                                      <Pane prefHeight="133.0" prefWidth="170.0">
+                                                         <children>
+                                                            <Label fx:id="snoveje" layoutY="4.0" prefHeight="21.0" prefWidth="129.0" text="Novedades " />
+                                                         </children>
+                                                      </Pane>
+                                                      <TextArea fx:id="novedades" prefHeight="133.0" prefWidth="485.0" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox layoutX="20.0" layoutY="11.0" prefHeight="111.0" prefWidth="888.0">
+                                                   <children>
+                                                      <GridPane prefHeight="104.0" prefWidth="330.0">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="173.0" />
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="157.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                                                          <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Label fx:id="sprioridad" prefHeight="21.0" prefWidth="129.0" text="Prioridad" />
+                                                            <Label fx:id="srinres" prefHeight="21.0" prefWidth="129.0" text="Consecutivo " GridPane.rowIndex="1" />
+                                                            <JFXComboBox fx:id="prioridadrin" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" />
+                                                            <JFXComboBox fx:id="cnssinres" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                      </GridPane>
+                                                      <VBox prefHeight="112.0" prefWidth="114.0">
+                                                         <children>
+                                                            <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                                               <bottom>
+                                                                  <JFXButton fx:id="det" prefHeight="25.0" prefWidth="45.0" text="+" BorderPane.alignment="CENTER" />
+                                                               </bottom>
+                                                            </BorderPane>
+                                                         </children></VBox>
+                                                      <GridPane prefHeight="111.0" prefWidth="473.0">
+                                                         <children>
+                                                            <Label fx:id="sfprogram" layoutX="14.0" layoutY="36.0" prefHeight="21.0" prefWidth="129.0" text="Fecha Programada" />
+                                                            <DatePicker fx:id="dteuno" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" />
+                                                            <Label fx:id="stsol" prefHeight="21.0" prefWidth="129.0" text="Tiempo  De Solucion" GridPane.rowIndex="1" />
+                                                            <JFXComboBox fx:id="tiempo" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                         </children>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="139.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="290.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints maxHeight="95.0" minHeight="8.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                      </GridPane>
+                                                   </children>
+                                                </HBox>
+                                                <JFXButton fx:id="grespuesta" layoutX="190.0" layoutY="462.0" prefHeight="55.0" prefWidth="137.0" text="Guardar" />
+                                                <JFXButton fx:id="verrincidentes" layoutX="362.0" layoutY="462.0" prefHeight="55.0" prefWidth="137.0" text="Ver Registros" />
+                                                <JFXButton fx:id="resets" layoutX="530.0" layoutY="462.0" prefHeight="55.0" prefWidth="137.0" text="Reset" />
+                                             </children></AnchorPane>
+                                    </content>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </StackPane>
+                     </center>
+                  </BorderPane>
+               </children></StackPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackpanereqdoc" prefHeight="565.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RequisicionesAprobacionDetalleController">
+   <children>
+      <BorderPane fx:id="borderpanereqmiapro" prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <GridPane maxHeight="415.0" maxWidth="340.0" minHeight="5.0" minWidth="5.0" prefHeight="412.0" prefWidth="340.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="175.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="165.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="157.0" minHeight="4.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="311.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="309.0" minHeight="9.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="consecutivolabel" prefHeight="17.0" prefWidth="134.0" text="Consecutivo" />
+                  <Label fx:id="solicitantelabel" prefHeight="17.0" prefWidth="134.0" text="Solicitante" GridPane.rowIndex="1" />
+                  <Label fx:id="cargolabel" prefHeight="17.0" prefWidth="134.0" text="Cargo" GridPane.rowIndex="3" />
+                  <Label fx:id="arealabel" prefHeight="17.0" prefWidth="134.0" text="Area" GridPane.rowIndex="2" />
+                  <Label fx:id="fechaprobacionlabel" prefHeight="17.0" prefWidth="134.0" text="Fecha De Aprobacion" GridPane.rowIndex="4" />
+                  <Label fx:id="itemsaprobadoslabel" prefHeight="17.0" prefWidth="134.0" text="Items Aprobados" GridPane.rowIndex="5" />
+                  <Label fx:id="itemsnoaprobadoslabel" prefHeight="17.0" prefWidth="134.0" text="Items No Aprobados" GridPane.rowIndex="6" />
+                  <JFXTextField fx:id="consecutivoreqapro" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="solicitantereapro" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="areareqaprofinal" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="cargoreqaprofinal" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="fecaprobacionreqapro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <JFXTextField fx:id="itemsreqaprofinal" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <JFXTextField fx:id="itemsresnoaprofinal" prefHeight="28.0" prefWidth="144.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <JFXButton fx:id="genreqfinalapro" prefHeight="25.0" prefWidth="184.0" text="Generar Fecha De Entrega" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <Label fx:id="fechaent" prefHeight="17.0" prefWidth="134.0" text="Fecha De Entrega" GridPane.rowIndex="7" />
+                  <DatePicker fx:id="fechareq" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

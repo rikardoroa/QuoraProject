@@ -1,0 +1,1125 @@
+/* JavaFX CSS - Leave this comm
+ * ent until you have at least create one rule which uses -fx-Property
+ */
+ 
+
+ 		
+Label {
+ -fx-text-fill: red;
+ -fx-alignment: center;
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+}
+
+#fusuario{
+ 
+   -fx-background-color:linear-gradient(to bottom, #5bc29c 14%, #5bc29c 91%);
+   -fx-valignment:  baseline ;
+    
+}
+
+#fcontrasena{
+
+ -fx-background-color:linear-gradient(to bottom, #5bc29c 14%, #5bc29c 91%);
+  -fx-valignment:  baseline ;
+   }
+   
+ #fboton{
+ 	 -fx-background-color: rgb(194, 237, 194);
+ 	 -fx-border-color: rgb(49, 107, 49);  
+ 	 -fx-border-radius:  3.5%;
+ 	 -fx-text-fill: #316b31; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ }
+ 
+  #fboton:hover{
+ 	 -fx-background-color: rgb(255, 235, 235);
+ 	 -fx-border-color: linear-gradient(to bottom, red 14%, red 91%);  
+ 	 -fx-border-radius:  3.5%;
+ 	 -fx-text-fill: red; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ }
+ 
+
+ 
+ #Borderlogin{
+ 	 -fx-background-color: rgb(218, 242, 220);
+ }
+ 
+ #stackapro{
+ 	-fx-background-color: rgb(153,204,153)
+ }
+ #vboxadm,#vboxreq{
+  -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+ 	
+}
+
+#vboxrr,#vboxrrind{
+	-fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+ 	
+}
+
+
+#vboxr{
+	-fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+ 	
+}
+
+#stpane{
+	-fx-background-color:   linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+	 
+}
+
+#hboxmenu{
+	 -fx-background-color:    linear-gradient( from 100.0% 200.0% to 200.0% 100.0%, rgb(255,102,102) 0.0, rgb(255,179,179) 100.0)
+	 }
+ 
+ #iniciouser,#inicioadm,#iniciouserind,#inicioreq{
+ 	 -fx-background-color: white;
+ 	 -fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); 
+ 	 -fx-border-radius:  14%;
+ 	 -fx-text-fill: red; 
+ 	 -fx-font-family: "Oswald Regular";
+ 	 -fx-font-size: 16px;
+     -fx-font-weight: bold;
+     -fx-border-width: 6.8px;
+     -fx-background:none;
+     -fx-border-insets: -7.5;      
+ }
+ 
+ 
+ 
+   #iniciouser:hover{
+ 	 -fx-background-color:  rgb(172,169,177);
+ 	 -fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); 
+ 	 -fx-border-radius:  14%;
+ 	 -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+ 	 -fx-font-size: 16px;
+     -fx-font-weight: bold;
+     -fx-border-width: 6.8px;
+     -fx-background:none;
+     -fx-border-insets: -7.5; 
+ }
+ 
+ #iniciouserind:hover{
+ 	-fx-background-color:  rgb(172,169,177);
+ 	 -fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); 
+ 	 -fx-border-radius:  14%;
+ 	 -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+ 	 -fx-font-size: 16px;
+     -fx-font-weight: bold;
+     -fx-border-width: 6.8px;
+     -fx-background:none;
+     -fx-border-insets: -7.5; 
+ }
+ 
+   #inicioadm:hover{
+ 	 -fx-background-color:  rgb(172,169,177);
+ 	 -fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); 
+ 	 -fx-border-radius:  14%;
+ 	 -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+ 	 -fx-font-size: 16px;
+     -fx-font-weight: bold;
+     -fx-border-width: 6.8px;
+     -fx-background:none;
+     -fx-border-insets: -7.5; 
+ }
+ 
+ #inicioreq:hover{
+ 	 -fx-background-color:  rgb(172,169,177);
+ 	 -fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); 
+ 	 -fx-border-radius:  14%;
+ 	 -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+ 	 -fx-font-size: 16px;
+     -fx-font-weight: bold;
+     -fx-border-width: 6.8px;
+     -fx-background:none;
+     -fx-border-insets: -7.5;
+      
+ }
+ 
+ #imgview{
+ 	 -fx-background-color: white;
+ 	 -fx-background-image:url('imagenes/login.png') ;
+     -fx-background-repeat:no-repeat ;
+     -fx-background-position: center 40px ;
+     -fx-background-color:white;
+     -fx-background-size: 195px;
+ }
+ 
+ #imgvieww,#imgviewwind2,#imgviewreq{
+ 	 -fx-background-color: white;
+ 	 -fx-background-image:url('imagenes/login.png') ;
+     -fx-background-repeat:no-repeat ;
+     -fx-background-position: center 40px ;
+     -fx-background-color: white ; 
+     -fx-background-size: 195px; 
+      
+ }
+ 
+ #bdapane{
+ 	  -fx-background-color:white;
+ }
+ 
+ 
+ 
+#stimage{
+ 	
+     -fx-background-color:white;
+    
+ }
+  
+  
+  #stpanetop,#stpanetopind2{
+  -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+ 	
+}
+
+#stpanetopadm,#stpanerequi2{
+	-fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+}
+
+  #bienvenidostx{
+ 	 -fx-fill: red;
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size: 20px ;      
+ }
+ 
+ 
+ #tab1,#tab2,#tab3,#tab4,#anchoreq{
+ 	 -fx-background-color: white;
+ 	      
+ }
+ 
+ #mtab1,#mtab2,#mtab3{
+ 	 -fx-background-color: white;
+ 	 -fx-border-radius:  9%;
+ 	 -fx-border-insets: -1;
+ 	 -fx-border-color: red;
+ 	 -fx-border-width: 1.9px;
+ 	 }
+ 	 
+ 	 
+ #mtab1:hover{
+ 	 -fx-background-color: white;
+ 	 -fx-border-radius:  9%;
+ 	 -fx-border-insets: -1;
+ 	 -fx-border-color: linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+ 	 -fx-border-width: 1.9px;
+ 	 
+ 	 }
+ 	 
+ #mtab2:hover{
+ 	 -fx-background-color: white;
+ 	 -fx-border-radius:  9%;
+ 	 -fx-border-insets: -1;
+ 	 -fx-border-color: linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+ 	 -fx-border-width: 1.9px;
+ 	 }
+ 	 
+ 	 
+ #mtab3:hover{
+ 	 -fx-background-color: white;
+ 	 -fx-border-radius:  9%;
+ 	 -fx-border-insets: -1;
+ 	 -fx-border-color: linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+ 	 -fx-border-width: 1.9px;
+ 	 }
+ 	 
+ #mitabpane{
+ 	-fx-background-color: white;
+ 	
+ }
+ 
+ #incsolicitud,#generarind,#limpiag,#generarind1,#limpiag1,#generarsoportegrafico,#limpiarsoportegrafico{
+ 	-fx-background-color:  rgb(255,64,64);
+ 	-fx-text-fill: white; 
+ 	-fx-font-family: "Oswald Regular";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+       
+ }
+ #grespuesta,#sendrequi,#resetreq,#vregreq,#vreqdt,#cargadatosapro{
+ 	-fx-background-color:  rgb(255,64,64);
+ 	-fx-text-fill: white; 
+ 	-fx-font-family: "Oswald Regular";
+    -fx-font-weight: bold;
+    -fx-font-size:16px;
+       
+ }
+#registrosuser,#verrincidentes,#bavanzadainc,#bavanzadain,#cargardata{
+ 	-fx-background-color:  #2b9d67;
+ 	-fx-text-fill: white; 
+ 	-fx-font-family: "Oswald Regular";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+     
+ }
+ 
+ #resetdatos{
+ 	-fx-background-color:  #b89595;
+ 	-fx-text-fill: white; 
+ 	-fx-font-family: "Oswald Regular";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+ 
+ }
+ 
+  #busquedar{
+     -fx-background-color:  rgb(255,64,64);
+     -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+ }
+
+ #busquedarin{
+ 	-fx-background-color:  rgb(255,64,64);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+ 	
+ }
+ 
+ #vinculat{
+ 	-fx-background-color:  rgb(255,64,64);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+ }
+ 
+ #filtroreq,#aplicareqapro,#cargardatos,#aplicarfreqapro{
+ 	-fx-background-color:   rgb(6,123,10);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ }
+ 
+ 
+ #agregaritem{
+ 	-fx-background-color:   rgb(6,123,10);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ }
+ 
+#resetfecreq{
+	 -fx-background-color:  rgb(255,64,64);
+     -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;	
+}
+
+#filtrarrqrep,#noaprobarrev{
+	 -fx-background-color:  #0266CF;
+     -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;	
+}
+ /*---------------------------tableview---------------------------------------- */
+   #tablarincidentes .table-row-cell:selected {
+   -fx-background-color: #49B3F3; 
+   -fx-text-fill: black;
+} 
+
+   #tablarincidentes .table-cell{
+  
+ 	-fx-text-fill:red ;
+ 
+ }
+   
+  #tablarincidentes .table-row-cell:selected .table-cell {
+   -fx-text-fill: black;
+} 
+ 	
+ #tablarincidentes .table-row-cell{
+ 	-fx-background-color: #ffebeb;
+ 	-fx-text-fill: black; -fx-font-family: 'Oswald Regular'; -fx-font-weight: bold;-fx-font-size:16px;
+ }
+ 
+ 
+ 
+  #tablaincidentes .table-row-cell:selected {
+   -fx-background-color: #49B3F3; 
+   -fx-text-fill: black;
+} 
+
+  #tablaincidentes .table-cell{
+   -fx-text-fill:red;
+   
+} 
+  #tablaincidentes .table-row-cell:selected .table-cell {
+   -fx-text-fill: black;
+} 
+
+ #tablaincidentes .table-row-cell{
+ 	-fx-background-color: #ffebeb;
+ 	-fx-text-fill: black; -fx-font-family: 'Oswald Regular'; -fx-font-weight: bold;-fx-font-size:16px;
+ }
+ 
+ 
+ #tablereqrep  .table-row-cell:selected {
+   -fx-background-color: #49B3F3; 
+   -fx-text-fill: black;
+} 
+
+
+  #tablereqrep .table-cell{
+   -fx-text-fill:red;
+   
+} 
+  #tablereqrep .table-row-cell:selected .table-cell {
+   -fx-text-fill: black;
+} 
+
+ #tablereqrep .table-row-cell{
+ 	-fx-background-color: #ffebeb;
+ 	-fx-text-fill: black; -fx-font-family: 'Oswald Regular'; -fx-font-weight: bold;-fx-font-size:16px;
+ }
+ 
+
+#datossol  .table-row-cell:selected {
+   -fx-background-color: #49B3F3; 
+   -fx-text-fill: black;
+} 
+
+#datossol .table-cell{
+   -fx-text-fill:red;
+   
+} 
+#datossol .table-row-cell:selected .table-cell {
+   -fx-text-fill: black;
+} 
+
+#datossol .table-row-cell{
+ 	-fx-background-color: #ffebeb;
+ 	-fx-text-fill: black; -fx-font-family: 'Oswald Regular'; -fx-font-weight: bold;-fx-font-size:16px;
+ }
+ 
+
+
+
+
+
+ 
+#titem .cell{
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-text-fill:black;
+ -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#reqdt .cell{
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-text-fill:black;
+}
+
+#reqtable .cell{
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-text-fill:black;
+}
+
+#itemsdetalle .cell{
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-text-fill:black;
+ -fx-background-color: #9CBFF0;
+  
+ }
+ 
+ #itemsdetalle .table-column{
+ 	 -fx-alignment:  center ;
+ }
+ 
+ 
+ #itemsaprobados .cell{
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-text-fill:black;
+ -fx-background-color: #9CBFF0;
+  
+ }
+ 
+  #itemsaprobados .table-column{
+ 	 -fx-alignment:  center ;
+ }
+ 
+ 
+ 
+ #genreq .table-column{
+ 	 -fx-alignment:  center ;
+ }
+ 
+ 
+ #tablaitemsinapro .cell{
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-text-fill:black;
+ -fx-background-color:#B6D5F1;
+ }
+ 
+ 
+ #tablaitemsinapro .table-column{
+ 	 -fx-alignment:  center ;
+ }
+ 
+  #genreq .cell{
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-text-fill:black;
+ 
+ 
+ }
+ /*---------------------------fin tableview---------------------------------------- */
+ 
+ 
+ 
+ #resetin{
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:14px;
+ 	-fx-background-color:rgb(252, 135, 124);
+ }
+ #actualizadatos{
+ 	
+ 	-fx-background-color:     rgb(6,123,10);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;  
+     -fx-font-size:14px;
+ }
+ 
+ #exportarE{
+ 	-fx-background-color: rgb(222, 93, 91);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;  
+     -fx-font-size:16px;
+ }
+ 
+ #ctiempo{
+     -fx-background-color: rgb(89, 164, 235);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;  
+     -fx-font-size:16px;	
+ }
+#stackrevreq,#borderitem{
+ 	/*-fx-background-color: linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);*/
+ 	-fx-background-color: rgb(153,204,153);
+ }
+ 
+ #stackpaneup,#stackreqrep,#stackrepfinaldata,#stackinforeq,#stupdate,#stpanecuser,#staupdatefdigital,#stackver{
+ 	 -fx-background-color: rgb(218, 242, 220);
+ }
+ 
+ #testimadoi, #fprogramadai,#fejcutadai,#hsolucioni,#trespuestai,#tejecutadai,#novedadesi,#prioridadi,#verificacioni,#updatetablein{
+ 	-fx-text-fill:#4059a9;
+	-fx-font-weight:bold;
+	-fx-font-size:16px;
+	
+ }
+ 
+ 
+ #vdetalles,#det{
+ 	 -fx-background-color: #3A6DE1;
+ 	 -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ 	}
+ #genreqfinalapro{
+ 	 -fx-background-color: #F06622;
+ 	 -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:14px;
+ 	}
+ 	
+ 	#generareqfinal{
+ 	 -fx-background-color: #F06622;
+ 	 -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ 	}
+ 
+ #updatetablein,#creauser{
+ 	-fx-background-color:  rgb(255,64,64);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ }
+ #genrevreq,#Actualizadatos,#actualizar{
+ 	 -fx-background-color:  #E36903;
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ }
+ 
+ #cargardatos,#cargatareqapro,#confirmareqrep{
+ 	-fx-background-color:  rgb(6,123,10);
+ 	-fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+ }
+ 
+ 
+#centrooplabel,#coperacionlabel,#reqlabel,#fechafinlabel,#fechainilabel,#fechaentlabel,#conseclabel,#estadorepfinal,#cantidadrepfinal,#itemrepfinal,#fechaentregarep,#arearep,#requisicionrep,#nombrerep,#cargorep,#vverificacion,#prioridad,#nnovedades,#tareaejecutada,#ttrespuesta,#hsol,#ffejecutada,#ttestimado,#fprogram,#cargoitemdetalle,#areaitemdetalle,#consecutivolabel,#solicitantelabel,#arealabel,#cargolabel,#fechaprobacionlabel,#itemsaprobadoslabel,#itemsnoaprobadoslabel,#estadoreqrapro,#solicitantereqapro,#areareqapro,#cargoreqapro,#fechareqapro,#cantidadreqapro,#descripcionreqapro,#observacionesreqapro,#concecutivoreqapro,#itemfechainicio,#itemfechafin,#firmareqapro,#usuario,#contrasena,#desclabel,#cantidadlabel,#fslabel,#crlabel,#arlabel,#obslabel,#sollabel,#Consecutivolabel,#idlabel,#itemlabel,#cantidadlabel,#estadolabel,#ccupdatefirma, #cargolabel,#nombrelabel,#cclabel,#nnuser,#uuser,#ccuser,#contrasenauser,#roluserc,#cargocuser,#areacuser,#firmacuser,#ticket,#incidentes,#gseguimiento,#ind, #gcalidad,#gcartera,#SSolicitud,#SArea,#SSolicitante,#Scodarea,#Scomentarios,#sprioridad,#srinres,#sfprogram,#stsol,#sfeceje,#shorasol,#stareje,#snoveje,#svercor,#fechaini,#fechafin,#fechainisoporte,#fechafsoporte,#Solicitudsoporte,#SSolicitudind,#finistacktable,#ffinstacktable,#novstacktable,#prioridad,#cstacktable,#finiinc,#ffininc,#requisiciones,#solicitantereq,#cargoreq,#idreq,#areareq,#fechasol,#cantidadreq,#descripreq,#observareq,#fechainireq,#fechainireqapro,#fechafinreqapro,#cargoreqapro,#areareqapro,#fechafinreq,#cargo,#areareq,#areaf,#novedadesinc,#fechaent,#fechainireqfllabel,#fechafinreqflabel,#areareqflabel,#cargoreqflabel{
+ 	
+ -fx-text-fill: white;
+ -fx-alignment: center;
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-background-color:rgb(255,64,64);
+ -fx-padding: 3 0 0 3;
+ -fx-background-radius:5 5 5 5;
+  }
+  
+  #detallerep{
+ -fx-text-fill: white;
+ -fx-alignment: center;
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-background-color:#F06622;
+ -fx-padding: 3 0 0 3;
+ -fx-background-radius:5 5 5 5;
+  }
+  
+  #detallesoporte{
+  	 -fx-text-fill: white;
+ -fx-alignment: center;
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-background-color: rgb(236,123,40);
+ -fx-padding: 3 0 0 3;
+ -fx-background-radius:5 5 5 5;
+  }
+  
+  #vobo{
+  -fx-text-fill: white;
+ -fx-alignment: center;
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-background-color:rgb(230,135,89);
+ -fx-padding: 3 0 0 3;
+ -fx-background-radius:5 5 5 5;
+  }
+  
+#Buscausuario{
+ -fx-background-color:  rgb(255,64,64);
+ -fx-text-fill: white; 
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;	
+  -fx-font-size: 16px;
+  
+ }
+
+   #reset, #resets,#visualizarin,#visualizarinc{
+  -fx-background-color: rgb(230,135,89);
+ -fx-text-fill: white; 
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;	
+ -fx-font-size: 16px;
+   	
+   } 
+
+ 
+ /* #stupdate,#stpanecuser,#staupdatefdigital,#stackver{
+ 	-fx-background-color:linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);
+ }*/
+ 
+
+ 
+ 
+#ccvi,#cedulacap,#nombrecap,#cargocap,#testimadoi,#fprogramadai,#fejcutadai,#hsolucioni,#trespuestai,#tejecutadai,#novedadesi,#prioridadi,#verificacioni,#nombreuser,#capcedula,#nuser,#passuser{
+	-fx-text-fill:#4059a9;
+	-fx-font-weight:bold;
+	-fx-font-size:14px;
+	     
+} 
+
+#reqcon,#reqid,#solreqfield,#areareqfield,#cargoreqfield,#fechasolreqfield,#item,#cantidad{
+	-fx-text-fill:black;
+	-fx-font-weight:bold;
+	-fx-font-size:16px;
+	 -fx-font-family: "Oswald Regular";
+}
+/*-----------------------combos----------------- */
+#comboprioridad .cell {
+    -fx-text-fill: #4059a9;
+}
+
+
+#comboprioridad .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#comboprioridad .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+
+#areareqfiltro .cell {
+    -fx-text-fill: #4059a9;
+}
+
+
+#areareqfiltro  .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#areareqfiltro  .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#cargoreqfiltro .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#cargoreqfiltro  .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#cargoreqfiltro  .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#comboinc .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#comboinc .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#comboinc .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#comboarea .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#comboarea .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#comboarea .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+
+#solicitud .cell {
+    -fx-text-fill: #4059a9;
+}
+
+
+#solicitud .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#solicitud .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#estadorepfinaltx  .cell {
+    -fx-text-fill: black;
+}
+
+#estadorepfinaltx .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#estadorepfinaltx .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#area .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#area .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#area .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#prioridadrin .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#prioridadrin .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#prioridadrin .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#cnssinres .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#cnssinres .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#cnssinres .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#tiempo .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#tiempo .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#tiempo .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#tejecutada .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#tejecutada .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#tejecutada .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#horas .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#horas .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#horas .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#verificacion .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#verificacion .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#verificacion .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#combocargo .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#combocargo .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#combocargo .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#comboareaa .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#comboareaa .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#comboareaa .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#aproareareq .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#aproareareq .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#aproareareq .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#aproreqcargo .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#aproreqcargo .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#aproreqcargo .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+
+
+#estado .cell {
+    -fx-text-fill: black;
+}
+
+#estado .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#aproreqcargo .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#combocargoitemdet .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#combocargoitemdet .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#combocargoitemdet .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+#areacomboitemdet .cell {
+    -fx-text-fill: #4059a9;
+}
+
+#areacomboitemdet .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#areacomboitemdet .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+
+
+#areauser .cell {
+    -fx-text-fill:black;
+	-fx-font-weight:bold;
+	-fx-font-size:16px;
+	-fx-font-family: "Oswald Regular";
+}
+
+
+#areauser  .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#areauser  .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+
+#roluser .cell {
+     -fx-text-fill:black;
+	-fx-font-weight:bold;
+	-fx-font-size:16px;
+	-fx-font-family: "Oswald Regular";
+}
+
+
+#roluser  .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#roluser  .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#coperacioncombo .cell {
+     -fx-text-fill:black;
+	-fx-font-weight:bold;
+	-fx-font-size:16px;
+	-fx-font-family: "Oswald Regular";
+}
+
+
+#coperacioncombo  .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#coperacioncombo  .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+#cargouser .cell {
+    -fx-text-fill:black;
+	-fx-font-weight:bold;
+	-fx-font-size:16px;
+	-fx-font-family: "Oswald Regular";
+}
+
+
+#cargouser  .cell:selected{
+     -fx-background-color: rgb(218, 242, 220);
+}
+
+#cargouser  .combo-box-popup .list-cell:hover {
+    -fx-background-color: rgb(218, 242, 220);
+}
+
+
+/*-----------------------combos----------------- */
+
+
+/*---------------------text area--------------------------- */
+#novedades .content  {
+	 -fx-background-color: rgb(218, 242, 220);
+	 -fx-border-color:#99cc99;
+}
+
+#inovedades .content  {
+	 -fx-opacity:1;
+}
+
+#comentarios .content  {
+	 -fx-background-color: rgb(218, 242, 220);
+	 -fx-border-color:#99cc99;
+}
+
+#observaciones .content  {
+	 -fx-background-color: rgb(218, 242, 220);
+	 -fx-border-color:#99cc99;
+}
+
+/*--------------------fin regla css text area-------------- */
+
+
+
+#stacktable,#stackpanetabein,#borderdata,#borderpanereqmiapro,#borderpanereqmiaprofinalapro{
+	 -fx-background-color: rgb(218, 242, 220);
+}
+#tablarincidentes,#tablaincidentes,#tablaitemsinapro{
+	-fx-border-color: red;
+
+}
+
+
+#borderstacktable,#bordertincidentes{
+	 -fx-background-color: rgb(218, 242, 220);
+	 
+}
+
+
+#cantidaduser,#desuser,#observaciones{
+	-fx-text-fill: black ;
+	-fx-font-family: "Oswald Regular";
+    -fx-font-weight: bold;	
+    -fx-font-size:16px;
+}
+
+
+
+#resetcampos,#cargafirma,#cargaimagen,#visualizar,#resetreqapro,#aplicarfiltro,#resetreqfapro{
+	  -fx-background-color:  #e66729;
+ 	  -fx-text-fill: white; 
+ 	  -fx-font-family: "Oswald Regular";
+      -fx-font-weight: bold;
+      -fx-font-size:16px;
+}
+
+#resetitemsfields{
+	  -fx-background-color:  #6986E7;
+ 	  -fx-text-fill: white; 
+ 	  -fx-font-family: "Oswald Regular";
+      -fx-font-weight: bold;
+      -fx-font-size:16px;
+}
+
+#verfirma{
+ -fx-text-fill: white;
+ -fx-alignment: center;
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-background-color:#4059a9;
+ -fx-padding: 3 0 0 3;
+ -fx-background-radius:5 5 5 5;
+}
+
+
+ 
+ /*--------------datepickers --------------------- */
+ 
+ .date-picker{
+    -fx-border-radius: 5;
+    -fx-padding: 4 0 0 10;
+    -fx-background-color:#9CBFF0;
+    
+ }
+  .date-picker {
+ 	-fx-font-family: "Oswald Regular";
+    -fx-font-size:16px;
+
+ }
+ .date-picker-popup  > * > .today {
+ 	
+        -fx-background-color:#F8C2B5;
+ } 
+ 
+  .date-picker .text-field {
+    -fx-control-inner-background: #EBD3C7 ;
+}
+ 
+ /*--------------datepickers --------------------- */
+  

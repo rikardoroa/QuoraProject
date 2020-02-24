@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackrepfinaldata" prefHeight="453.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DetalleRecepcionItemsController">
+   <children>
+      <BorderPane prefHeight="430.0" prefWidth="359.0">
+         <center>
+            <GridPane maxHeight="286.0" maxWidth="283.0" minHeight="5.0" minWidth="5.0" prefHeight="286.0" prefWidth="283.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.0" minWidth="10.0" prefWidth="75.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="189.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="145.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="itemrepfinal" prefHeight="17.0" prefWidth="82.0" text="Item" />
+                  <Label fx:id="cantidadrepfinal" prefHeight="17.0" prefWidth="82.0" text="Cantidad" GridPane.rowIndex="1" />
+                  <Label fx:id="estadorepfinal" prefHeight="17.0" prefWidth="81.0" text="Estado" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="itemrepfinaltx" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="cantidadrepfinaltx" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXComboBox fx:id="estadorepfinaltx" prefHeight="25.0" prefWidth="196.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </center>
+         <top>
+            <Pane prefHeight="50.0" prefWidth="359.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <BorderPane prefHeight="97.0" prefWidth="470.0" BorderPane.alignment="CENTER">
+               <center>
+                  <JFXButton fx:id="actualizarepfdata" prefHeight="25.0" prefWidth="122.0" text="Actualizar Datos" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackpanetabein" prefHeight="555.0" prefWidth="1265.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IncidentesController">
+   <children>
+      <BorderPane prefHeight="555.0" prefWidth="1242.0">
+         <right>
+            <BorderPane fx:id="bordertincidentes" prefHeight="436.0" prefWidth="406.0" BorderPane.alignment="CENTER">
+               <center>
+                  <AnchorPane prefHeight="436.0" prefWidth="456.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <GridPane layoutX="31.0" layoutY="36.0" prefHeight="390.0" prefWidth="305.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="189.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="214.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="77.0" minHeight="4.0" prefHeight="58.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="114.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="finiinc" prefHeight="21.0" prefWidth="106.0" text="Fecha Inicio" />
+                              <Label fx:id="ffininc" prefHeight="21.0" prefWidth="106.0" text="Fecha Fin" GridPane.rowIndex="1" />
+                              <Label fx:id="novedadesinc" prefHeight="21.0" prefWidth="106.0" text="Novedades" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="finidinc" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="1" />
+                              <DatePicker fx:id="ffindinc" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <JFXButton fx:id="bavanzadainc" prefHeight="21.0" prefWidth="167.0" text="Busqueda Avanzada" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <JFXComboBox fx:id="comboinc" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="areaf" prefHeight="21.0" prefWidth="106.0" text="Area" GridPane.rowIndex="3" />
+                              <JFXComboBox fx:id="comboarea" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <JFXButton fx:id="resetin" prefHeight="21.0" prefWidth="106.0" text="Reset" GridPane.rowIndex="4" />
+                              <JFXButton fx:id="visualizarin" prefHeight="21.0" prefWidth="167.0" text="Visualizar Registros" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           </children>
+                        </GridPane>
+                        <Label fx:id="tablalabel" layoutX="14.0" layoutY="4.0" prefHeight="21.0" prefWidth="168.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </right>
+         <center>
+            <TableView fx:id="tablaincidentes" prefHeight="491.0" prefWidth="544.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="idin" minWidth="50.0" prefWidth="234.0" text="ID" />
+                <TableColumn fx:id="concecutivoin" minWidth="50.0" prefWidth="200.0" text="CONCECUTIVO" />
+                  <TableColumn fx:id="fechasin" prefWidth="240.0" text="FECHA DE SOLICITUD" />
+                  <TableColumn fx:id="solicitudin" prefWidth="240.0" text="SOLICITUD" />
+                  <TableColumn fx:id="solicitantein" prefWidth="240.0" text="SOLICITANTE" />
+                  <TableColumn fx:id="areain" minWidth="0.0" prefWidth="240.0" text="AREA" />
+                  <TableColumn fx:id="comentariosin" prefWidth="520.0" text="DETALLES" />
+                  <TableColumn fx:id="concecutivor" minWidth="50.0" prefWidth="240.0" text="CONSECUTIVO RESPUESTA" />
+              </columns>
+            </TableView>
+         </center>
+         <left>
+            <Pane prefHeight="436.0" prefWidth="128.0" BorderPane.alignment="CENTER" />
+         </left>
+         <top>
+            <Pane prefHeight="55.0" prefWidth="1265.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Pane prefHeight="97.0" prefWidth="1265.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+</StackPane>

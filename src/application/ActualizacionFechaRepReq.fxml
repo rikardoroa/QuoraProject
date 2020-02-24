@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackinforeq" prefHeight="536.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ActualizacionFechaEntReqController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Pane prefHeight="65.0" prefWidth="858.0" BorderPane.alignment="CENTER" />
+         </top>
+         <right>
+            <Pane prefHeight="404.0" prefWidth="30.0" BorderPane.alignment="CENTER" />
+         </right>
+         <left>
+            <VBox prefHeight="404.0" prefWidth="355.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane prefHeight="404.0" prefWidth="337.0">
+                     <center>
+                        <GridPane maxHeight="271.0" maxWidth="292.0" minHeight="5.0" minWidth="5.0" prefHeight="271.0" prefWidth="292.0" BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="137.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="154.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="51.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="conseclabel" prefHeight="17.0" prefWidth="115.0" text="Consecutivo" />
+                              <JFXTextField fx:id="cnsreqtxf" GridPane.columnIndex="1" />
+                              <DatePicker fx:id="fechaentregadf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="fechaentlabel" prefHeight="17.0" prefWidth="115.0" text="Fecha de entrega" GridPane.rowIndex="1" />
+                              <JFXButton fx:id="actualizar" prefHeight="25.0" prefWidth="155.0" text="Actualizar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <JFXButton fx:id="cargardata" prefHeight="25.0" prefWidth="158.0" text="Cargar Datos" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <JFXButton fx:id="resetfecreq" prefHeight="25.0" prefWidth="155.0" text="Reset" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           </children>
+                        </GridPane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <TableView fx:id="datossol" prefHeight="404.0" prefWidth="489.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="consecutivo" prefWidth="134.0" text="CONSECUTIVO" />
+                <TableColumn fx:id="fechaentrega" prefWidth="149.0" text="FECHA DE ENTREGA" />
+                  <TableColumn fx:id="solicitante" prefWidth="189.0" text="SOLICITANTE" />
+              </columns>
+            </TableView>
+         </center>
+         <bottom>
+            <HBox prefHeight="195.0" prefWidth="858.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="825.0">
+                     <children>
+                        <BorderPane prefHeight="200.0" prefWidth="964.0">
+                           <center>
+                              <GridPane maxWidth="292.0" minHeight="5.0" prefHeight="167.0" prefWidth="292.0" BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label fx:id="fechainilabel" prefHeight="17.0" prefWidth="96.0" text="Fecha Inicio" />
+                                    <Label fx:id="fechafinlabel" prefHeight="17.0" prefWidth="96.0" text="Fecha Fin" GridPane.rowIndex="1" />
+                                    <DatePicker fx:id="fechabusfin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <DatePicker fx:id="fechabusini" GridPane.columnIndex="1" />
+                                    <JFXButton fx:id="filtrarrqrep" prefHeight="25.0" prefWidth="155.0" text="Filtrar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                           </center>
+                           <left>
+                              <Pane prefHeight="200.0" prefWidth="312.0" BorderPane.alignment="CENTER" />
+                           </left>
+                           <right>
+                              <BorderPane prefHeight="200.0" prefWidth="302.0" BorderPane.alignment="CENTER">
+                                 <center>
+                                    <GridPane maxHeight="184.0" maxWidth="252.0" minHeight="5.0" minWidth="5.0" prefHeight="180.0" prefWidth="252.0" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="97.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="155.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label fx:id="reqlabel" prefHeight="17.0" prefWidth="82.0" text="Requisición" />
+                                          <JFXTextField fx:id="cnsreqpredicado" GridPane.columnIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </center>
+                                 <left>
+                                    <Pane prefHeight="200.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                           </right>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</StackPane>
