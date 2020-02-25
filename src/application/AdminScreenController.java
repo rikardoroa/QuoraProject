@@ -55,12 +55,15 @@ public class AdminScreenController extends Application implements Initializable 
     @FXML private Label  requisiciones;
     @FXML private MenuBar menubar1;
     @FXML private Menu menu1;
+    @FXML private Menu menu3;
     @FXML public MenuItem useritem;
     @FXML private MenuBar menubar2;
+    @FXML private MenuBar menubar3;
     @FXML private Menu menu2;
     @FXML public MenuItem updateitemf; 
     @FXML public MenuItem bfirma;
     @FXML public MenuItem actfechareq;
+    @FXML public MenuItem festivos;
     @FXML private HBox hboxmenu;
     public TextField mdata;
     public static String capdata;
@@ -216,6 +219,16 @@ public class AdminScreenController extends Application implements Initializable 
 	}
 	
 	
+	public void FestivosStagefinal() throws IOException {
+		Stage  FestivosStage = new Stage();
+		FXMLLoader FestivosLoader=new FXMLLoader(getClass().getResource("Festivos.fxml"));
+		Parent StackPane =(Parent) FestivosLoader.load();
+		Scene scene = new Scene(StackPane);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		FestivosStage.setScene(scene);
+		FestivosStage.setTitle("Configuracion De Festivos");
+		FestivosStage.show();
+	}
 	
 	
 	public void verfirma() {
@@ -387,6 +400,16 @@ public class AdminScreenController extends Application implements Initializable 
 			}
 		});
 	}
+	
+	public void FestivosScreen() {
+		festivos.setOnAction(e->{
+			try {
+				FestivosStagefinal();
+			} catch (IOException e1) {
+				Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, e1);
+			}
+		});
+	}
 
 	public static void main(String[] args) {
 	}
@@ -395,6 +418,7 @@ public class AdminScreenController extends Application implements Initializable 
 	public void initialize(URL location, ResourceBundle resources) {
 		Muestrasistemascreen();	
 		UsersScreen();
+		FestivosScreen();
 		cargaescenauser();
 		IndicadoresScreen();
 		RequisicionesScreen();

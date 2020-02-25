@@ -55,6 +55,15 @@
                             </Menu>
                           </menus>
                         </MenuBar>
+                        <MenuBar fx:id="menubar3">
+                          <menus>
+                            <Menu fx:id="menu3" mnemonicParsing="false" text="Panel De Control ">
+                              <items>
+                                <MenuItem fx:id="festivos" mnemonicParsing="false" text="Festivos" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
                      </children>
                   </HBox>
                </top>
