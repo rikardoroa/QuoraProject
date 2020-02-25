@@ -61,6 +61,12 @@
           <AssociatedConnUserName>sa</AssociatedConnUserName>
           <FullPath>STORED PROCEDURE ACTULIZAF.sql</FullPath>
         </FileNode>
+        <FileNode Name="STORED PROCEDURE BORRA TABLA FESTIVOS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE BORRA TABLA FESTIVOS.sql</FullPath>
+        </FileNode>
         <FileNode Name="STORED PROCEDURE CALCULOTIEMPO.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>

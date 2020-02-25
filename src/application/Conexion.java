@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Conexion {
 	
-	   public String Bd="jdbc:sqlserver://DESKTOP-8PJDQNJ:1433;databaseName=QUORA";
+	   public String Bd="jdbc:sqlserver://LAPTOP-8L00K632:1433;databaseName=QUORA";
 	   public String Usuario="sa";
 	   public String Pass="milkas87";
   		

@@ -91,6 +91,29 @@ public class Mensaje {
     	}
 	
 	
+	
+	public Object mensajedatosconbddos(  StackPane Stack) {
+		Text cabecera = new Text();
+		cabecera.setText("DATOS ELIMINADOS");
+		cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+		Text mensaje= new Text();
+		mensaje.setText("PROCESO EJECUTADO");
+		mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+		JFXDialogLayout contenido = new JFXDialogLayout();
+	    contenido.setHeading((cabecera));
+		contenido.setBody(mensaje);
+		contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+		JFXDialog dialogo = new JFXDialog(Stack,contenido, JFXDialog.DialogTransition.CENTER);
+		JFXButton cerrar = new JFXButton("CERRAR");
+		cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+		cerrar.setOnAction(e->{
+		dialogo.close();
+		});
+		contenido.setActions(cerrar);
+		dialogo.show();
+		return cerrar;
+    	}
+	
 	public Object mensajedatosRQcerrada(  StackPane Stack) {
 		Text cabecera = new Text();
 		cabecera.setText("INFORMACION");

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<StackPane fx:id="StackFestivos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FestivosController">
+<StackPane fx:id="StackFestivos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="1015.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FestivosController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
@@ -22,7 +22,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <HBox layoutX="87.0" layoutY="20.0" prefHeight="279.0" prefWidth="811.0">
+                              <HBox layoutX="87.0" layoutY="20.0" prefHeight="410.0" prefWidth="803.0">
                                  <children>
                                     <BorderPane prefHeight="279.0" prefWidth="385.0">
                                        <left>
@@ -30,6 +30,8 @@
                                              <children>
                                                 <JFXButton fx:id="agregar" layoutX="51.0" layoutY="140.0" prefHeight="25.0" prefWidth="98.0" text="Agregar Dato" />
                                                 <DatePicker fx:id="dataentrydias" layoutX="13.0" layoutY="84.0" />
+                                                <JFXButton fx:id="vdata" layoutX="31.0" layoutY="180.0" prefHeight="25.0" prefWidth="138.0" text="Guardar Registros" />
+                                                <JFXButton fx:id="deletealldata" layoutX="28.0" layoutY="220.0" prefHeight="25.0" prefWidth="144.0" text="Eliminar Registros" />
                                              </children>
                                           </AnchorPane>
                                        </left>
@@ -37,7 +39,6 @@
                                     <ListView fx:id="Listadedias" prefHeight="279.0" prefWidth="195.0" />
                                  </children>
                               </HBox>
-                              <JFXButton fx:id="vdata" layoutX="474.0" layoutY="302.0" prefHeight="25.0" prefWidth="106.0" text="Visualizar Data" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
