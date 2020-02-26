@@ -167,7 +167,7 @@ public class RequisicionesController extends Application implements Initializabl
     @FXML public TableColumn<requisicionesgen, Integer> genitemnoapro;
     @FXML public TableColumn<requisicionesgen, String> genitemfecestado;
     @FXML public TableColumn<requisicionesgen, String> genitemestado;
-    @FXML public JFXButton boton;
+    @FXML public JFXButton mmm;
     @FXML public Tab mireqtab;
 	public Image capturamifirma;
 	public Image capturamifirmadmin;
@@ -2459,7 +2459,7 @@ public TableView<Requisiciones> filtradodatos() {
 
 	
     public void showdata() {
-    	boton.setOnAction(e->{
+    	mmm.setOnAction(e->{
     		for(item item:titem.getItems()) {
         		int miitemdata=item.getCantidad();
         		System.out.println(miitemdata);

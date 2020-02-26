@@ -117,6 +117,7 @@
                                                             <TextField fx:id="areauser" prefHeight="25.0" prefWidth="128.0" GridPane.columnIndex="1" />
                                                             <Label fx:id="idreq" prefHeight="17.0" prefWidth="119.0" text="Identificación" GridPane.rowIndex="1" />
                                                             <TextField fx:id="midreq" prefHeight="25.0" prefWidth="128.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                            <JFXButton fx:id="mmm" prefHeight="25.0" prefWidth="127.0" text="mmm" GridPane.rowIndex="2" />
                                                          </children>
                                                       </GridPane>
                                                    </children>
