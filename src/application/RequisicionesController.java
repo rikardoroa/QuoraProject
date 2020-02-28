@@ -29,6 +29,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,11 +42,13 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -54,6 +57,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 public class RequisicionesController extends Application implements Initializable  {
 	//-----------------------declaracion de variables----------//
@@ -163,6 +167,7 @@ public class RequisicionesController extends Application implements Initializabl
     @FXML public TableColumn<requisicionesgen, Integer> genitemnoapro;
     @FXML public TableColumn<requisicionesgen, String> genitemfecestado;
     @FXML public TableColumn<requisicionesgen, String> genitemestado;
+    @FXML public JFXButton boton;
     @FXML public Tab mireqtab;
 	public Image capturamifirma;
 	public Image capturamifirmadmin;
@@ -225,6 +230,7 @@ public class RequisicionesController extends Application implements Initializabl
 	public TableView <requisicionesgen> thistableviewfff;
 	public String setfecha;
 	Conexion conectar = new Conexion();
+	
    //----------------------------fin declaracion variables--------------//
 	
 	public String getSetfecha() {
@@ -922,7 +928,8 @@ public class RequisicionesController extends Application implements Initializabl
 	     
 	      public void eliminadatostabla() {
 	    	  titem.setOnMouseClicked(e->{
-	    		 titem.getItems().removeAll(titem.getSelectionModel().getSelectedItem());
+	    		/* titem.getItems().removeAll(titem.getSelectionModel().getSelectedItem());*/
+	    		
 	    		 if( titem.getItems().size()!=12) {
 	   		    	  agregaritem.setDisable(false);
 	   		       }
@@ -2450,6 +2457,17 @@ public TableView<Requisiciones> filtradodatos() {
 	public static void main(String[] args) {
 	}
 
+	
+    public void showdata() {
+    	boton.setOnAction(e->{
+    		for(item item:titem.getItems()) {
+        		int miitemdata=item.getCantidad();
+        		System.out.println(miitemdata);
+        	}
+    	});
+    	
+    }
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)  {
 		revisionreqcol.setCellValueFactory(new PropertyValueFactory <Requisiciones,String>("revisioncol"));
@@ -2491,9 +2509,36 @@ public TableView<Requisiciones> filtradodatos() {
 			        else
 			            setText(String.format(item.format(formatter2)));
 			          }
-			        });
+			
+		});
+		
+		
+	
+
+		titem.setEditable(true);
 		itemm.setCellValueFactory(new PropertyValueFactory <item,String>("Item"));
 		cantidaditemm.setCellValueFactory(new PropertyValueFactory <item,Integer>("Cantidad"));
+		cantidaditemm.setCellFactory(TextFieldTableCell.<item, Integer>forTableColumn(new IntegerStringConverter()));
+		cantidaditemm.setOnEditCommit(
+                new EventHandler<CellEditEvent<item, Integer>>() {
+                    @Override
+                    public void handle(CellEditEvent<item, Integer> t) {
+                        ((item) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())
+                                ).setCantidad(t.getNewValue());
+                    }
+                }
+                );
+		
+		/*cantidaditemm.setOnEditCommit(
+                (TableColumn.CellEditEvent<item, Integer> t) ->
+                    ( t.getTableView().getItems().get(
+                            t.getTablePosition().getRow())
+                    ).setCantidad(t.getNewValue())
+                );*/
+		
+
+		
 		gencsnsreq.setCellValueFactory(new PropertyValueFactory <requisicionesgen,String>("consecutivogenreq"));
 		gensolreq.setCellValueFactory(new PropertyValueFactory <requisicionesgen,String>("solicitantegenreq"));
 		genareareq.setCellValueFactory(new PropertyValueFactory <requisicionesgen,String>("areagenreq"));
@@ -2529,7 +2574,7 @@ public TableView<Requisiciones> filtradodatos() {
 		 showdetails();
 		 restriccionconteo();
 		 reseteadatos();
-
+		 showdata();
 		 try {
 			muestrarequisiciondetalle();
 			muestrarequisicionesaprobadas();
