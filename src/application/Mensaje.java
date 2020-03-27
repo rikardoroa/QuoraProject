@@ -229,6 +229,28 @@ public class Mensaje {
 		dialogo.show();
 		return cerrarError;
     	}
+	
+	public Object mensajeerrorb(  StackPane StackError) {
+		Text cabecera = new Text();
+		cabecera.setText("ERROR");
+		cabecera.setStyle("-fx-fill:white;-fx-font-weight:bold");
+		Text mensaje= new Text();
+		mensaje.setText("YA NO PUEDE AGREGAR MAS DATOS");
+		mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+		JFXDialogLayout contenido = new JFXDialogLayout();
+	    contenido.setHeading((cabecera));
+		contenido.setBody(mensaje);
+		contenido.setStyle(" -fx-background-color: #EE6868;");
+		JFXDialog dialogo = new JFXDialog(StackError,contenido, JFXDialog.DialogTransition.CENTER);
+		JFXButton cerrarError = new JFXButton("CERRAR");
+		cerrarError.setStyle(" -fx-background-color: yellow;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+		cerrarError.setOnAction(e->{
+		dialogo.close();
+		});
+		contenido.setActions(cerrarError);
+		dialogo.show();
+		return cerrarError;
+    	}
 		
 	public Object warningmessage(  StackPane StackError) {
 		Text cabecera = new Text();

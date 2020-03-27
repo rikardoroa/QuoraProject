@@ -249,7 +249,7 @@ Label {
     -fx-font-size: 16px;
        
  }
- #grespuesta,#sendrequi,#resetreq,#vregreq,#vreqdt,#cargadatosapro{
+ #grespuesta,#sendrequi,#resetreq,#vregreq,#vreqdt,#cargadatosapro,#vdata,#vdatae,#vdatam,#vdataab{
  	-fx-background-color:  rgb(255,64,64);
  	-fx-text-fill: white; 
  	-fx-font-family: "Oswald Regular";
@@ -275,6 +275,23 @@ Label {
  
  }
  
+ #acttodo,#actitem{
+ 	-fx-background-color:  #FF6565;
+ 	-fx-text-fill: white; 
+ 	-fx-font-family: "Oswald Regular";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+ }
+ 
+ #updatamdata,#loaditemsreq{
+ 	-fx-background-color:  #FF7E46;
+ 	-fx-text-fill: white; 
+ 	-fx-font-family: "Oswald Regular";
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+ }
+ 
+ 
   #busquedar{
      -fx-background-color:  rgb(255,64,64);
      -fx-text-fill: white; 
@@ -297,7 +314,7 @@ Label {
      -fx-font-weight: bold;
  }
  
- #filtroreq,#aplicareqapro,#cargardatos,#aplicarfreqapro{
+ #filtroreq,#aplicareqapro,#cargardatos,#aplicarfreqapro,#deletealldata,#deletealldatae,#deletealldatam,#deletealldataab{
  	-fx-background-color:   rgb(6,123,10);
  	-fx-text-fill: white; 
  	 -fx-font-family: "Oswald Regular";
@@ -322,7 +339,15 @@ Label {
      -fx-font-size:16px;	
 }
 
-#filtrarrqrep,#noaprobarrev{
+#deldata,#deldataitem{
+	 -fx-background-color: #AE6E76;
+     -fx-text-fill: white; 
+ 	 -fx-font-family: "Oswald Regular";
+     -fx-font-weight: bold;
+     -fx-font-size:16px;
+}
+
+#filtrarrqrep,#noaprobarrev,#updatecantidad{
 	 -fx-background-color:  #0266CF;
      -fx-text-fill: white; 
  	 -fx-font-family: "Oswald Regular";
@@ -413,6 +438,27 @@ Label {
 
 
 
+ 
+#tablereqdet .cell{
+ -fx-font-family: "Oswald Regular";
+ -fx-font-weight: bold;
+ -fx-font-size: 16px;
+ -fx-text-fill:black;
+
+}
+
+
+#tablereqdet .table-row-cell{
+ 	-fx-background-color:#FBE7D8;
+ 	
+ }
+ 
+ #tablereqdet .table-row-cell:selected {
+   -fx-background-color: #49B3F3; 
+   -fx-text-fill: black;
+} 
+
+
 
  
 #titem .cell{
@@ -420,10 +466,20 @@ Label {
  -fx-font-weight: bold;
  -fx-font-size: 16px;
  -fx-text-fill:black;
- -fx-background-color: rgb(218, 242, 220);
+
 }
 
 
+#titem .table-row-cell{
+ 	-fx-background-color:rgb(218, 242, 220);
+ 	
+ }
+ 
+ #titem .table-row-cell:selected {
+   -fx-background-color: #49B3F3; 
+   -fx-text-fill: black;
+} 
+ 
 #reqdt .cell{
  -fx-font-family: "Oswald Regular";
  -fx-font-weight: bold;
@@ -493,6 +549,11 @@ Label {
  
  
  }
+ 
+ 
+ 
+
+
  /*---------------------------fin tableview---------------------------------------- */
  
  
@@ -521,7 +582,7 @@ Label {
      -fx-font-size:16px;
  }
  
- #ctiempo{
+ #ctiempo,#agregar,#agregardatoe,#agregardatom,#agregardatoab{
      -fx-background-color: rgb(89, 164, 235);
  	-fx-text-fill: white; 
  	 -fx-font-family: "Oswald Regular";
@@ -533,7 +594,7 @@ Label {
  	-fx-background-color: rgb(153,204,153);
  }
  
- #stackpaneup,#stackreqrep,#stackrepfinaldata,#stackinforeq,#stupdate,#stpanecuser,#staupdatefdigital,#stackver{
+ #stackpaneup,#stackreqrep,#stackrepfinaldata,#stackinforeq,#stupdate,#stpanecuser,#staupdatefdigital,#stackver,#Stackreqdetalle,#StackFestivos{
  	 -fx-background-color: rgb(218, 242, 220);
  }
  
@@ -575,7 +636,7 @@ Label {
      -fx-font-weight: bold;
      -fx-font-size:16px;
  }
- #genrevreq,#Actualizadatos,#actualizar{
+ #genrevreq,#Actualizadatos,#actualizar,#delitem{
  	 -fx-background-color:  #E36903;
  	-fx-text-fill: white; 
  	 -fx-font-family: "Oswald Regular";
@@ -592,7 +653,7 @@ Label {
  }
  
  
-#centrooplabel,#coperacionlabel,#reqlabel,#fechafinlabel,#fechainilabel,#fechaentlabel,#conseclabel,#estadorepfinal,#cantidadrepfinal,#itemrepfinal,#fechaentregarep,#arearep,#requisicionrep,#nombrerep,#cargorep,#vverificacion,#prioridad,#nnovedades,#tareaejecutada,#ttrespuesta,#hsol,#ffejecutada,#ttestimado,#fprogram,#cargoitemdetalle,#areaitemdetalle,#consecutivolabel,#solicitantelabel,#arealabel,#cargolabel,#fechaprobacionlabel,#itemsaprobadoslabel,#itemsnoaprobadoslabel,#estadoreqrapro,#solicitantereqapro,#areareqapro,#cargoreqapro,#fechareqapro,#cantidadreqapro,#descripcionreqapro,#observacionesreqapro,#concecutivoreqapro,#itemfechainicio,#itemfechafin,#firmareqapro,#usuario,#contrasena,#desclabel,#cantidadlabel,#fslabel,#crlabel,#arlabel,#obslabel,#sollabel,#Consecutivolabel,#idlabel,#itemlabel,#cantidadlabel,#estadolabel,#ccupdatefirma, #cargolabel,#nombrelabel,#cclabel,#nnuser,#uuser,#ccuser,#contrasenauser,#roluserc,#cargocuser,#areacuser,#firmacuser,#ticket,#incidentes,#gseguimiento,#ind, #gcalidad,#gcartera,#SSolicitud,#SArea,#SSolicitante,#Scodarea,#Scomentarios,#sprioridad,#srinres,#sfprogram,#stsol,#sfeceje,#shorasol,#stareje,#snoveje,#svercor,#fechaini,#fechafin,#fechainisoporte,#fechafsoporte,#Solicitudsoporte,#SSolicitudind,#finistacktable,#ffinstacktable,#novstacktable,#prioridad,#cstacktable,#finiinc,#ffininc,#requisiciones,#solicitantereq,#cargoreq,#idreq,#areareq,#fechasol,#cantidadreq,#descripreq,#observareq,#fechainireq,#fechainireqapro,#fechafinreqapro,#cargoreqapro,#areareqapro,#fechafinreq,#cargo,#areareq,#areaf,#novedadesinc,#fechaent,#fechainireqfllabel,#fechafinreqflabel,#areareqflabel,#cargoreqflabel{
+#eaproreqdet,#IDreqdet,#ereqdet,#rreqdet,#creqdet,#sreqdet,#centrooplabel,#coperacionlabel,#reqlabel,#fechafinlabel,#fechainilabel,#fechaentlabel,#conseclabel,#estadorepfinal,#cantidadrepfinal,#itemrepfinal,#fechaentregarep,#arearep,#requisicionrep,#nombrerep,#cargorep,#vverificacion,#prioridad,#nnovedades,#tareaejecutada,#ttrespuesta,#hsol,#ffejecutada,#ttestimado,#fprogram,#cargoitemdetalle,#areaitemdetalle,#consecutivolabel,#solicitantelabel,#arealabel,#cargolabel,#fechaprobacionlabel,#itemsaprobadoslabel,#itemsnoaprobadoslabel,#estadoreqrapro,#solicitantereqapro,#areareqapro,#cargoreqapro,#fechareqapro,#cantidadreqapro,#descripcionreqapro,#observacionesreqapro,#concecutivoreqapro,#itemfechainicio,#itemfechafin,#firmareqapro,#usuario,#contrasena,#desclabel,#cantidadlabel,#fslabel,#crlabel,#arlabel,#obslabel,#sollabel,#Consecutivolabel,#idlabel,#itemlabel,#cantidadlabel,#estadolabel,#ccupdatefirma, #cargolabel,#nombrelabel,#cclabel,#nnuser,#uuser,#ccuser,#contrasenauser,#roluserc,#cargocuser,#areacuser,#firmacuser,#ticket,#incidentes,#gseguimiento,#ind, #gcalidad,#gcartera,#SSolicitud,#SArea,#SSolicitante,#Scodarea,#Scomentarios,#sprioridad,#srinres,#sfprogram,#stsol,#sfeceje,#shorasol,#stareje,#snoveje,#svercor,#fechaini,#fechafin,#fechainisoporte,#fechafsoporte,#Solicitudsoporte,#SSolicitudind,#finistacktable,#ffinstacktable,#novstacktable,#prioridad,#cstacktable,#finiinc,#ffininc,#requisiciones,#solicitantereq,#cargoreq,#idreq,#areareq,#fechasol,#cantidadreq,#descripreq,#observareq,#fechainireq,#fechainireqapro,#fechafinreqapro,#cargoreqapro,#areareqapro,#fechafinreq,#cargo,#areareq,#areaf,#novedadesinc,#fechaent,#fechainireqfllabel,#fechafinreqflabel,#areareqflabel,#cargoreqflabel{
  	
  -fx-text-fill: white;
  -fx-alignment: center;

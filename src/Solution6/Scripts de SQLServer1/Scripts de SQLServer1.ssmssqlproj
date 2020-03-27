@@ -20,9 +20,9 @@
     <LogicalFolder Name="Consultas" Type="0" Sorted="true">
       <Items>
         <FileNode Name="CASE MULTIPLE ITEMS.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
           <FullPath>CASE MULTIPLE ITEMS.sql</FullPath>
         </FileNode>
         <FileNode Name="CONTEO DE SOPORTES.sql">
@@ -31,22 +31,34 @@
           <AssociatedConnUserName />
           <FullPath>CONTEO DE SOPORTES.sql</FullPath>
         </FileNode>
+        <FileNode Name="INNER JOIN ITEMS REQUISICIONES ESTADO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>INNER JOIN ITEMS REQUISICIONES ESTADO.sql</FullPath>
+        </FileNode>
         <FileNode Name="PIVOT ITEM 2.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
           <FullPath>PIVOT ITEM 2.sql</FullPath>
         </FileNode>
         <FileNode Name="PIVOTE ITEMS.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
           <FullPath>PIVOTE ITEMS.sql</FullPath>
         </FileNode>
+        <FileNode Name="REQUISICIONES APROBADAS Y NO APROBADAS.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>REQUISICIONES APROBADAS Y NO APROBADAS.sql</FullPath>
+        </FileNode>
         <FileNode Name="SELECT ITEMS APROBADOS.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
           <FullPath>SELECT ITEMS APROBADOS.sql</FullPath>
         </FileNode>
         <FileNode Name="STORED PROCEDURE ACTUALIZADATOS.sql">
@@ -60,6 +72,24 @@
           <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
           <AssociatedConnUserName>sa</AssociatedConnUserName>
           <FullPath>STORED PROCEDURE ACTULIZAF.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE BORRA TABLA DIAS ABRIL.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE BORRA TABLA DIAS ABRIL.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE BORRA TABLA DIAS ENERO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE BORRA TABLA DIAS ENERO.sql</FullPath>
+        </FileNode>
+        <FileNode Name="STORED PROCEDURE BORRA TABLA DIAS MARZO.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>STORED PROCEDURE BORRA TABLA DIAS MARZO.sql</FullPath>
         </FileNode>
         <FileNode Name="STORED PROCEDURE BORRA TABLA FESTIVOS.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
@@ -110,9 +140,9 @@
           <FullPath>STORED PROCEDURE VINCULAR.sql</FullPath>
         </FileNode>
         <FileNode Name="TRIGGER PREVIENE DUPLICADOS.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:LAPTOP-8L00K632:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>LAPTOP-8L00K632</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
           <FullPath>TRIGGER PREVIENE DUPLICADOS.sql</FullPath>
         </FileNode>
       </Items>

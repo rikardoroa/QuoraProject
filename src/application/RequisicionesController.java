@@ -23,16 +23,18 @@ import java.util.regex.Pattern;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -42,7 +44,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -56,6 +57,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -167,7 +169,7 @@ public class RequisicionesController extends Application implements Initializabl
     @FXML public TableColumn<requisicionesgen, Integer> genitemnoapro;
     @FXML public TableColumn<requisicionesgen, String> genitemfecestado;
     @FXML public TableColumn<requisicionesgen, String> genitemestado;
-    @FXML public JFXButton mmm;
+    @FXML public JFXButton delitem;
     @FXML public Tab mireqtab;
 	public Image capturamifirma;
 	public Image capturamifirmadmin;
@@ -219,6 +221,7 @@ public class RequisicionesController extends Application implements Initializabl
 	public int i;
 	public String midatafound;
 	public  requisicionesgen data;
+	public Requisiciones req;
     public String thisol;
     public String getcnsreqrep;
 	public String mifecha;
@@ -229,9 +232,30 @@ public class RequisicionesController extends Application implements Initializabl
 	public JFXComboBox<String> Area;
 	public TableView <requisicionesgen> thistableviewfff;
 	public String setfecha;
+	public String cnsreqdetalle;
+	public int miidetalle;
+	public String miadata;
+    public String miadataab;
+    public String mifechaa;
 	Conexion conectar = new Conexion();
 	
    //----------------------------fin declaracion variables--------------//
+	public int getMiidetalle() {
+		return miidetalle;
+	}
+
+	public void setMiidetalle(int miidetalle) {
+		this.miidetalle = miidetalle;
+	}
+	
+	
+	public String getCnsreqdetalle() {
+		return cnsreqdetalle;
+	}
+
+	public void setCnsreqdetalle(String cnsreqdetalle) {
+		this.cnsreqdetalle = cnsreqdetalle;
+	}
 	
 	public String getSetfecha() {
 		return setfecha;
@@ -927,8 +951,8 @@ public class RequisicionesController extends Application implements Initializabl
 	       
 	     
 	      public void eliminadatostabla() {
-	    	  titem.setOnMouseClicked(e->{
-	    		/* titem.getItems().removeAll(titem.getSelectionModel().getSelectedItem());*/
+	    	  delitem.setOnMouseClicked(e->{
+	    		titem.getItems().removeAll(titem.getSelectionModel().getSelectedItem());
 	    		
 	    		 if( titem.getItems().size()!=12) {
 	   		    	  agregaritem.setDisable(false);
@@ -1758,8 +1782,147 @@ public TableView<Requisiciones> filtradodatos() {
 				Aprobacion itemsreqapro=reqdt.getSelectionModel().getSelectedItem();
 				  h=AdminScreenController.getCapdata();
 				  if(itemsreqapro.getEstadoreqdt().equals("REQUISICION APROBADA")) {
-		   			    Mensaje data = new Mensaje();
-		   			    data.reqapro(stpanerequi);
+		   			    /*Mensaje data = new Mensaje();
+		   			    data.reqapro(stpanerequi);*/
+						Text cabecera = new Text();
+						cabecera.setText("NOTIFICACION");
+						cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+						Text mensaje= new Text();
+						mensaje.setText("REQUISICION APROBADA, DESEA VER DETALLE?");
+						mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+						JFXDialogLayout contenido = new JFXDialogLayout();
+					    contenido.setHeading((cabecera));
+						contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+						contenido.setPrefWidth(314);
+						contenido.setPrefHeight(180);
+						contenido.getChildren().add(mensaje);
+						mensaje.setLayoutY(700);
+						JFXDialog dialogo = new JFXDialog(stpanerequi,contenido, JFXDialog.DialogTransition.CENTER);
+						JFXButton cerrar = new JFXButton("CERRAR");
+						cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+						cerrar.setOnAction(ee->{
+						dialogo.close();
+						});
+						contenido.setActions(cerrar);
+						dialogo.show();
+			    		JFXButton Aceptar = new JFXButton("ACEPTAR");
+			    		Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			    		Aceptar.setOnAction(ee->{
+			    			Connection ConexionDate = null;   
+			    			   try {
+			   				    FXMLLoader cargareqfinal2 = new FXMLLoader(getClass().getResource("DetalleFechaItemsAsignados.fxml"));
+			   				    
+			   				    try {
+			   						cargareqfinal2.load();
+			   					} catch (IOException e1) {
+			   						e1.printStackTrace();
+			   					}
+			   				    Parent StackPane =  cargareqfinal2.getRoot();
+			   				    DetalleFechaItemsController finaldata = cargareqfinal2.<DetalleFechaItemsController>getController();
+			   				     Aprobacion genc = reqdt.getSelectionModel().getSelectedItem();
+			   				    String consecutivo2= genc.getConsecutivoReqdt();
+			   				    finaldata.consecutivoreqaprofinal.setText(consecutivo2);
+			   				    String thissol=genc.getSolicitantereqdt();
+			   				    finaldata.solicitantereaprofinal.setText(thissol);
+			   				    String thisarea=genc.getAreaReqdt();
+			   				    finaldata.areareqaprofinalitems.setText(thisarea);
+			   				    String thiscargo=genc.getCargoReqdt();
+			   				    finaldata.cargoreqaprofinalitems.setText(thiscargo);
+			   				    /*String thisfechaapro=genc.getFechaaprogenreq();
+			   				    finaldata.fecaprobacionreqaprofinalitems.setText(thisfechaapro);*/
+			   				    /*Integer thisitemsaprobados=genc.getItemapro();
+			   				    finaldata.itemsreqaprofinalitems.setText(thisitemsaprobados.toString());
+			   				    Integer thisitemnoaprobados = genc.getItemnoapro();
+			   				    finaldata.itemsresnoaprofinalitems.setText(thisitemnoaprobados.toString());*/
+			   				    RequisicionesController.this.setFechaiff(fechainireqf);
+			   				    RequisicionesController.this.getFechaiff();
+			   				    finaldata.setFechaiff(RequisicionesController.this.getFechaiff());
+			   				    RequisicionesController.this.setFechafff(fechafinreqf);
+			   				    RequisicionesController.this.getFechafff();
+			   				    finaldata.setFechafff( RequisicionesController.this.getFechafff());
+			   				    RequisicionesController.this.setThisfareaf(areareqfiltro);
+			   				    RequisicionesController.this.getThisfareaf();
+			   				    finaldata.setThisfareaf(RequisicionesController.this.getThisfareaf());
+			   				    RequisicionesController.this.setThisfcargof(cargoreqfiltro);
+			   				    RequisicionesController.this.getThisfcargof();
+			   				    finaldata.setThisfcargof( RequisicionesController.this.getThisfcargof());
+			   				    /*RequisicionesController.this.setThistableviewf(RequisicionesController.this.genreq);
+			   				    RequisicionesController.this.getThistableviewf();
+			   				    finaldata.setThistableviewff( RequisicionesController.this.getThistableviewf());*/
+			   				 String QueryAprobeddata="SELECT COUNT(ITEMAPROBADO) AS 'ITEMS APROBADOS' FROM ITEMSREQ WHERE CNSREQ='"+consecutivo2+"' AND ITEMAPROBADO=1";
+		     					try {
+		     						ConexionDate=conectar.miconexion(ConexionDate);
+		     						PreparedStatement psa =ConexionDate.prepareStatement(QueryAprobeddata);
+		     						ResultSet rseta = psa.executeQuery();
+		     					    while (rseta.next()) {
+			     						   miadata= rseta.getString("ITEMS APROBADOS");
+			     					     }
+		     			    	}catch(SQLException eee) {
+		     			   		eee.printStackTrace();
+		     			   	    }
+		     					 String QueryNAprobeddata="SELECT COUNT(ITEMAPROBADO) AS 'ITEMS NO APROBADOS' FROM ITEMSREQ WHERE CNSREQ='"+consecutivo2+"' AND ITEMAPROBADO=0";
+			     					try {
+			     						ConexionDate=conectar.miconexion(ConexionDate);
+			     						PreparedStatement psab =ConexionDate.prepareStatement(QueryNAprobeddata);
+			     						ResultSet rsetab = psab.executeQuery();
+			     					    while (rsetab.next()) {
+				     						   miadataab= rsetab.getString("ITEMS NO APROBADOS");
+				     					     }
+			     			    	}catch(SQLException eee) {
+			     			   		eee.printStackTrace();
+			     			   	    }
+			     					
+			     					 String Fechaapro="SELECT CONVERT(VARCHAR,FECHA_DE_FIRMA,23) AS 'FECHA APROBACION' FROM REQUISICIONESDT WHERE CNSREQ='"+consecutivo2+"'";
+				     					try {
+				     						ConexionDate=conectar.miconexion(ConexionDate);
+				     						PreparedStatement psa =ConexionDate.prepareStatement(Fechaapro);
+				     						ResultSet rseta = psa.executeQuery();
+				     					    while (rseta.next()) {
+					     						   mifechaa= rseta.getString("FECHA APROBACION");
+					     					     }
+				     			    	}catch(SQLException eee) {
+				     			   		eee.printStackTrace();
+				     			   	    } 
+			   				    
+			   				    
+			   				    String QueryDate="SELECT (CASE WHEN FECHA_ENTREGA IS NOT NULL THEN FECHA_ENTREGA ELSE 'SIN FECHA DE ENTREGA'  END) AS FECHA_ENTREGA FROM REQUISICIONES WHERE CNSREQ ='"+consecutivo2+"'";
+			     					try {
+			     						ConexionDate=conectar.miconexion(ConexionDate);
+			     						PreparedStatement pst =ConexionDate.prepareStatement(QueryDate);
+			     						ResultSet rset = pst.executeQuery();
+			     					     while (rset.next()) {
+			     						  thisdate1= rset.getString("FECHA_ENTREGA");
+			     					     }
+			     				
+			     			    	}catch(SQLException eee) {
+			     			   		eee.printStackTrace();
+			     			   	    }
+			     					
+			     					finaldata.fechaentregafinalitems.setText(thisdate1);
+			     					finaldata.itemsreqaprofinalitems.setText(miadata);
+			     					finaldata.itemsresnoaprofinalitems.setText(miadataab);
+			     					finaldata.fecaprobacionreqaprofinalitems.setText(mifechaa);
+			   				    Stage detallesderequisicionesfinalaprobadas=new Stage();
+			   				    detallesderequisicionesfinalaprobadas.setScene(new Scene(StackPane));
+			   				   
+			   				    RequisicionesController.this.setRStage(detallesderequisicionesfinalaprobadas);
+			   				    Stage Stagereiceiver=RequisicionesController.this.getRStage();
+			   				    finaldata.setGetthisstage(Stagereiceiver);
+			   				    
+			   				    StackPane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			   				    detallesderequisicionesfinalaprobadas.setTitle("Generar Requisición");
+			   				    detallesderequisicionesfinalaprobadas.show();
+			   				   }catch(NullPointerException nn) {
+			   					   System.out.println("fila sin datos"); 
+			   				   }
+			    			/*dialogo.close();*/
+			    		});
+			    		contenido.setActions(Aceptar);
+			    		contenido.getChildren().addAll(Aceptar,cerrar);
+			    		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
+			    		StackPane.setAlignment(cerrar, Pos.BOTTOM_RIGHT);	
+					  
+					  
 		   			   }
 				  //-------------------permisos-------------------------------------------//
 				  else if(!AdminScreenController.getCapdata().equals("ADMINISTRADORREQ")){
@@ -1881,27 +2044,367 @@ public TableView<Requisiciones> filtradodatos() {
 	    	      	    h=AdminScreenController.getCapdata();
 	    	      	   if(itemsreq.getRevisioncol().equals("REVISADO Y NO APROBADO") && itemsreq.getAprobacion().equals("SIN APROBACION")) {
 			   				
-			   				Mensaje data = new Mensaje();
-			   			    data.reqmsjrevnoapro(stpanerequi);
+	    	      		    Text cabecera = new Text();
+			   				cabecera.setText("DETALLE");
+			   				cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+			   				Text mensaje= new Text();
+			   				mensaje.setText("REQUISICION REVISADA Y NO APROBADA, DESEA VER DETALLE?");
+			   				mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+			   				JFXDialogLayout contenido = new JFXDialogLayout();
+			   			    contenido.setHeading((cabecera));
+			   				contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+			   				contenido.setPrefWidth(414);
+			   				contenido.setPrefHeight(180);
+			   				contenido.getChildren().add(mensaje);
+			   				mensaje.setLayoutY(300);
+			   				JFXDialog dialogo = new JFXDialog(stpanerequi,contenido, JFXDialog.DialogTransition.CENTER);
+			   				JFXButton cerrar = new JFXButton("CERRAR");
+			   				cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			   				cerrar.setOnAction(ee->{
+			   				dialogo.close();
+			   				});
+			   				contenido.setActions(cerrar);
+			   				dialogo.show();
+			   				JFXButton Aceptar = new JFXButton("ACEPTAR");
+			   				req = RequisicionesController.this.reqtable.getSelectionModel().getSelectedItem();
+			   				String soldetalle=req.getSolicitanteReq();
+			   				String cargodetalle=req.getCargoReq();
+			   				String cnsreqdetalle=req.getConsecutivoReq();
+			   				String iddetalle=req.getIdreq().toString();
+			   				String estadoreqdetalle=req.getRevisioncol();
+			   				String estadoaprobacion=req.getAprobacion();
+			   	  		    thisol=	solreq.getText().toString();
+			   	  		    ObservableList<String> cnsreqitem= FXCollections.observableArrayList();
+			   	  		    String Queryd="SELECT SOLICITANTE FROM REQUISICIONES WHERE SOLICITANTE ='"+thisol+"'";
+			   	  			Connection ConexionDate = null;        
+			   	  			try {
+			   	  			    ConexionDate=conectar.miconexion(ConexionDate);
+			   	  			    PreparedStatement pst =ConexionDate.prepareStatement(Queryd);
+			   	  			    ResultSet rset = pst.executeQuery();
+			   	  			    while (rset.next()) {
+			   	  			     cnsreqitem.add(micnsreq= rset.getString("SOLICITANTE"));
+			   	  			      }
+			   	  			    for(int i=0;i<cnsreqitem.size();i++) {
+			   	  		         if(cnsreqitem.get(i).equals(req.getSolicitanteReq())) {
+			   	  		        	Aceptar.setDisable(false);
+			   	  		          }
+			   	  		         else if(!cnsreqitem.get(i).equals(req.getSolicitanteReq())) {
+			   	  		       Aceptar.setDisable(true);
+			   	  		         }
+			   	  		          }
+			   	  			     }catch(SQLException  | NullPointerException eee) {
+			   	  		 		 System.out.println("fila sin datos");
+			   	  		 	     }
+			   	    		Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			   	    		Aceptar.setOnAction(ee->{
+			   	    			Stage  verdetallereq = new Stage();
+			   	    			FXMLLoader detallereq=new FXMLLoader(getClass().getResource("DetalleDeRequisicion.fxml"));
+			   	    		 try {
+			   	    			Parent StackPane =(Parent) detallereq.load();
+			   	    			VistaDetalleReq detalle = detallereq.<VistaDetalleReq>getController();
+			   	    			detalle.cargoreqdet.setText(cargodetalle);
+			   	    			detalle.solreqdet.setText(soldetalle);
+			   	    			detalle.cnsreqdet.setText(cnsreqdetalle);
+			   	    			detalle.idreqdet.setText(iddetalle);
+			   	    			detalle.estadoreqdet.setText(estadoreqdetalle);
+			   	    			detalle.eaprobacionreqdet.setText(estadoaprobacion);
+			   	    			RequisicionesController.this.setCnsreqdetalle(cnsreqdetalle);
+			   	    			Integer id=Integer.parseInt(iddetalle);
+			   	    			RequisicionesController.this.setMiidetalle(id);
+			   	    			int finalid=RequisicionesController.this.getMiidetalle();
+			   	    			detalle.setIddetallereq(finalid);
+			   	    			String finalcnsreqdetalle=RequisicionesController.this.getCnsreqdetalle();
+			   	    			detalle.setCnsreqdetalle(finalcnsreqdetalle);
+			   	    			detalle.tablereqdet.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+			   	    		    Scene scene = new Scene(StackPane);
+			   	    		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			   	    			verdetallereq.setScene(scene);
+			   	    		 }catch(IOException ii){
+			   	    			 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ii);
+			   	    		 }
+			   	    			verdetallereq.setTitle("Detalle de Requisicion");
+			   	    			verdetallereq.show();
+			   	    			dialogo.close();
+			   	    		});
+			   	    		contenido.setActions(Aceptar);
+			   	    		contenido.getChildren().addAll(Aceptar,cerrar);
+			   	    		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
+			   	    		StackPane.setAlignment(cerrar, Pos.BOTTOM_RIGHT);	
+			   				 
+			   				/*Mensaje data = new Mensaje();
+			   			    data.reqmsjrevnoapro(stpanerequi);*/
 			   			    
 			   			}
 	    	      	    else  if(itemsreq.getRevisioncol().equals("REVISADO") && itemsreq.getAprobacion().equals("SIN APROBACION")) {
-		   				
-		   				Mensaje data = new Mensaje();
-		   			    data.reqmsjrev(stpanerequi);
-		   			    
+		   				/*Mensaje data = new Mensaje();
+		   			    data.reqmsjrev(stpanerequi);*/
+	    	      	 	    Text cabecera = new Text();
+			   				cabecera.setText("DETALLE");
+			   				cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+			   				Text mensaje= new Text();
+			   				mensaje.setText("REQUISICION REVISADA Y NO APROBADA, DESEA VER DETALLE?");
+			   				mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+			   				JFXDialogLayout contenido = new JFXDialogLayout();
+			   			    contenido.setHeading((cabecera));
+			   				contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+			   				contenido.setPrefWidth(414);
+			   				contenido.setPrefHeight(180);
+			   				contenido.getChildren().add(mensaje);
+			   				mensaje.setLayoutY(300);
+			   				JFXDialog dialogo = new JFXDialog(stpanerequi,contenido, JFXDialog.DialogTransition.CENTER);
+			   				JFXButton cerrar = new JFXButton("CERRAR");
+			   				cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			   				cerrar.setOnAction(ee->{
+			   				dialogo.close();
+			   				});
+			   				contenido.setActions(cerrar);
+			   				dialogo.show();
+			   				JFXButton Aceptar = new JFXButton("ACEPTAR");
+			   				req = RequisicionesController.this.reqtable.getSelectionModel().getSelectedItem();
+			   				String soldetalle=req.getSolicitanteReq();
+			   				String cargodetalle=req.getCargoReq();
+			   				String cnsreqdetalle=req.getConsecutivoReq();
+			   				String iddetalle=req.getIdreq().toString();
+			   				String estadoreqdetalle=req.getRevisioncol();
+			   				String estadoaprobacion=req.getAprobacion();
+			   	  		    thisol=	solreq.getText().toString();
+			   	  		    ObservableList<String> cnsreqitem= FXCollections.observableArrayList();
+			   	  		    String Queryd="SELECT SOLICITANTE FROM REQUISICIONES WHERE SOLICITANTE ='"+thisol+"'";
+			   	  			Connection ConexionDate = null;        
+			   	  			try {
+			   	  			    ConexionDate=conectar.miconexion(ConexionDate);
+			   	  			    PreparedStatement pst =ConexionDate.prepareStatement(Queryd);
+			   	  			    ResultSet rset = pst.executeQuery();
+			   	  			    while (rset.next()) {
+			   	  			     cnsreqitem.add(micnsreq= rset.getString("SOLICITANTE"));
+			   	  			      }
+			   	  			    for(int i=0;i<cnsreqitem.size();i++) {
+			   	  		         if(cnsreqitem.get(i).equals(req.getSolicitanteReq())) {
+			   	  		        	Aceptar.setDisable(false);
+			   	  		          }
+			   	  		         else if(!cnsreqitem.get(i).equals(req.getSolicitanteReq())) {
+			   	  		       Aceptar.setDisable(true);
+			   	  		         }
+			   	  		          }
+			   	  			     }catch(SQLException  | NullPointerException eee) {
+			   	  		 		 System.out.println("fila sin datos");
+			   	  		 	     }
+			   	    		Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			   	    		Aceptar.setOnAction(ee->{
+			   	    			Stage  verdetallereq = new Stage();
+			   	    			FXMLLoader detallereq=new FXMLLoader(getClass().getResource("DetalleDeRequisicion.fxml"));
+			   	    		 try {
+			   	    			Parent StackPane =(Parent) detallereq.load();
+			   	    			VistaDetalleReq detalle = detallereq.<VistaDetalleReq>getController();
+			   	    			detalle.cargoreqdet.setText(cargodetalle);
+			   	    			detalle.solreqdet.setText(soldetalle);
+			   	    			detalle.cnsreqdet.setText(cnsreqdetalle);
+			   	    			detalle.idreqdet.setText(iddetalle);
+			   	    			detalle.estadoreqdet.setText(estadoreqdetalle);
+			   	    			detalle.eaprobacionreqdet.setText(estadoaprobacion);
+			   	    			RequisicionesController.this.setCnsreqdetalle(cnsreqdetalle);
+			   	    			Integer id=Integer.parseInt(iddetalle);
+			   	    			RequisicionesController.this.setMiidetalle(id);
+			   	    			int finalid=RequisicionesController.this.getMiidetalle();
+			   	    			detalle.setIddetallereq(finalid);
+			   	    			String finalcnsreqdetalle=RequisicionesController.this.getCnsreqdetalle();
+			   	    			detalle.setCnsreqdetalle(finalcnsreqdetalle);
+			   	    			detalle.tablereqdet.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+			   	    		    Scene scene = new Scene(StackPane);
+			   	    		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			   	    			verdetallereq.setScene(scene);
+			   	    		 }catch(IOException ii){
+			   	    			 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ii);
+			   	    		 }
+			   	    			verdetallereq.setTitle("Detalle de Requisicion");
+			   	    			verdetallereq.show();
+			   	    			dialogo.close();
+			   	    		});
+			   	    		contenido.setActions(Aceptar);
+			   	    		contenido.getChildren().addAll(Aceptar,cerrar);
+			   	    		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
+			   	    		StackPane.setAlignment(cerrar, Pos.BOTTOM_RIGHT);	
 		   			   }
 		   			   else if(itemsreq.getRevisioncol().equals("REVISADO") && itemsreq.getAprobacion().equals("APROBADO")) {
-		   				
-		   				Mensaje data = new Mensaje();
-		   			    data.Reqaprobada(stpanerequi);	
-			   			 
+		   				 Text cabecera = new Text();
+			   				cabecera.setText("DETALLE");
+			   				cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+			   				Text mensaje= new Text();
+			   				mensaje.setText("REQUISICION REVISADA Y APROBADA, DESEA VER DETALLE?");
+			   				mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+			   				JFXDialogLayout contenido = new JFXDialogLayout();
+			   			    contenido.setHeading((cabecera));
+			   				contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+			   				contenido.setPrefWidth(414);
+			   				contenido.setPrefHeight(180);
+			   				contenido.getChildren().add(mensaje);
+			   				mensaje.setLayoutY(300);
+			   				JFXDialog dialogo = new JFXDialog(stpanerequi,contenido, JFXDialog.DialogTransition.CENTER);
+			   				JFXButton cerrar = new JFXButton("CERRAR");
+			   				cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			   				cerrar.setOnAction(ee->{
+			   				dialogo.close();
+			   				});
+			   				contenido.setActions(cerrar);
+			   				dialogo.show();
+			   				JFXButton Aceptar = new JFXButton("ACEPTAR");
+			   				req = RequisicionesController.this.reqtable.getSelectionModel().getSelectedItem();
+			   				String soldetalle=req.getSolicitanteReq();
+			   				String cargodetalle=req.getCargoReq();
+			   				String cnsreqdetalle=req.getConsecutivoReq();
+			   				String iddetalle=req.getIdreq().toString();
+			   				String estadoreqdetalle=req.getRevisioncol();	
+			   				String estadoaprobacion=req.getAprobacion();
+			   	  		    thisol=	solreq.getText().toString();
+			   	  		    ObservableList<String> cnsreqitem= FXCollections.observableArrayList();
+			   	  		    String Queryd="SELECT SOLICITANTE FROM REQUISICIONES WHERE SOLICITANTE ='"+thisol+"'";
+			   	  			Connection ConexionDate = null;        
+			   	  			try {
+			   	  			    ConexionDate=conectar.miconexion(ConexionDate);
+			   	  			    PreparedStatement pst =ConexionDate.prepareStatement(Queryd);
+			   	  			    ResultSet rset = pst.executeQuery();
+			   	  			    while (rset.next()) {
+			   	  			     cnsreqitem.add(micnsreq= rset.getString("SOLICITANTE"));
+			   	  			      }
+			   	  			    for(int i=0;i<cnsreqitem.size();i++) {
+			   	  		         if(cnsreqitem.get(i).equals(req.getSolicitanteReq())) {
+			   	  		        	Aceptar.setDisable(false);
+			   	  		          }
+			   	  		         else if(!cnsreqitem.get(i).equals(req.getSolicitanteReq())) {
+			   	  		       Aceptar.setDisable(true);
+			   	  		         }
+			   	  		          }
+			   	  			     }catch(SQLException  | NullPointerException eee) {
+			   	  		 		 System.out.println("fila sin datos");
+			   	  		 	     }
+			   	    		   Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			   	    		   Aceptar.setOnAction(ee->{
+			   	    			Stage  verdetallereq = new Stage();
+			   	    			FXMLLoader detallereq=new FXMLLoader(getClass().getResource("DetalleDeRequisicion.fxml"));
+			   	    		 try {
+			   	    			Parent StackPane =(Parent) detallereq.load();
+			   	    			VistaDetalleReq detalle = detallereq.<VistaDetalleReq>getController();
+			   	    			detalle.cargoreqdet.setText(cargodetalle);
+			   	    			detalle.solreqdet.setText(soldetalle);
+			   	    			detalle.cnsreqdet.setText(cnsreqdetalle);
+			   	    			detalle.idreqdet.setText(iddetalle);
+			   	    			detalle.estadoreqdet.setText(estadoreqdetalle);
+			   	    			detalle.eaprobacionreqdet.setText(estadoaprobacion);
+			   	    			RequisicionesController.this.setCnsreqdetalle(cnsreqdetalle);
+			   	    			Integer id=Integer.parseInt(iddetalle);
+			   	    			RequisicionesController.this.setMiidetalle(id);
+			   	    			int finalid=RequisicionesController.this.getMiidetalle();
+			   	    			detalle.setIddetallereq(finalid);
+			   	    			String finalcnsreqdetalle=RequisicionesController.this.getCnsreqdetalle();
+			   	    			detalle.setCnsreqdetalle(finalcnsreqdetalle);
+			   	    			detalle.tablereqdet.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+			   	    		    Scene scene = new Scene(StackPane);
+			   	    		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			   	    			verdetallereq.setScene(scene);
+			   	    		 }catch(IOException ii){
+			   	    			 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ii);
+			   	    		 }
+			   	    			verdetallereq.setTitle("Detalle de Requisicion");
+			   	    			verdetallereq.show();
+			   	    			dialogo.close();
+			   	    		});
+			   	    		contenido.setActions(Aceptar);
+			   	    		contenido.getChildren().addAll(Aceptar,cerrar);
+			   	    		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
+			   	    		StackPane.setAlignment(cerrar, Pos.BOTTOM_RIGHT);	
+		   				/*Mensaje data = new Mensaje();
+		   			    data.Reqaprobada(stpanerequi);	*/
 		   			   }
 		   			 /*LINEA AGREGADA*/  else if(!(AdminScreenController.getCapdata().equals("ADMINISTRADORREV"))&&!(AdminScreenController.getCapdata().equals("ADMINISTRADORREQ"))){
-		   				
-		   				Mensaje data = new Mensaje();
+		   				Text cabecera = new Text();
+		   				cabecera.setText("DETALLE");
+		   				cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+		   				Text mensaje= new Text();
+		   				mensaje.setText("VER DETALLE DE LA REQUISICION");
+		   				mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+		   				JFXDialogLayout contenido = new JFXDialogLayout();
+		   			    contenido.setHeading((cabecera));
+		   				contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+		   				contenido.setPrefWidth(414);
+		   				contenido.setPrefHeight(180);
+		   				contenido.getChildren().add(mensaje);
+		   				mensaje.setLayoutY(300);
+		   				JFXDialog dialogo = new JFXDialog(stpanerequi,contenido, JFXDialog.DialogTransition.CENTER);
+		   				JFXButton cerrar = new JFXButton("CERRAR");
+		   				cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+		   				cerrar.setOnAction(ee->{
+		   				dialogo.close();
+		   				});
+		   				contenido.setActions(cerrar);
+		   				dialogo.show();
+		   				JFXButton Aceptar = new JFXButton("ACEPTAR");
+		   				req = RequisicionesController.this.reqtable.getSelectionModel().getSelectedItem();
+		   				String soldetalle=req.getSolicitanteReq();
+		   				String cargodetalle=req.getCargoReq();
+		   				String cnsreqdetalle=req.getConsecutivoReq();
+		   				String iddetalle=req.getIdreq().toString();
+		   				String estadoreqdetalle=req.getRevisioncol();
+		   				String estadoaprobacion=req.getAprobacion();
+		   	  		    thisol=	solreq.getText().toString();
+		   	  		    ObservableList<String> cnsreqitem= FXCollections.observableArrayList();
+		   	  		    String Queryd="SELECT SOLICITANTE FROM REQUISICIONES WHERE SOLICITANTE ='"+thisol+"'";
+		   	  			Connection ConexionDate = null;        
+		   	  			try {
+		   	  			    ConexionDate=conectar.miconexion(ConexionDate);
+		   	  			    PreparedStatement pst =ConexionDate.prepareStatement(Queryd);
+		   	  			    ResultSet rset = pst.executeQuery();
+		   	  			    while (rset.next()) {
+		   	  			     cnsreqitem.add(micnsreq= rset.getString("SOLICITANTE"));
+		   	  			      }
+		   	  			    for(int i=0;i<cnsreqitem.size();i++) {
+		   	  		         if(cnsreqitem.get(i).equals(req.getSolicitanteReq())) {
+		   	  		        	Aceptar.setDisable(false);
+		   	  		          }
+		   	  		         else if(!cnsreqitem.get(i).equals(req.getSolicitanteReq())) {
+		   	  		       Aceptar.setDisable(true);
+		   	  		         }
+		   	  		          }
+		   	  			     }catch(SQLException  | NullPointerException eee) {
+		   	  		 		 System.out.println("fila sin datos");
+		   	  		 	     }
+		   	    		Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+		   	    		Aceptar.setOnAction(ee->{
+		   	    			Stage  verdetallereq = new Stage();
+		   	    			FXMLLoader detallereq=new FXMLLoader(getClass().getResource("DetalleDeRequisicion.fxml"));
+		   	    		 try {
+		   	    			Parent StackPane =(Parent) detallereq.load();
+		   	    			VistaDetalleReq detalle = detallereq.<VistaDetalleReq>getController();
+		   	    			detalle.cargoreqdet.setText(cargodetalle);
+		   	    			detalle.solreqdet.setText(soldetalle);
+		   	    			detalle.cnsreqdet.setText(cnsreqdetalle);
+		   	    			detalle.idreqdet.setText(iddetalle);
+		   	    			detalle.estadoreqdet.setText(estadoreqdetalle);
+		   	    			detalle.eaprobacionreqdet.setText(estadoaprobacion);
+		   	    			RequisicionesController.this.setCnsreqdetalle(cnsreqdetalle);
+		   	    			Integer id=Integer.parseInt(iddetalle);
+		   	    			RequisicionesController.this.setMiidetalle(id);
+		   	    			int finalid=RequisicionesController.this.getMiidetalle();
+		   	    			detalle.setIddetallereq(finalid);
+		   	    			String finalcnsreqdetalle=RequisicionesController.this.getCnsreqdetalle();
+		   	    			detalle.setCnsreqdetalle(finalcnsreqdetalle);
+		   	    			detalle.tablereqdet.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+		   	    		    Scene scene = new Scene(StackPane);
+		   	    		    scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		   	    			verdetallereq.setScene(scene);
+		   	    		 }catch(IOException ii){
+		   	    			 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ii);
+		   	    		 }
+		   	    			verdetallereq.setTitle("Detalle de Requisicion");
+		   	    			verdetallereq.show();
+		   	    			dialogo.close();
+		   	    		});
+		   	    		contenido.setActions(Aceptar);
+		   	    		contenido.getChildren().addAll(Aceptar,cerrar);
+		   	    		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
+		   	    		StackPane.setAlignment(cerrar, Pos.BOTTOM_RIGHT);	
+		   				/*Mensaje data = new Mensaje();
 		   			    data.Permisoadminuno(stpanerequi);	
-		   			    System.out.println("aa");
+		   			    System.out.println("aa");*/
 		   			   }
 		   			  else
 		   			    {
@@ -2037,6 +2540,13 @@ public TableView<Requisiciones> filtradodatos() {
 		   		    JFXComboBox<String> micomboarea = RequisicionesController.this.getcomboareaa();
 		   		    updateReq.setAreac(micomboarea);
 		   		    updateReq.itemsdetalle.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+		   		     
+				    if(requisicionesdetalle.isMaximized()==true) {
+				    	updateReq.itemsdetalle.setPrefWidth(682);
+				    	updateReq.itemsdetalle.setPrefHeight(682);
+				    }
+		   		    
+		   		    
 		   		 requisicionesdetalle.focusedProperty().addListener(new ChangeListener<Boolean>()
 		 		{
 		 		  @Override
@@ -2092,9 +2602,11 @@ public TableView<Requisiciones> filtradodatos() {
 
 	public void selectcell() throws IOException {
 	   genreq.setOnMouseClicked(e->{
-		    
+		   
 	  		data = RequisicionesController.this.genreq.getSelectionModel().getSelectedItem();	
  		    thisol=	solreq.getText().toString();
+ 		    System.out.println(thisol);
+ 		   System.out.println(data.getSolicitantegenreq());
  		    ObservableList<String> cnsreqitem= FXCollections.observableArrayList();
  		    String Queryd="SELECT CNSREQ FROM REQUISICIONES WHERE SOLICITANTE ='"+thisol+"'";
  			Connection ConexionDate = null;        
@@ -2264,7 +2776,8 @@ public TableView<Requisiciones> filtradodatos() {
 			   msjd.Permisoadminuno(stpanerequi); 
 			   
 		   }
-		  else if( (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) && ( gena.getEstadoitems().equals("REQUISICION TRAMITADA") ) && (AdminScreenController.getCapdata().equals("USUARIO") ) ||  (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) &&  (gena.getEstadoitems().equals("REQUISICION TRAMITADA")) && (AdminScreenController.getCapdata().equals("ADMINISTRADORREV") ) ) {
+		 
+		  else if( (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) && ( gena.getEstadoitems().equals("REQUISICION TRAMITADA") ) && (AdminScreenController.getCapdata().equals("USUARIO") ) ||  (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) &&  (gena.getEstadoitems().equals("REQUISICION TRAMITADA")) && (AdminScreenController.getCapdata().equals("ADMINISTRADORREV") )|| (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) &&  (gena.getEstadoitems().equals("REQUISICION TRAMITADA")) && (AdminScreenController.getCapdata().equals("ADMINISTRADOR") )||(gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) &&  (gena.getEstadoitems().equals("REQUISICION TRAMITADA")) && (AdminScreenController.getCapdata().equals("ADMINISTRADORREQ") )) {
 				if((midatafound.equals(data.getConsecutivogenreq()) && (thisol.equals(data.getSolicitantegenreq())))) {
 					requisicionesgen mdata = genreq.getSelectionModel().getSelectedItem();
 					String conrep=mdata.getConsecutivogenreq();
@@ -2359,7 +2872,7 @@ public TableView<Requisiciones> filtradodatos() {
 				       }
 		             }
 		   
-		  else if( (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) && ( gena.getEstadoitems().equals("REQUISICION TRAMITADA") ) && !(AdminScreenController.getCapdata().equals("USUARIO") ) ||  (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) &&  (gena.getEstadoitems().equals("REQUISICION TRAMITADA")) && !(AdminScreenController.getCapdata().equals("ADMINISTRADORREV") ) ) {
+		  else if( (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) && ( gena.getEstadoitems().equals("REQUISICION TRAMITADA") ) && !(AdminScreenController.getCapdata().equals("USUARIO") ) ||  (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) &&  (gena.getEstadoitems().equals("REQUISICION TRAMITADA")) && !(AdminScreenController.getCapdata().equals("ADMINISTRADORREV") ) ||  (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) &&  (gena.getEstadoitems().equals("REQUISICION TRAMITADA")) && !(AdminScreenController.getCapdata().equals("ADMINISTRADOR") )|| (gena.getEstadofecha().equals("FECHA DE ENTREGA ASIGNADA")) &&  (gena.getEstadoitems().equals("REQUISICION TRAMITADA")) && !(AdminScreenController.getCapdata().equals("ADMINISTRADORREQ") )) {
 			   Mensaje msjd = new Mensaje();
 			   msjd.Permisoadminuno(stpanerequi); 
 		   
@@ -2457,16 +2970,6 @@ public TableView<Requisiciones> filtradodatos() {
 	public static void main(String[] args) {
 	}
 
-	
-    public void showdata() {
-    	mmm.setOnAction(e->{
-    		for(item item:titem.getItems()) {
-        		int miitemdata=item.getCantidad();
-        		System.out.println(miitemdata);
-        	}
-    	});
-    	
-    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)  {
@@ -2479,8 +2982,6 @@ public TableView<Requisiciones> filtradodatos() {
 		CargoReque.setCellValueFactory(new PropertyValueFactory <Requisiciones,String>("CargoReq"));
 		FechaSolReque.setCellValueFactory(CellData -> CellData.getValue().FechasolicitudReqProperty());
 		coperacion.setCellValueFactory(new PropertyValueFactory <Requisiciones,String>("CentroOp"));
-		
-		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm:ss");
 		FechaSolReque.setCellFactory(column -> new TableCell<Requisiciones, LocalDateTime>() {
 			    @Override
@@ -2511,15 +3012,11 @@ public TableView<Requisiciones> filtradodatos() {
 			          }
 			
 		});
-		
-		
-	
-
 		titem.setEditable(true);
 		itemm.setCellValueFactory(new PropertyValueFactory <item,String>("Item"));
 		cantidaditemm.setCellValueFactory(new PropertyValueFactory <item,Integer>("Cantidad"));
 		cantidaditemm.setCellFactory(TextFieldTableCell.<item, Integer>forTableColumn(new IntegerStringConverter()));
-		cantidaditemm.setOnEditCommit(
+		/*cantidaditemm.setOnEditCommit(
                 new EventHandler<CellEditEvent<item, Integer>>() {
                     @Override
                     public void handle(CellEditEvent<item, Integer> t) {
@@ -2528,17 +3025,13 @@ public TableView<Requisiciones> filtradodatos() {
                                 ).setCantidad(t.getNewValue());
                     }
                 }
-                );
-		
-		/*cantidaditemm.setOnEditCommit(
+                );*/
+		cantidaditemm.setOnEditCommit(
                 (TableColumn.CellEditEvent<item, Integer> t) ->
                     ( t.getTableView().getItems().get(
                             t.getTablePosition().getRow())
                     ).setCantidad(t.getNewValue())
-                );*/
-		
-
-		
+                );
 		gencsnsreq.setCellValueFactory(new PropertyValueFactory <requisicionesgen,String>("consecutivogenreq"));
 		gensolreq.setCellValueFactory(new PropertyValueFactory <requisicionesgen,String>("solicitantegenreq"));
 		genareareq.setCellValueFactory(new PropertyValueFactory <requisicionesgen,String>("areagenreq"));
@@ -2574,7 +3067,6 @@ public TableView<Requisiciones> filtradodatos() {
 		 showdetails();
 		 restriccionconteo();
 		 reseteadatos();
-		 showdata();
 		 try {
 			muestrarequisiciondetalle();
 			muestrarequisicionesaprobadas();

@@ -23,18 +23,22 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 public class RevisionReqController extends Application implements Initializable{
 	@FXML public JFXTextField reqcon ; 
@@ -49,7 +53,10 @@ public class RevisionReqController extends Application implements Initializable{
 	@FXML public StackPane stackrevreq;
 	@FXML public JFXButton genrevreq;
 	@FXML public JFXButton cargardatos;
-	@FXML public JFXButton noaprobarrev;
+	@FXML public JFXButton noaprobarrev; 
+	@FXML public JFXButton updatamdata; 
+	@FXML public JFXButton acttodo; 
+	@FXML public JFXButton deldata;
 	@FXML private  Label sollabel;
 	@FXML private  Label obslabel;
 	@FXML private  Label arlabel;
@@ -62,7 +69,8 @@ public class RevisionReqController extends Application implements Initializable{
 	@FXML private  Label vobo;
 	@FXML public TableView<Itemreq>itemsdetalle;
 	@FXML public TableColumn<Itemreq,String>items;  
-	@FXML public TableColumn<Itemreq,Integer>cantidad;
+	@FXML public TableColumn<Itemreq,Integer>cantidad; 
+	@FXML public TableColumn<Itemreq,Integer>miditem;
 	public Stage thisstage;
 	public ImageView getimagecaptura;
 	public Connection Conexion = null;
@@ -86,7 +94,13 @@ public class RevisionReqController extends Application implements Initializable{
     public String micnsreq;
     public String micnsreq1;
     public String miidreq1;
+    public int micantidad;
+    public String mitem;
+    public int mitemid;
+    public String miid;
+    public String cnsreq;
     Conexion conectar = new Conexion();
+   
     
     public String getMiidreq1() {
 		return miidreq1;
@@ -172,17 +186,17 @@ public class RevisionReqController extends Application implements Initializable{
 	
 	 public void llenadatostablareq() {
 		 cargardatos.setOnMouseClicked(e->{
-		 String miid=RevisionReqController.this.getMiidreq1();
-	     String cnsreq=RevisionReqController.this.getMicnsreq1();
+		 miid=RevisionReqController.this.getMiidreq1();
+	     cnsreq=RevisionReqController.this.getMicnsreq1();
  	     ObservableList<Itemreq> reqdata= FXCollections.observableArrayList();
-	   		String Query= " SELECT ITEMSREQ.ITEM AS ITEM, ITEMSREQ.CANTIDAD AS CANTIDAD  \r\n" + 
+	   		String Query= " SELECT ITEMSREQ.ITEM AS ITEM, ITEMSREQ.CANTIDAD AS CANTIDAD ,ITEMSREQ.ID AS ID  \r\n" + 
 	   				"	   				 FROM ITEMSREQ INNER JOIN REQUISICIONES  ON ITEMSREQ.CEDULA = REQUISICIONES.CEDULA  \r\n" + 
 	   				"	   				 WHERE ITEMSREQ.CEDULA = REQUISICIONES.CEDULA AND REQUISICIONES.CARGO = ITEMSREQ.CARGO \r\n" + 
 	   				"	   				 AND  ITEMSREQ.IDREQ IS NULL  AND ITEMSREQ.CNSREQ IS NULL AND REQUISICIONES.CNSREQ='"+cnsreq+"' \r\n" + 
 	   				"	   				 AND REQUISICIONES.ID='"+miid+"' \r\n" + 
-	   				"	   				 GROUP BY ITEMSREQ.ITEM,ITEMSREQ.CANTIDAD,REQUISICIONES.CEDULA, \r\n" + 
+	   				"	   				 GROUP BY ITEMSREQ.ITEM,ITEMSREQ.CANTIDAD,REQUISICIONES.CEDULA,ITEMSREQ.ID, \r\n" + 
 	   				"	   				 REQUISICIONES.CARGO,REQUISICIONES.SOLICITANTE , REQUISICIONES.FECHA_SOLICITUD, ITEMSREQ.FECHA_SOLICITUD  \r\n" + 
-	   				"	   				 HAVING  CONVERT(varchar(16),REQUISICIONES.FECHA_SOLICITUD,20) = CONVERT(varchar(16),ITEMSREQ.FECHA_SOLICITUD,20)";
+	   				"	   				 HAVING  CONVERT(varchar(16),REQUISICIONES.FECHA_SOLICITUD,20) = CONVERT(varchar(16),ITEMSREQ.FECHA_SOLICITUD,20) ORDER BY 3 ASC";
 	   		Connection Conexiontabla = null;
 	       	try {
 	       		Conexiontabla=conectar.miconexion(Conexiontabla);
@@ -191,7 +205,8 @@ public class RevisionReqController extends Application implements Initializable{
 	   	        while(rs.next()) {
 	   	        	reqdata.add(new Itemreq(
 	   	        		    rs.getString("ITEM"),
-	   	        		    rs.getInt("CANTIDAD")
+	   	        		    rs.getInt("CANTIDAD"),
+	   	        		    rs.getInt("ID")
 	                   		 )
 	                         );
 	   	        	itemsdetalle.setItems(reqdata);
@@ -202,9 +217,118 @@ public class RevisionReqController extends Application implements Initializable{
 		 });
  	   }  
 	
+//-----------LINEAS AGREGADAS------------------//
+	public void verificadata() {
+		updatamdata.setOnMouseClicked(ee->{
+			ObservableList<Itemreq> items = itemsdetalle.getItems();
+			   if(items.isEmpty()){
+				   Mensaje data = new Mensaje();
+				   data.mensajeerror(stackrevreq);
+				   }
+		});
+	}
 	 
-	 
+	public void actualizadatosentabla() {
+			itemsdetalle.setOnMouseClicked(e->{
+				 ObservableList<Itemreq> items = itemsdetalle.getItems();
+				   if(items.isEmpty() && itemsdetalle.getSelectionModel().getSelectedIndex()==-1 ){
+					   updatamdata.setDisable(true);
+					   }
+				   else {
+				  int pos = itemsdetalle.getSelectionModel().getSelectedIndex();
+			      System.out.println(pos);  	 
+			      updatamdata.setOnMouseClicked(ee->{
+			    	  try {
+	 					 micantidad=  itemsdetalle.getItems().get(pos).getCantidad();
+	 					 mitem= itemsdetalle.getItems().get(pos).getItem();
+	 					 mitemid = itemsdetalle.getItems().get(pos).getID();
+	 					 String QueryUpdate= "UPDATE ITEMSREQ SET ITEMSREQ.CANTIDAD='"+micantidad+"', ITEMSREQ.ITEM='"+mitem+"' WHERE ITEMSREQ.ID='"+mitemid+"'";
+	 					 Connection Conexiontabla = null;
+			       		Conexiontabla=conectar.miconexion(Conexiontabla);
+			       		PreparedStatement update =Conexiontabla.prepareStatement(QueryUpdate);
+			       		update.executeUpdate();
+	 		       	Mensaje mensaje = new Mensaje();
+	 	      		    mensaje.conexionexitosa(stackrevreq);
+	 		       	}catch(SQLException ee2) {
+	 		 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ee2);
+	 		       	}
+					  
+			      }); 
+				   }     
+	        });
 
+	}
+	 
+	
+	public void eliminarregistro() {
+		deldata.setOnMouseClicked(e->{
+			try {
+			Itemreq item = itemsdetalle.getSelectionModel().getSelectedItem();
+			item.getID();
+			int miiditem=item.getID();
+			System.out.println(miiditem);
+			  try {
+					 String QueryUpdate= "DELETE FROM ITEMSREQ \r\n" + 
+					 		"FROM ITEMSREQ INNER JOIN REQUISICIONES  ON ITEMSREQ.CEDULA = REQUISICIONES.CEDULA   \r\n" + 
+					 		"WHERE ITEMSREQ.CEDULA = REQUISICIONES.CEDULA AND REQUISICIONES.CARGO = ITEMSREQ.CARGO  \r\n" + 
+					 		"AND  ITEMSREQ.IDREQ IS NULL  AND ITEMSREQ.CNSREQ IS NULL AND REQUISICIONES.CNSREQ='"+cnsreq+"'  \r\n" + 
+					 		"AND REQUISICIONES.ID='"+miid+"' AND ITEMSREQ.ID= '"+miiditem+"'";
+					 Connection Conexiontabla = null;
+		       		Conexiontabla=conectar.miconexion(Conexiontabla);
+		       		PreparedStatement update =Conexiontabla.prepareStatement(QueryUpdate);
+		       		update.executeUpdate();
+		       	Mensaje mensaje = new Mensaje();
+	      		    mensaje.conexionexitosa(stackrevreq);
+		       	}catch(SQLException ee2) {
+		 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ee2);
+		       	}
+			}catch(NullPointerException nn) {
+				   Mensaje data = new Mensaje();
+				   data.mensajeerror(stackrevreq);
+			}
+		});
+		
+	}
+	
+	public void actualizatodo() {
+		acttodo.setOnMouseClicked(e->{
+			 ObservableList<Itemreq> items = itemsdetalle.getItems();
+			   if(items.isEmpty()){
+				   Mensaje data = new Mensaje();
+				   data.mensajeerror(stackrevreq);
+				   }
+			   else
+			   {
+			int contador=0;
+			for(int x=0;x<itemsdetalle.getItems().size();x++) {
+				int size=itemsdetalle.getItems().size();
+				if(contador<=size) {
+			          try {
+						int cantidad=itemsdetalle.getItems().get(contador).getCantidad();
+						String miitem=itemsdetalle.getItems().get(contador).getItem();
+						int miid=itemsdetalle.getItems().get(contador).getID();
+						String QueryUpdate= "UPDATE ITEMSREQ SET ITEMSREQ.CANTIDAD='"+cantidad+"', ITEMSREQ.ITEM='"+miitem+"' WHERE ITEMSREQ.ID='"+miid+"'";
+	 					Connection Conexiontabla = null;
+			       		Conexiontabla=conectar.miconexion(Conexiontabla);
+			       		PreparedStatement update =Conexiontabla.prepareStatement(QueryUpdate);
+			       		update.executeUpdate();
+	 		       	}catch(SQLException ee2) {
+	 		 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ee2);
+	 		       	}
+					contador++;
+				}
+				}
+			 Mensaje mensaje = new Mensaje();
+     		 mensaje.conexionexitosa(stackrevreq);
+			   }
+		});
+	
+	}
+	
+	//-----------FIN LINEAS AGREGADAS------------------//	
+	
+	
+	
 	public void generarrevision() throws IOException {
 		genrevreq.setOnMouseClicked(e->{
 			//-----------------------------------captura de variables------------------------------------------------//
@@ -776,7 +900,7 @@ public class RevisionReqController extends Application implements Initializable{
 							"                            WHEN REQUISICIONES.REVISION=2 THEN 'REVISADO Y NO APROBADO' ELSE 'SIN REVISION'    \r\n" + 
 							" END) ) AS REVISION,\r\n" + 
 							" (CASE WHEN COALESCE (REQUISICIONES.APROBACION,'0')='' THEN 'SIN APROBACION' ELSE 'APROBADO' END)  \r\n" + 
-							" AS APROBACION, ID, CNSREQ, SOLICITANTE, AREA, CARGO, CENTRO_OPERACION, FROM REQUISICIONES";
+							" AS APROBACION, ID, CNSREQ, SOLICITANTE, AREA, CARGO, CENTRO_OPERACION, FECHA_SOLICITUD FROM REQUISICIONES";
 					Connection ConexionD = null;
 					try {
 						ConexionD=conectar.miconexion(ConexionD);
@@ -1209,6 +1333,8 @@ public class RevisionReqController extends Application implements Initializable{
 							Mensaje data = new Mensaje();
 							data.validacion(stackrevreq);
 						}
+						
+						
 					}
 				}
 
@@ -1222,11 +1348,41 @@ public class RevisionReqController extends Application implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		itemsdetalle.setEditable(true);
 		items.setCellValueFactory(new PropertyValueFactory <Itemreq,String>("Item"));
+		items.setCellFactory(TextFieldTableCell.forTableColumn());
+		items.setOnEditCommit(
+                new EventHandler<CellEditEvent<Itemreq, String>>() {
+                    @Override
+                    public void handle(CellEditEvent<Itemreq, String> t) {
+                        ((Itemreq) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())
+                                ).setItem(t.getNewValue());
+                    }
+                }
+                );
 		cantidad.setCellValueFactory(new PropertyValueFactory <Itemreq,Integer>("Cantidad"));
+		cantidad.setCellFactory(TextFieldTableCell.<Itemreq, Integer>forTableColumn(new IntegerStringConverter()));
+		cantidad.setOnEditCommit(
+                new EventHandler<CellEditEvent<Itemreq, Integer>>() {
+                    @Override
+                    public void handle(CellEditEvent<Itemreq, Integer> t) {
+                        ((Itemreq) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())
+                                ).setCantidad(t.getNewValue());
+                    }
+                }
+                );
+
+		miditem.setCellValueFactory(new PropertyValueFactory <Itemreq,Integer>("ID"));
+		
+		eliminarregistro();
+		actualizadatosentabla();
 		llenadatostablareq();
 		noaprobarrevisionreq();
-		
+		 actualizatodo();
+		 verificadata();
 		try {
 			generarrevision();
 		} catch (IOException e) {

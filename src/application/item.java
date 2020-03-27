@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class item {
-	    private StringProperty Item;
+	   /* private StringProperty Item;
 	    private IntegerProperty Cantidad;
 	  
 	 
@@ -28,8 +28,55 @@ public class item {
 	    }
 	    public void setCantidad(Integer Cantidad) {
 	        this.Cantidad = new SimpleIntegerProperty();
-	    }
+	    }*/
 	    
+	
+
+	  private final StringProperty item = new SimpleStringProperty(this, "item");
+	  private final IntegerProperty cantidad = new SimpleIntegerProperty(this, "cantidad");
+	  
+	  public final void setItem(String item) {
+		  
+		  this.item.set(item); 
+	  
+	  }
+	  
+	  public final String getItem() { 
+		  
+		  return item.get(); 
+		  
+	   }
+	  
+	  public final StringProperty itemProperty() { 
+	  
+		  return item; 
+	  
+	  }
+	  
+	
+	  public final void setCantidad(int cantidad){ 
+		  
+		  this.cantidad.set(cantidad);
+	  }
+	  
+	  public final int getCantidad() { 
+	 
+		  return cantidad.get(); 
+	  
+	  }
+	  
+	  public final IntegerProperty cantidadProperty() { 
+	  
+		  return cantidad; 
+	  
+	  }
+
+	
+
+	  item(String item, int cantidad) {
+	    setItem(item);
+	    setCantidad(cantidad);
+	  }
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -26,21 +26,23 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 public class AprobacionReqController extends Application implements Initializable {
 	
@@ -56,7 +58,6 @@ public class AprobacionReqController extends Application implements Initializabl
 	  @FXML  private Label observacionesreqapro;
 	  @FXML  private Label concecutivoreqapro;
 	  @FXML  private Label firmareqapro;
-	  @FXML  private Label faprolabel;
 	  @FXML  public  ImageView getimagereqapro;
 	  @FXML  public  ImageView firmadminreq;
 	  @FXML  public JFXTextField estadoapro;
@@ -68,14 +69,17 @@ public class AprobacionReqController extends Application implements Initializabl
 	  @FXML  public JFXTextField descripcionapro;
 	  @FXML  public JFXTextArea obserapro;
 	  @FXML  public JFXTextField consecapro;
-	  @FXML public   JFXTextField fapro;
+	  @FXML public   JFXButton updatecantidad;
 	  @FXML  public  JFXButton firmareq;
 	  @FXML  public  JFXButton cargatareqapro;
 	  @FXML  public  JFXButton probar;
+	  @FXML  public  JFXButton actitem; 
+	  @FXML  public  JFXButton deldataitem;
 	  @FXML public TableView<Itemapro>itemsaprobados;
 	  @FXML public TableColumn<Itemapro,String>miitemapro;  
 	  @FXML public TableColumn<Itemapro,Integer>micantidadapro;  
-	  @FXML public TableColumn<Itemapro,String>estadoitem; 
+	  @FXML public TableColumn<Itemapro,String>estadoitem;  
+	  @FXML public TableColumn<Itemapro,Integer>miiditemapro;
 	  public String Concecutivo;
       public String consecutivofinal;
       public String miitem;
@@ -101,7 +105,19 @@ public class AprobacionReqController extends Application implements Initializabl
       public ObservableList<Aprobacion> Datostablarequisicionesaprofechasmisingle;
       public ObservableList<Aprobacion> Datostablarequisicionesaprof;
       public TableView<Itemapro> miitems;
+      Conexion conectar = new Conexion();
+      public String getdatafromcombo;
       
+	public String getGetdatafromcombo() {
+		return getdatafromcombo;
+	}
+
+
+	public void setGetdatafromcombo(String getdatafromcombo) {
+		this.getdatafromcombo = getdatafromcombo;
+	}
+
+
 	public TableView<Itemapro> getMiitems() {
 		return miitems;
 	}
@@ -448,7 +464,7 @@ public class AprobacionReqController extends Application implements Initializabl
 	    		Conexion=Con.miconexion(Conexion);
    	       	    ObservableList<Itemapro> midatareqapro= FXCollections.observableArrayList();
    	       		String StringQueryGetData=" SELECT (CASE WHEN ITEMSREQ.ITEMAPROBADO IS NULL THEN 'ITEM AUN SIN APROBACION' WHEN ITEMSREQ.ITEMAPROBADO=0 THEN 'NO APROBADO' WHEN ITEMSREQ.ITEMAPROBADO=1  \r\n" + 
-   	       				"   	       				 THEN 'APROBADO' END     ) AS ITEMAPROBADOREQ, ITEMSREQ.CANTIDAD, ITEMSREQ.ITEM  \r\n" + 
+   	       				"   	       				 THEN 'APROBADO' END     ) AS ITEMAPROBADOREQ, ITEMSREQ.CANTIDAD AS CANTIDAD, ITEMSREQ.ITEM AS ITEM , ITEMSREQ.ID AS ID \r\n" + 
    	       				"   	       				 FROM ITEMSREQ \r\n" + 
    	       				"   	       				 INNER JOIN REQUISICIONESDT ON  REQUISICIONESDT.CNSREQ = ITEMSREQ.CNSREQ AND  \r\n" + 
    	       				"   	       				 CONVERT(varchar(16),REQUISICIONESDT.FECHA_SOLICITUD,20) =CONVERT( varchar(16), ITEMSREQ.FECHA_SOLICITUD,20 )  \r\n" + 
@@ -459,10 +475,12 @@ public class AprobacionReqController extends Application implements Initializabl
    	   	           midatareqapro.add(new Itemapro(
    	   	        	      rs.getString("ITEM"),
    	        		      rs.getInt("CANTIDAD"),
-   	        		      rs.getString("ITEMAPROBADOREQ")
+   	        		      rs.getString("ITEMAPROBADOREQ"),
+   	        		      rs.getInt("ID")
                    		  )
    	                      );
    	   	     itemsaprobados.setItems(midatareqapro);
+   	   	    
    	   		}
    	       	}catch(SQLException ee) {
    	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ee);
@@ -471,7 +489,133 @@ public class AprobacionReqController extends Application implements Initializabl
 	        }
 	    
 	    
-	    public void detalleitem() {
+	    //-------LINEAS AGREGADAS-----------------------//
+	    
+		public void verificadata() {
+			actitem.setOnMouseClicked(ee->{
+				ObservableList<Itemapro> items = itemsaprobados.getItems();
+				   if(items.isEmpty()){
+					   Mensaje data = new Mensaje();
+					   data.mensajeerror(stackapro);
+					   }
+			});
+		}
+	    
+	    
+		public void actualizadatosentabla() {
+			itemsaprobados.setOnMouseClicked(e->{
+				 ObservableList<Itemapro> items = itemsaprobados.getItems();
+				   if(items.isEmpty() && itemsaprobados.getSelectionModel().getSelectedIndex()==-1 ){
+					   actitem.setDisable(true);
+					   }
+				   else {
+				  int pos = itemsaprobados.getSelectionModel().getSelectedIndex();  	 
+			      actitem.setOnMouseClicked(ee->{
+			    	  try {
+			    		String midata=AprobacionReqController.this.getGetdatafromcombo();
+			    		int data = 0;
+			  			if(midata.equals("ITEM APROBADO")) {
+			  				data=1;
+			  			}
+			  			else if(midata.equals("ITEM NO APROBADO")) {
+			  				data=0;
+			  			}
+	 					 int micantidad=  itemsaprobados.getItems().get(pos).getCantidad();
+	 					 String mitem= itemsaprobados.getItems().get(pos).getItem();
+	 					int mitemid = itemsaprobados.getItems().get(pos).getID();
+	 					Connection Conexiontabla = null;
+			       		Conexiontabla=conectar.miconexion(Conexiontabla);
+	 					String QueryUpdate= "UPDATE ITEMSREQ SET ITEMSREQ.CANTIDAD='"+micantidad+"', ITEMAPROBADO='"+data+"' , ITEMSREQ.ITEM='"+mitem+"' WHERE ITEMSREQ.ID='"+mitemid+"'";
+			       		PreparedStatement update =Conexiontabla.prepareStatement(QueryUpdate);
+			       		update.executeUpdate();
+	 		       	Mensaje mensaje = new Mensaje();
+	 	      		    mensaje.conexionexitosa(stackapro);
+	 		       	}catch(SQLException ee2) {
+	 		 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ee2);
+	 		       	}
+			      }); 
+				   }     
+	        });
+	}
+	    
+		public void actualizatodo() {
+			updatecantidad.setOnMouseClicked(e->{
+				 ObservableList<Itemapro> items = itemsaprobados.getItems();
+				   if(items.isEmpty()){
+					   Mensaje data = new Mensaje();
+					   data.mensajeerror(stackapro);
+					   }
+				   else
+				   {
+				int contador=0;
+				for(int x=0;x<itemsaprobados.getItems().size();x++) {
+					int size=itemsaprobados.getItems().size();
+					if(contador<=size) {
+				          try {
+			        	   String midata=AprobacionReqController.this.getGetdatafromcombo();
+				    		int data = 0;
+				  			if(midata.equals("ITEM APROBADO")) {
+				  				data=1;
+				  			}
+				  			else if(midata.equals("ITEM NO APROBADO")) {
+				  				data=0;
+				  			}
+							int cantidad=itemsaprobados.getItems().get(contador).getCantidad();
+							String miitem=itemsaprobados.getItems().get(contador).getItem();
+							int miid=itemsaprobados.getItems().get(contador).getID();
+							String QueryUpdate= "UPDATE ITEMSREQ SET ITEMSREQ.CANTIDAD='"+cantidad+"', ITEMAPROBADO='"+data+"', ITEMSREQ.ITEM='"+miitem+"' WHERE ITEMSREQ.ID='"+miid+"'";
+		 					Connection Conexiontabla = null;
+				       		Conexiontabla=conectar.miconexion(Conexiontabla);
+				       		PreparedStatement update =Conexiontabla.prepareStatement(QueryUpdate);
+				       		update.executeUpdate();
+		 		       	}catch(SQLException ee2) {
+		 		 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ee2);
+		 		       	}
+						contador++;
+					}
+					}
+				 Mensaje mensaje = new Mensaje();
+	     		 mensaje.conexionexitosa(stackapro);
+				   }
+			});
+		
+		}
+		
+		
+		
+		public void eliminarregistro() {
+			deldataitem.setOnMouseClicked(e->{
+				try {
+				Itemapro item = itemsaprobados.getSelectionModel().getSelectedItem();
+				item.getID();
+				int miiditem=item.getID();
+				  try {
+						 String QueryUpdate= "DELETE FROM ITEMSREQ  \r\n" + 
+						 		"FROM ITEMSREQ INNER JOIN REQUISICIONES  ON ITEMSREQ.CEDULA = REQUISICIONES.CEDULA    \r\n" + 
+						 		"WHERE ITEMSREQ.CEDULA = REQUISICIONES.CEDULA AND REQUISICIONES.CARGO = ITEMSREQ.CARGO   \r\n" + 
+						 		"AND  ITEMSREQ.IDREQ IS NOT NULL  AND ITEMSREQ.CNSREQ='"+consecutivofinal+"'   AND REQUISICIONES.CNSREQ='"+consecutivofinal+"'   \r\n" + 
+						 		"AND ITEMSREQ.ID='"+miiditem+"'";
+						 Connection Conexiontabla = null;
+			       		Conexiontabla=conectar.miconexion(Conexiontabla);
+			       		PreparedStatement update =Conexiontabla.prepareStatement(QueryUpdate);
+			       		update.executeUpdate();
+			       	Mensaje mensaje = new Mensaje();
+		      		    mensaje.conexionexitosa(stackapro);
+			       	}catch(SQLException ee2) {
+			 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ee2);
+			       	}
+				}catch(NullPointerException nn) {
+					   Mensaje data = new Mensaje();
+					   data.mensajeerror(stackapro);
+				}
+			});
+			
+		}
+		
+	//----------------------FIN LINEAS AGREGADAS-------------------//
+		
+		
+	   /* public void detalleitem() {
 	    	itemsaprobados.setOnMouseClicked(e->{
 	    		
 	    		FXMLLoader cargadatositems = new FXMLLoader(getClass().getResource("DatosItems.fxml"));
@@ -515,7 +659,7 @@ public class AprobacionReqController extends Application implements Initializabl
 	   			itemsdetalle.setTitle("Items  Detalle");
 	   			itemsdetalle.show();
 	    	});
-	    }
+	    }*/
 	    
 	    
 	public static void main(String[] args) {
@@ -523,11 +667,45 @@ public class AprobacionReqController extends Application implements Initializabl
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		itemsaprobados.setEditable(true);
 		miitemapro.setCellValueFactory(new PropertyValueFactory <Itemapro,String>("Item"));
+		miitemapro.setCellFactory(TextFieldTableCell.forTableColumn());
+		miitemapro.setOnEditCommit(
+                new EventHandler<CellEditEvent<Itemapro, String>>() {
+                    @Override
+                    public void handle(CellEditEvent<Itemapro, String> t) {
+                        ((Itemapro) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())
+                                ).setItem(t.getNewValue());
+                    }
+                }
+                );
+		
+		
+		miiditemapro.setCellValueFactory(new PropertyValueFactory <Itemapro,Integer>("ID"));
 		micantidadapro.setCellValueFactory(new PropertyValueFactory <Itemapro,Integer>("Cantidad"));
+		micantidadapro.setCellFactory(TextFieldTableCell.<Itemapro, Integer>forTableColumn(new IntegerStringConverter()));
+		micantidadapro.setOnEditCommit(
+                (TableColumn.CellEditEvent<Itemapro, Integer> t) ->
+                    ( t.getTableView().getItems().get(
+                            t.getTablePosition().getRow())
+                    ).setCantidad(t.getNewValue())
+                );
 		estadoitem.setCellValueFactory(new PropertyValueFactory <Itemapro,String>("Itemaprobado"));
+		estadoitem.setCellFactory(ComboBoxTableCell.<Itemapro, String>forTableColumn("ITEM APROBADO", "ITEM NO APROBADO"));
+		estadoitem.setOnEditCommit(e -> {
+	        e.getTablePosition().getRow();
+	        Itemapro Itema = e.getRowValue();
+	        Itema.getItemaprobado() ;
+               AprobacionReqController.this.setGetdatafromcombo(e.getNewValue());
+               
+});
+		eliminarregistro();
+		 verificadata();
+		 actualizatodo();
+		actualizadatosentabla();   
 		cargaitemsparaaprobacion();
-		detalleitem();
+		/*detalleitem();*/
 		setstyletextfield() ;
 		 try {
 			generafirmarequisicion();

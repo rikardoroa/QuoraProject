@@ -1,28 +1,17 @@
 package application;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class DatosItemsController extends Application implements Initializable {
@@ -99,7 +88,7 @@ public class DatosItemsController extends Application implements Initializable {
 		estado.getSelectionModel().selectFirst();
 	}
 	
-	public void actualizadatositems() {
+	/*public void actualizadatositems() {
 		Actualizadatos.setOnMouseClicked(e->{
 		try {
 			int data = 0;
@@ -174,7 +163,7 @@ public class DatosItemsController extends Application implements Initializable {
 	       	}
 		});
 	}
-	
+	*/
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -183,8 +172,8 @@ public class DatosItemsController extends Application implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		llenacomboitems();
-		actualizadatositems();
-		
+		/*actualizadatositems();
+		*/
 	}
 
 	@Override

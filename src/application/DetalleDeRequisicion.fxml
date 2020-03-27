@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="Stackreqdetalle" prefHeight="754.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VistaDetalleReq">
+   <children>
+      <BorderPane prefHeight="691.0" prefWidth="1047.0">
+         <center>
+            <BorderPane prefHeight="512.0" prefWidth="803.0" BorderPane.alignment="CENTER">
+               <left>
+                  <AnchorPane prefHeight="625.0" prefWidth="489.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <GridPane maxHeight="457.0" maxWidth="413.0" minHeight="5.0" minWidth="5.0" prefHeight="456.0" prefWidth="413.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="189.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.0" minWidth="10.0" prefWidth="211.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="357.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="234.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="169.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="169.0" minHeight="10.0" prefHeight="89.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="169.0" minHeight="0.0" prefHeight="119.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <JFXButton fx:id="loaditemsreq" prefHeight="43.0" prefWidth="135.0" text="Cargar ITems" GridPane.rowIndex="6" />
+                              <Label fx:id="sreqdet" prefHeight="28.0" prefWidth="159.0" text="Solicitante" />
+                              <Label fx:id="creqdet" prefHeight="28.0" prefWidth="159.0" text="Cargo" GridPane.rowIndex="1" />
+                              <Label fx:id="rreqdet" prefHeight="28.0" prefWidth="159.0" text="Requisicion" GridPane.rowIndex="2" />
+                              <Label fx:id="ereqdet" prefHeight="28.0" prefWidth="159.0" text="Estado De Revision" GridPane.rowIndex="4" />
+                              <JFXTextField fx:id="solreqdet" prefHeight="30.0" prefWidth="164.0" GridPane.columnIndex="1" />
+                              <JFXTextField fx:id="cargoreqdet" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="cnsreqdet" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <JFXTextField fx:id="estadoreqdet" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="IDreqdet" prefHeight="28.0" prefWidth="159.0" text="ID de Requisicion" GridPane.rowIndex="3" />
+                              <JFXTextField fx:id="idreqdet" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="eaproreqdet" prefHeight="28.0" prefWidth="159.0" text="Estado de Aprobacion" GridPane.rowIndex="5" />
+                              <JFXTextField fx:id="eaprobacionreqdet" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <StackPane prefHeight="634.0" prefWidth="694.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TableView fx:id="tablereqdet" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="tvidreqdet" prefWidth="201.0" text="ID" />
+                            <TableColumn fx:id="tvitemreqdet" prefWidth="199.0" text="ITEM" />
+                              <TableColumn fx:id="tvcantidadreqdet" prefWidth="228.0" text="CANTIDAD" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </StackPane>
+               </center>
+            </BorderPane>
+         </center>
+         <top>
+            <Pane prefHeight="85.0" prefWidth="1057.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Pane prefHeight="44.0" prefWidth="1057.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <Pane prefHeight="634.0" prefWidth="65.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="634.0" prefWidth="56.0" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+   </children>
+</StackPane>

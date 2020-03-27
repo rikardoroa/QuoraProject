@@ -142,7 +142,7 @@ public class DetalleFechaItemsController extends Application implements Initiali
     public String mifechafff;
     public String cnsreq;
     public int estadoitems;
-
+  public ObservableList<requisicionesgen> items;
 	public TableView<requisicionesgen> getThistableviewff() {
 		return thistableviewff;
 	}
@@ -213,6 +213,9 @@ public class DetalleFechaItemsController extends Application implements Initiali
 	
 	public void generarequisicionfinal() {
 		generareqfinal.setOnAction(e->{
+		
+		
+			
 			
 			consecutivofinal=consecutivoreqaprofinal.getText().toString();
 			thisfecha=fechaentregafinalitems.getText().toString();
@@ -225,6 +228,9 @@ public class DetalleFechaItemsController extends Application implements Initiali
 			 miareaf=thisfareaf.getSelectionModel().getSelectedItem();
 			 mifechaiff=((TextField)fechaiff.getEditor()).getText();
 			 mifechafff=((TextField)fechafff.getEditor()).getText();
+			 
+			 
+	
    		 try {
    			 rutaimagen = "C:\\Logo\\login3.png";
    			 XWPFDocument requisicionesaprobadas= new XWPFDocument();
@@ -383,7 +389,7 @@ public class DetalleFechaItemsController extends Application implements Initiali
    				//--------------------------ancho tabla --------------------//
    				
    				 //--------------recorro celdas para determinar tamaño------------//
-   				 for (int y=0; y<3; y++) {
+   				/* for (int y=0; y<3; y++) {
    					 XWPFTableCell cellfilay = tablafilaunos.getCell(y); 
    					 if (cellfilay == null) {
    					 cellfilay= tablafilaunos.createCell(); 
@@ -392,7 +398,31 @@ public class DetalleFechaItemsController extends Application implements Initiali
    				 anchoy.setW(BigInteger.valueOf((long) (3.2 * calculotipografia)));
    				 anchoy.setType(STTblWidth.DXA);
    				 tablafilaunos.getCell(y).getCTTc().addNewTcPr().addNewShd().setFill("999999");
-   				 }
+   				 }*/
+   				 
+   				 
+ 			     for( fila = 0; fila<1 ; fila++) {
+ 			    	tablafilaunos = tablasolicitantecargo.getRow(fila);
+ 			    	tablafilaunos.setHeight((int) (calculotipografia*0.1));
+ 	   			     XWPFTableCell celldatos = tablafilaunos.getCell(1);
+ 	   			     CTTblWidth anchodatos = celldatos.getCTTc().addNewTcPr().addNewTcW();
+ 	   			     anchodatos.setW(BigInteger.valueOf((long) (2 * calculotipografia)));
+ 	   			     anchodatos.setType(STTblWidth.DXA);
+ 	   			     XWPFTableCell celldatos0 = tablafilaunos.getCell(0);
+ 	   			     CTTblWidth anchodatos0 = celldatos0.getCTTc().addNewTcPr().addNewTcW();
+ 	   			     anchodatos0.setW(BigInteger.valueOf((long) (0.7 * calculotipografia)));
+ 	   			     anchodatos0.setType(STTblWidth.DXA);
+ 	   			     XWPFTableCell celldatos2 = tablafilaunos.getCell(2);
+ 	   			     CTTblWidth anchodatos2 = celldatos2.getCTTc().addNewTcPr().addNewTcW();
+ 	   			     anchodatos2.setW(BigInteger.valueOf((long) (1.2 * calculotipografia)));
+ 	   			     anchodatos2.setType(STTblWidth.DXA);
+ 	   			   for(int filax = 0; filax<1 ; filax++) {
+ 	   			    	 int cellt;
+ 	   			    	 for( cellt = 0 ; cellt<3; cellt++) {
+ 	   			    	tablasolicitantecargo.getRow(filax).getCell(cellt).setColor("999999");
+ 	   			         } 
+ 	   			         }
+ 	   			         }
    				 //--------------------------------------------------------------------------//
    					 XWPFTableCell cellfilauno = tablafiladoss.getCell(0); 
    					 XWPFTableCell cellfilados = tablafiladoss.getCell(1); 
@@ -590,7 +620,7 @@ public class DetalleFechaItemsController extends Application implements Initiali
    			         }
    			         }
    			    		String QueryD= "SELECT ITEMSREQ.CANTIDAD AS CANTIDAD, ITEMSREQ.ITEM AS ITEM,   (CASE WHEN ITEMSREQ.ITEMAPROBADO IS NULL THEN 'ITEM AUN SIN APROBACION' WHEN ITEMSREQ.ITEMAPROBADO=0 THEN 'NO APROBADO' WHEN ITEMSREQ.ITEMAPROBADO=1 THEN 'APROBADO' END ) AS ITEMAPROBADOREQ  FROM ITEMSREQ  INNER JOIN REQUISICIONESDT ON  REQUISICIONESDT.CNSREQ = ITEMSREQ.CNSREQ WHERE ITEMSREQ.CNSREQ='"+consecutivofinal+"'";
-   			    		String QueryR="SELECT ESTADO_ITEMS FROM REQUISICIONES WHERE CNSREQ='"+consecutivofinal+"'";
+   			    		String QueryR="SELECT (CASE WHEN ESTADO_ITEMS IS NOT NULL THEN ESTADO_ITEMS ELSE -1  END) AS ESTADO_ITEMS FROM REQUISICIONES WHERE CNSREQ='"+consecutivofinal+"'";
    			    		String QueryH="SELECT FIRMA_REVISION FROM REQUISICIONESDT WHERE CNSREQ = '"+consecutivofinal+"'";
    			    		String Queryz="SELECT FIRMA_APROBACION FROM REQUISICIONESDT WHERE CNSREQ = '"+consecutivofinal+"'";
    		          		String QueryF="SELECT count(ITEMSREQ.id) as itemreqid FROM ITEMSREQ  INNER JOIN REQUISICIONESDT ON  REQUISICIONESDT.CNSREQ = ITEMSREQ.CNSREQ WHERE ITEMSREQ.CNSREQ='"+consecutivofinal+"'";
@@ -610,6 +640,8 @@ public class DetalleFechaItemsController extends Application implements Initiali
  		              	}catch(SQLException ee) {
  		              		ee.printStackTrace();
  		              	} 
+   		             
+   		             
    		          		try {
    		          		  Connection Conexiontablaitems = null;
    		          		  Conexion conectardatat = new Conexion();
@@ -760,9 +792,83 @@ public class DetalleFechaItemsController extends Application implements Initiali
    		              	}
    		               }
 
+   		            //--------------LNA------------------------------//   
+   		            for( fila = 1; fila<micantidaddefilas+1 ; fila++) {
+  		          		 try {
+  		          		Connection Conexiontablaitemszy = null;
+		          		  Conexion conectardatatzy = new Conexion();
+		          		Conexiontablaitemszy=conectardatatzy.miconexion(Conexiontablaitemszy);
+  		          			PreparedStatement ps =Conexiontablaitemszy.prepareStatement(QueryD);
+  		          	       	ResultSet rs = ps.executeQuery();
+  		          	   if(estadoitems==1||estadoitems==-1) {
+  		          	        while (rs.next()) {
+  		          	         tablafiladatos = tabladatos.getRow(fila);
+  		          	         tablafiladatos.getCell(0).removeParagraph(0);
+  		          	         parrafo27= tabladatos.getRow(fila).getCell(0).addParagraph();
+  		          	         XWPFRun run70=parrafo27.createRun();
+  		          	         parrafo27.setAlignment(ParagraphAlignment.CENTER);
+  		          	         run70.setFontFamily("Verdana");
+  		 			         run70.setText(rs.getString("CANTIDAD")) ;
+  		 			         run70.setFontSize(9);
+  		 			         run70.setBold(true);
+  		 			         tablafiladatos.getCell(1).removeParagraph(0);
+  		          	         parrafo28= tabladatos.getRow(fila).getCell(1).addParagraph();
+  		          	         XWPFRun run71=parrafo28.createRun();
+  		          	         parrafo28.setAlignment(ParagraphAlignment.CENTER);
+  		          	         run71.setFontFamily("Verdana");
+  		 			         run71.setText(rs.getString("ITEM"));
+  		 			         run71.setFontSize(9);
+  		 			         run71.setBold(true);
+  		 			         tablafiladatos.getCell(2).removeParagraph(0);
+  		          	         parrafo29= tabladatos.getRow(fila).getCell(2).addParagraph();
+  		          	         XWPFRun run72=parrafo29.createRun();
+  		          	         parrafo29.setAlignment(ParagraphAlignment.CENTER);
+  		          	         run72.setFontFamily("Verdana");
+  		 			         run72.setText(rs.getString("ITEMAPROBADOREQ"));
+  		 			         run72.setFontSize(9);
+  		 			         run72.setBold(true);
+  		 			         tablafiladatos.getCell(3).removeParagraph(0);
+ 		          	         parrafo30= tabladatos.getRow(fila).getCell(3).addParagraph();
+ 		          	         XWPFRun run88=parrafo30.createRun();
+ 		          	         parrafo30.setAlignment(ParagraphAlignment.CENTER);
+ 		          	         run88.setFontFamily("Verdana");
+ 		 			         run88.setText(thisfecha);
+ 		 			         run88.setFontSize(9);
+ 		 			         run88.setBold(true);
+ 		 			         if(rs.getString("ITEMAPROBADOREQ").equals("NO APROBADO")) {
+ 		 			         tablafiladatos.getCell(4).removeParagraph(0);
+		          	         parrafo34= tabladatos.getRow(fila).getCell(4).addParagraph();
+		          	         XWPFRun run89=parrafo34.createRun();
+		          	         parrafo34.setAlignment(ParagraphAlignment.CENTER);
+		          	         run89.setFontFamily("Verdana");
+		          	         run89.setText("ITEM NO APROBADO");
+		                     run89.setFontSize(9);
+		                     run89.setBold(true);
+  		          	        }
+ 		 			         else if(rs.getString("ITEMAPROBADOREQ").equals("APROBADO")) {
+  		 			         tablafiladatos.getCell(4).removeParagraph(0);
+ 		          	         parrafo34= tabladatos.getRow(fila).getCell(4).addParagraph();
+ 		          	         XWPFRun run89=parrafo34.createRun();
+ 		          	         parrafo34.setAlignment(ParagraphAlignment.CENTER);
+ 		          	         run89.setFontFamily("Verdana");
+ 		          	         run89.setText("NO RECIBIDO");
+ 		                     run89.setFontSize(9);
+ 		                     run89.setBold(true);
+   		          	    }
+ 		 			        fila++;
+  		          	        }
+  		          	      }   
+  		              	}catch(SQLException ee) {
+  		              		ee.printStackTrace();
+  		              	}
+  		               }
+   		               
+   		               //------------------LNA-------------------//
+   		               
+   		               
    		            	 for( fila = 1; fila<micantidaddefilas+1 ; fila++) {
    	   		          		 try {
-   	   		          	   if (estadoitems==2) {
+   	   		          	   if (estadoitems==2||estadoitems==3) {
    	   		          		Connection Conexiontablaitemszyx = null;
   		          		      Conexion conectardatatzyx = new Conexion();
   		          		  Conexiontablaitemszyx=conectardatatzyx.miconexion(Conexiontablaitemszyx);
@@ -831,7 +937,7 @@ public class DetalleFechaItemsController extends Application implements Initiali
    	   		             	
    	   		               }
    	   		              
-   		            	 if(estadoitems==2) {
+   		            	 if(estadoitems==2||estadoitems==3) {
    	   		              tabladatos.getRow(17).getCell(3).removeParagraph(0);
      		    	      parrafo37 = tabladatos.getRow(17).getCell(3).addParagraph();
      	   				  XWPFRun run227=parrafo37.createRun();
@@ -942,7 +1048,7 @@ public class DetalleFechaItemsController extends Application implements Initiali
    				 run51.addPicture( new FileInputStream(new File("firmapro.jpg")), XWPFDocument.PICTURE_TYPE_PNG, null, Units.toEMU(110), Units.toEMU(40));
 
    				 
-   			   if(estadoitems==0) {
+   			   if(estadoitems==0||estadoitems==1) {
    				 tabladatos.getRow(17).getCell(3).removeParagraph(0);
    			     parrafo35 = tabladatos.getRow(17).getCell(3).addParagraph();
    				 XWPFRun run105=parrafo35.createRun();
@@ -973,7 +1079,59 @@ public class DetalleFechaItemsController extends Application implements Initiali
    			     mergeCellsHorizontal(tabladatos,17,3,4);
    			     combinarceldasverticalmente(tabladatos, 4, 17, 18);
    			     combinarceldasverticalmente(tabladatos, 0, 17, 18);
+   			     
+   			     
+   			     
+  			   if(/*estadoitems==2||estadoitems==0||*/estadoitems==1||estadoitems==3||estadoitems==-1) {
+  	  			   FileChooser guardareqaprobadas = new FileChooser();
+  	              FileChooser.ExtensionFilter wordlfiltro = new FileChooser.ExtensionFilter("Archivos De Word (*.docx)", "*.doc");
+  	              guardareqaprobadas.getExtensionFilters().add(wordlfiltro);
+  	              File midocword = guardareqaprobadas.showSaveDialog(null);
+  	              boolean booleano = midocword != null;
+  	              if (booleano== true) {
+  	          	  	    Text cabecera2 = new Text();
+  	        			cabecera2.setText("REQUISICION GENERADA Y GUARDADA");
+  	        			cabecera2.setStyle("-fx-fill:yellow;-fx-font-weight:bold");
+  	        			Text mensaje= new Text();
+  	        			mensaje.setText("WORD GENERADO CON EXITO");
+  	        			mensaje.setStyle("-fx-fill:white;-fx-font-weight:bold");
+  	        			JFXDialogLayout contenido = new JFXDialogLayout();
+  	        		    contenido.setHeading((cabecera2));
+  	        			contenido.setBody(mensaje);
+  	        			contenido.setStyle(" -fx-background-color: linear-gradient( from 100.0% 200.0% to 200.0% 100.0%, rgb(255,102,102) 0.0, rgb(255,179,179) 100.0);");
+  	        			JFXDialog dialogo = new JFXDialog(stackpanefinalitems,contenido, JFXDialog.DialogTransition.CENTER);
+  	        			JFXButton cerrar = new JFXButton("CERRAR");
+  	        			cerrar.setStyle(" -fx-background-color: yellow;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular'-Regular;-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+  	        			cerrar.setOnAction(e3->{
+  	        			dialogo.close();
+  	        			try {
+  	        			 items = thistableviewff.getItems();
+  	      	    	  
+  	        			}catch(NullPointerException nn) {
+  	        				
+  	              	    		 finalstage.close();  
+  	      	    	   }
+  	        			});
+  	        			contenido.setActions(cerrar);
+  	        			dialogo.show();
+  	               }
+  	              if (booleano== false) {
+  	            	  	Mensaje cancelmsj = new Mensaje();
+  	            	  	cancelmsj.Usercancelmessage(stackpanefinalitems);
+  	                   }
+  	              if (midocword != null) {
+  	                  try (FileOutputStream outputStream = new FileOutputStream(midocword.getAbsolutePath())) {
+  	                 	 requisicionesaprobadas.write(outputStream);
+  	                 	 requisicionesaprobadas.close();
+  	                  }
+  	                  catch (IOException e1) {    
+  	                  }
+  	               } 
+  	  			  }
+  	   			  
+   			     
    			 
+  			
    			  if (estadoitems==0) {
    		      FileChooser guardareqaprobadas = new FileChooser();
               FileChooser.ExtensionFilter wordlfiltro = new FileChooser.ExtensionFilter("Archivos De Word (*.docx)", "*.doc");
@@ -1284,7 +1442,14 @@ public class DetalleFechaItemsController extends Application implements Initiali
 	                             rs.getString("ESTADO_ITEMS")
 	    	   	   	                   		 )
 	    	   	   	                         );
+	    	   	   	        	
+	    	   	 
+	    	   	   	       try { 	
 	    	   	   	      DetalleFechaItemsController.this.getThistableviewff().setItems(itemsaprobadosC);
+	    	   	  	   	}catch(NullPointerException nn) {
+  	        				
+             	    		 finalstage.close();  
+     	    	           }
 	    	 	    	   	   	   			 }
 	    	   	   	       	}catch(SQLException eee) {
 	    	   	   	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, eee);
@@ -1309,6 +1474,10 @@ public class DetalleFechaItemsController extends Application implements Initiali
                }
    			  }
    		
+   			
+
+  
+   			  
    			   if(estadoitems==2) {
    			   FileChooser guardareqaprobadas = new FileChooser();
                FileChooser.ExtensionFilter wordlfiltro = new FileChooser.ExtensionFilter("Archivos De Word (*.docx)", "*.doc");
@@ -1619,7 +1788,12 @@ public class DetalleFechaItemsController extends Application implements Initiali
  	                             rs.getString("ESTADO_ITEMS")
  	    	   	   	                   		 )
  	    	   	   	                         );
- 	    	   	   	      DetalleFechaItemsController.this.getThistableviewff().setItems(itemsaprobadosC);
+ 	    	   	   	     try { 	
+ 		    	   	   	      DetalleFechaItemsController.this.getThistableviewff().setItems(itemsaprobadosC);
+ 		    	   	  	   	}catch(NullPointerException nn) {
+ 	  	        				
+ 	             	    		 finalstage.close();  
+ 	     	    	           }
  	    	 	    	   	   	   			 }
  	    	   	   	       	}catch(SQLException eee) {
  	    	   	   	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, eee);
@@ -1643,6 +1817,8 @@ public class DetalleFechaItemsController extends Application implements Initiali
                    }
                 } 
    			  }
+  			   
+  			   
    		   }catch(Exception e1) { 
    		 }
 		});

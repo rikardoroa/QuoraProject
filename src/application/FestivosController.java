@@ -23,6 +23,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -31,47 +32,111 @@ public class FestivosController extends Application implements Initializable{
 
 	@FXML StackPane StackFestivos;
 	@FXML TabPane tabestivos;
-	@FXML public ListView<String> Listadedias;
+	@FXML public ListView<String> Listadefechas;
+	@FXML public ListView<String> Listadiasenero; 
+	@FXML public ListView<String> Listadiasmarzo; 
+	@FXML public ListView<String> Listadiasabril; 
 	@FXML DatePicker dataentrydias;
+	@FXML TextField dataenero;
+	@FXML TextField datamarzo;
+	@FXML TextField dataabril;
 	@FXML JFXButton agregar;
+	@FXML JFXButton agregardatoe; 
+	@FXML JFXButton agregardatom; 
+	@FXML JFXButton agregardatoab;
 	@FXML JFXButton vdata;
+	@FXML JFXButton vdatae;
+	@FXML JFXButton vdatam; 
+	@FXML JFXButton vdataab;
 	@FXML JFXButton deletealldata;
+	@FXML JFXButton deletealldatae;
+	@FXML JFXButton deletealldatam; 
+	@FXML JFXButton deletealldataab;
     String festivo;
+    String diasenero;
+    String diasmarzo;
+    String diasabril;
     String auxdata;
     ObservableList<String> data = FXCollections.observableArrayList();
+    ObservableList<String> enerod = FXCollections.observableArrayList();
+    ObservableList<String> dataenerot = FXCollections.observableArrayList();
+    ObservableList<String> marzo = FXCollections.observableArrayList();
+    ObservableList<String> datamarzot = FXCollections.observableArrayList();
+    ObservableList<String> abril = FXCollections.observableArrayList();
+    ObservableList<String> databrilt = FXCollections.observableArrayList();
     ObservableList<String> auxdatax = FXCollections.observableArrayList();
     Conexion conectar = new Conexion();
     
 	public void entrydatafechasfestivo() {
 		agregar.setOnAction(e->{
+			if(!Listadefechas.getItems().isEmpty()) {
+				Mensaje errorb = new Mensaje();
+				errorb.mensajeerrorb(StackFestivos);
+			}
+			else {
 		festivo=dataentrydias.getValue().toString();
-			Listadedias.getItems().add(festivo);
+			Listadefechas.getItems().add(festivo);
+			}
 		});
-		Listadedias.setOnMouseClicked(e->{
-			String deleteitem = Listadedias.getSelectionModel().getSelectedItem();
-			Listadedias.getItems().remove(deleteitem);
+		Listadefechas.setOnMouseClicked(e->{
+			String deleteitem = Listadefechas.getSelectionModel().getSelectedItem();
+			Listadefechas.getItems().remove(deleteitem);
 		});
 	}
+	
+	
+	public void entrydatadiasenero() {
+		agregardatoe.setOnAction(e->{
+		diasenero=dataenero.getText().toString();
+		Listadiasenero.getItems().add(diasenero);
+			
+		});
+		Listadiasenero.setOnMouseClicked(e->{
+			String deleteitem = Listadiasenero.getSelectionModel().getSelectedItem();
+			Listadiasenero.getItems().remove(deleteitem);
+		});
+	}
+	
+	public void entrydatadiasmarzo() {
+		agregardatom.setOnAction(e->{
+		diasmarzo=datamarzo.getText().toString();
+		Listadiasmarzo.getItems().add(diasmarzo);
+		});
+		Listadiasmarzo.setOnMouseClicked(e->{
+			String deleteitem = Listadiasmarzo.getSelectionModel().getSelectedItem();
+			Listadiasmarzo.getItems().remove(deleteitem);
+		});
+	}
+	
+	
+	public void entrydatadiasabril() {
+		agregardatoab.setOnAction(e->{
+		diasabril=dataabril.getText().toString();
+		Listadiasabril.getItems().add(diasabril);
+		});
+		Listadiasabril.setOnMouseClicked(e->{
+			String deleteitem = Listadiasabril.getSelectionModel().getSelectedItem();
+			Listadiasabril.getItems().remove(deleteitem);
+		});
+	}
+	
+	
 	
 	public void agregardatos() {
 		vdata.setOnAction(e->{
 			try {
-			for(int x=0;x<Listadedias.getItems().size();x++) {
-				 data=Listadedias.getItems();
+			for(int x=0;x<Listadefechas.getItems().size();x++) {
+				 data=Listadefechas.getItems();
 			}
 			for(int y=0; y<data.size();y++) {
 				auxdata=data.get(y);
-		  		 
-	    	    		String Queryinsertitem="INSERT INTO FESTIVOS (FECHAFESTIVO)VALUES(?)";
+		  			    String Queryinsertitem="INSERT INTO FESTIVOS (FECHAFESTIVO)VALUES(?)";
 	    	    		Connection ConexionData = null;
 	    	    		ConexionData=conectar.miconexion(ConexionData);
 	    	    		PreparedStatement creadatafecha = ConexionData.prepareStatement(Queryinsertitem);
 	    	    		creadatafecha.setString(1, auxdata);
-	    	    		creadatafecha.executeUpdate();
-	    	    	 	
-	    	    	
+	    	    		creadatafecha.executeUpdate();  	
 			}
-			
 			Mensaje data = new Mensaje();
 	       	data.mensajedatosconbd(StackFestivos);
 			 }catch(SQLException ex) {
@@ -81,9 +146,167 @@ public class FestivosController extends Application implements Initializable{
 	
 	}
 	
+	public void agregardatosenero() {
+		vdatae.setOnAction(e->{
+			try {
+			for(int x=0;x<Listadiasenero.getItems().size();x++) {
+				 enerod=Listadiasenero.getItems();
+			}
+			for(int y=0; y<enerod.size();y++) {
+				auxdata=enerod.get(y);
+	    	    		String Queryinsertitem="INSERT INTO ENERO (DIAENERO)VALUES(?)";
+	    	    		Connection ConexionData = null;
+	    	    		ConexionData=conectar.miconexion(ConexionData);
+	    	    		PreparedStatement creadatafecha = ConexionData.prepareStatement(Queryinsertitem);
+	    	    		creadatafecha.setString(1, auxdata);
+	    	    		creadatafecha.executeUpdate();  	
+			}
+			Mensaje data = new Mensaje();
+	       	data.mensajedatosconbd(StackFestivos);
+			 }catch(SQLException ex) {
+	 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+	    	}
+		});
+	}
+	
+	public void agregardatosmarzo() {
+		vdatam.setOnAction(e->{
+			try {
+			for(int x=0;x<Listadiasmarzo.getItems().size();x++) {
+				 marzo=Listadiasmarzo.getItems();
+			}
+			for(int y=0; y<marzo.size();y++) {
+				auxdata=marzo.get(y);
+	    	    		String Queryinsertitem="INSERT INTO MARZO (DIAMARZO)VALUES(?)";
+	    	    		Connection ConexionData = null;
+	    	    		ConexionData=conectar.miconexion(ConexionData);
+	    	    		PreparedStatement creadatafecha = ConexionData.prepareStatement(Queryinsertitem);
+	    	    		creadatafecha.setString(1, auxdata);
+	    	    		creadatafecha.executeUpdate();  	
+			}
+			Mensaje data = new Mensaje();
+	       	data.mensajedatosconbd(StackFestivos);
+			 }catch(SQLException ex) {
+	 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+	    	}
+		});
+	}
+	
+	
+	public void agregardatosabril() {
+		vdataab.setOnAction(e->{
+			try {
+			for(int x=0;x<Listadiasabril.getItems().size();x++) {
+				 abril=Listadiasabril.getItems();
+			}
+			for(int y=0; y<abril.size();y++) {
+				auxdata=abril.get(y);
+	    	    		String Queryinsertitem="INSERT INTO ABRIL (DIAABRIL)VALUES(?)";
+	    	    		Connection ConexionData = null;
+	    	    		ConexionData=conectar.miconexion(ConexionData);
+	    	    		PreparedStatement creadatafecha = ConexionData.prepareStatement(Queryinsertitem);
+	    	    		creadatafecha.setString(1, auxdata);
+	    	    		creadatafecha.executeUpdate();  	
+			}
+			Mensaje data = new Mensaje();
+	       	data.mensajedatosconbd(StackFestivos);
+			 }catch(SQLException ex) {
+	 	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+	    	}
+		});
+	}
+	
+	
+	public void visualizadatosenero() {
+		try {
+			String QuerySelectData="SELECT DIAENERO FROM ENERO";
+    		Connection ConexionData = null;
+    		ConexionData=conectar.miconexion(ConexionData);
+    		PreparedStatement creadatafecha = ConexionData.prepareStatement(QuerySelectData);
+    		ResultSet rs = creadatafecha.executeQuery();
+	   	        while(rs.next()) {
+	   	        	dataenerot.add(rs.getString("DIAENERO"));
+	   	        }
+		}catch(SQLException ex) {
+	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+   	}	
+		 Listadiasenero.setItems(dataenerot);
+		 for(int t=0;t<Listadiasenero.getItems().size();t++) {
+			 if(Listadiasenero.getItems().get(t).equals(null)) {
+				 Listadiasenero.setDisable(false);
+				 vdatae.setDisable(false);
+				 agregardatoe.setDisable(false);
+			 }
+			 if(!Listadiasenero.getItems().get(t).equals(null)) {
+				 Listadiasenero.setDisable(true);
+				 vdatae.setDisable(true);
+				 agregardatoe.setDisable(true);
+			 }
+		 }
+	}
+	
+	
+	
+	public void visualizadatosmarzo() {
+		try {
+			String QuerySelectData="SELECT DIAMARZO FROM MARZO";
+    		Connection ConexionData = null;
+    		ConexionData=conectar.miconexion(ConexionData);
+    		PreparedStatement creadatafecha = ConexionData.prepareStatement(QuerySelectData);
+    		ResultSet rs = creadatafecha.executeQuery();
+	   	        while(rs.next()) {
+	   	        	datamarzot.add(rs.getString("DIAMARZO"));
+	   	        }
+		}catch(SQLException ex) {
+	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+   	}	
+		 Listadiasmarzo.setItems(datamarzot);
+		 for(int t=0;t<Listadiasmarzo.getItems().size();t++) {
+			 if(Listadiasmarzo.getItems().get(t).equals(null)) {
+				 Listadiasmarzo.setDisable(false);
+				 vdatam.setDisable(false);
+				 agregardatom.setDisable(false);
+			 }
+			 if(!Listadiasmarzo.getItems().get(t).equals(null)) {
+				 Listadiasmarzo.setDisable(true);
+				 vdatam.setDisable(true);
+				 agregardatom.setDisable(true);
+			 }
+		 }
+	}
+	
+	
+	public void visualizadatosabril() {
+		try {
+			String QuerySelectData="SELECT DIAABRIL FROM ABRIL";
+    		Connection ConexionData = null;
+    		ConexionData=conectar.miconexion(ConexionData);
+    		PreparedStatement creadatafecha = ConexionData.prepareStatement(QuerySelectData);
+    		ResultSet rs = creadatafecha.executeQuery();
+	   	        while(rs.next()) {
+	   	        	databrilt.add(rs.getString("DIAABRIL"));
+	   	        }
+		}catch(SQLException ex) {
+	       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+   	}	
+		 Listadiasabril.setItems(databrilt);
+		 for(int t=0;t<Listadiasabril.getItems().size();t++) {
+			 if(Listadiasabril.getItems().get(t).equals(null)) {
+				 Listadiasabril.setDisable(false);
+				 vdataab.setDisable(false);
+				 agregardatoab.setDisable(false);
+			 }
+			 if(!Listadiasabril.getItems().get(t).equals(null)) {
+				 Listadiasabril.setDisable(true);
+				 vdataab.setDisable(true);
+				 agregardatoab.setDisable(true);
+			 }
+		 }
+	}
+	
+	
 	public void visualizadatos() {
 			try {
-				
 				String QuerySelectData="SELECT FECHAFESTIVO FROM FESTIVOS";
 	    		Connection ConexionData = null;
 	    		ConexionData=conectar.miconexion(ConexionData);
@@ -95,49 +318,51 @@ public class FestivosController extends Application implements Initializable{
 			}catch(SQLException ex) {
 		       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
 	   	}	
-			 Listadedias.setItems(auxdatax);
-			 for(int t=0;t<Listadedias.getItems().size();t++) {
-				 if(Listadedias.getItems().get(t).equals(null)) {
-					 Listadedias.setDisable(false);
+			 Listadefechas.setItems(auxdatax);
+			 for(int t=0;t<Listadefechas.getItems().size();t++) {
+				 if(Listadefechas.getItems().get(t).equals(null)) {
+					 Listadefechas.setDisable(false);
+					 vdata.setDisable(false);
+					 agregar.setDisable(false);
 				 }
-				 if(!Listadedias.getItems().get(t).equals(null)) {
-					 Listadedias.setDisable(true);
+				 if(!Listadefechas.getItems().get(t).equals(null)) {
+					 Listadefechas.setDisable(true);
+					 vdata.setDisable(true);
+					 agregar.setDisable(true);
 				 }
 			 }
+			 
+			 //-----------muestra los meses en un observablelist que aun no necesito--//
+			/* for(int yy=0; yy<auxdatax.size();yy++) {
+				 System.out.println(auxdatax.get(yy));
+			 }*/
 
 	}
 
 	
 	public void deletedata() {
 		deletealldata.setOnAction(e->{
-			
 			Text cabecera = new Text();
-			cabecera.setText("NOTIFICACION");
+			cabecera.setText("ADVERTENCIA");
 			cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
 			Text mensaje= new Text();
-			mensaje.setText("NO PUEDE RECIBIR LOS ITEMS, AUN NO ES LA FECHA DE RECEPCION");
+			mensaje.setText("SE VAN A ELIMINAR TODOS LOS DATOS, ESTE PROCESO NO SE PUEDE DESHACER");
 			mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
 			JFXDialogLayout contenido = new JFXDialogLayout();
 		    contenido.setHeading((cabecera));
-			/*contenido.setBody(mensaje);*/
 			contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
 			contenido.setPrefWidth(314);
-			contenido.setPrefHeight(130);
+			contenido.setPrefHeight(180);
 			contenido.getChildren().add(mensaje);
 			mensaje.setLayoutY(700);
-			
 			JFXDialog dialogo = new JFXDialog(StackFestivos,contenido, JFXDialog.DialogTransition.CENTER);
-			
-			
-			JFXButton cerrar = new JFXButton("CERRAR");
-			cerrar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
-			cerrar.setOnAction(ee->{
+			JFXButton cancelar = new JFXButton("CANCELAR");
+			cancelar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			cancelar.setOnAction(ee->{
 			dialogo.close();
 			});
-			contenido.setActions(cerrar);
+			contenido.setActions(cancelar);
 			dialogo.show();
-	    		
-			
     		JFXButton Aceptar = new JFXButton("ACEPTAR");
     		Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
     		Aceptar.setOnAction(ee->{
@@ -152,22 +377,149 @@ public class FestivosController extends Application implements Initializable{
    	   	     }
     			dialogo.close();
     		});
-	    	
     		contenido.setActions(Aceptar);
-    		contenido.getChildren().addAll(Aceptar,cerrar);
+    		contenido.getChildren().addAll(Aceptar,cancelar);
     		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
-    		StackPane.setAlignment(cerrar, Pos.BOTTOM_RIGHT);
-	    	
-	    	
-	    		
-	    		    		
-	    		
-	    		/*Mensaje data = new Mensaje();
-		       	data.mensajedatosconbddos(StackFestivos);*/
-				
+    		StackPane.setAlignment(cancelar, Pos.BOTTOM_RIGHT);	
 		});
 			
 	}
+	
+	
+	public void deletedataenero() {
+		deletealldatae.setOnAction(e->{
+			Text cabecera = new Text();
+			cabecera.setText("ADVERTENCIA");
+			cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+			Text mensaje= new Text();
+			mensaje.setText("SE VAN A ELIMINAR TODOS LOS DATOS, ESTE PROCESO NO SE PUEDE DESHACER");
+			mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+			JFXDialogLayout contenido = new JFXDialogLayout();
+		    contenido.setHeading((cabecera));
+			contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+			contenido.setPrefWidth(314);
+			contenido.setPrefHeight(180);
+			contenido.getChildren().add(mensaje);
+			mensaje.setLayoutY(700);
+			JFXDialog dialogo = new JFXDialog(StackFestivos,contenido, JFXDialog.DialogTransition.CENTER);
+			JFXButton cancelar = new JFXButton("CANCELAR");
+			cancelar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			cancelar.setOnAction(ee->{
+			dialogo.close();
+			});
+			contenido.setActions(cancelar);
+			dialogo.show();
+    		JFXButton Aceptar = new JFXButton("ACEPTAR");
+    		Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+    		Aceptar.setOnAction(ee->{
+    			try {
+    	    		Connection ConexionData = null;
+    	    		ConexionData=conectar.miconexion(ConexionData);
+    	    		CallableStatement delall = ConexionData.prepareCall("{call DELETETABLEENERO}");
+    	    		delall.execute();
+    	    		delall.close();
+    			}catch(SQLException ex) {
+   		       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+   	   	     }
+    			dialogo.close();
+    		});
+    		contenido.setActions(Aceptar);
+    		contenido.getChildren().addAll(Aceptar,cancelar);
+    		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
+    		StackPane.setAlignment(cancelar, Pos.BOTTOM_RIGHT);	
+		});	
+	}
+	
+	
+	public void deletedatamarzo() {
+		deletealldatam.setOnAction(e->{
+			Text cabecera = new Text();
+			cabecera.setText("ADVERTENCIA");
+			cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+			Text mensaje= new Text();
+			mensaje.setText("SE VAN A ELIMINAR TODOS LOS DATOS, ESTE PROCESO NO SE PUEDE DESHACER");
+			mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+			JFXDialogLayout contenido = new JFXDialogLayout();
+		    contenido.setHeading((cabecera));
+			contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+			contenido.setPrefWidth(314);
+			contenido.setPrefHeight(180);
+			contenido.getChildren().add(mensaje);
+			mensaje.setLayoutY(700);
+			JFXDialog dialogo = new JFXDialog(StackFestivos,contenido, JFXDialog.DialogTransition.CENTER);
+			JFXButton cancelar = new JFXButton("CANCELAR");
+			cancelar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			cancelar.setOnAction(ee->{
+			dialogo.close();
+			});
+			contenido.setActions(cancelar);
+			dialogo.show();
+    		JFXButton Aceptar = new JFXButton("ACEPTAR");
+    		Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+    		Aceptar.setOnAction(ee->{
+    			try {
+    	    		Connection ConexionData = null;
+    	    		ConexionData=conectar.miconexion(ConexionData);
+    	    		CallableStatement delall = ConexionData.prepareCall("{call DELETETABLEMARZO}");
+    	    		delall.execute();
+    	    		delall.close();
+    			}catch(SQLException ex) {
+   		       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+   	   	     }
+    			dialogo.close();
+    		});
+    		contenido.setActions(Aceptar);
+    		contenido.getChildren().addAll(Aceptar,cancelar);
+    		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
+    		StackPane.setAlignment(cancelar, Pos.BOTTOM_RIGHT);	
+		});	
+	}
+	
+	public void deletedataabril() {
+		deletealldataab.setOnAction(e->{
+			Text cabecera = new Text();
+			cabecera.setText("ADVERTENCIA");
+			cabecera.setStyle("-fx-fill:red;-fx-font-weight:bold");
+			Text mensaje= new Text();
+			mensaje.setText("SE VAN A ELIMINAR TODOS LOS DATOS, ESTE PROCESO NO SE PUEDE DESHACER");
+			mensaje.setStyle("-fx-fill:black;-fx-font-weight:bold");
+			JFXDialogLayout contenido = new JFXDialogLayout();
+		    contenido.setHeading((cabecera));
+			contenido.setStyle(" -fx-background-color:  linear-gradient( from 0.0% 0.0% to 100.0% 100.0%, rgb(153,204,153) 0.0, rgb(153,204,153) 100.0);");
+			contenido.setPrefWidth(314);
+			contenido.setPrefHeight(180);
+			contenido.getChildren().add(mensaje);
+			mensaje.setLayoutY(700);
+			JFXDialog dialogo = new JFXDialog(StackFestivos,contenido, JFXDialog.DialogTransition.CENTER);
+			JFXButton cancelar = new JFXButton("CANCELAR");
+			cancelar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+			cancelar.setOnAction(ee->{
+			dialogo.close();
+			});
+			contenido.setActions(cancelar);
+			dialogo.show();
+    		JFXButton Aceptar = new JFXButton("ACEPTAR");
+    		Aceptar.setStyle(" -fx-background-color: white;-fx-border-color:  linear-gradient(to bottom, red 14%, red 91%); -fx-border-radius:  15%; -fx-text-fill: red;  -fx-font-family: 'Oswald Regular';-fx-font-weight: bold; -fx-border-width: 5px;-fx-background:none;-fx-border-insets: -5.8;");
+    		Aceptar.setOnAction(ee->{
+    			try {
+    	    		Connection ConexionData = null;
+    	    		ConexionData=conectar.miconexion(ConexionData);
+    	    		CallableStatement delall = ConexionData.prepareCall("{call DELETETABLEABRIL}");
+    	    		delall.execute();
+    	    		delall.close();
+    			}catch(SQLException ex) {
+   		       	 Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+   	   	     }
+    			dialogo.close();
+    		});
+    		contenido.setActions(Aceptar);
+    		contenido.getChildren().addAll(Aceptar,cancelar);
+    		StackPane.setAlignment(Aceptar, Pos.BOTTOM_CENTER);
+    		StackPane.setAlignment(cancelar, Pos.BOTTOM_RIGHT);	
+		});	
+	}
+	
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -175,6 +527,18 @@ public class FestivosController extends Application implements Initializable{
 		agregardatos();
 		visualizadatos();
 		 deletedata();
+		 entrydatadiasenero();
+		 agregardatosenero();
+		 visualizadatosenero();
+		 deletedataenero();
+		 entrydatadiasmarzo();
+		 agregardatosmarzo();
+		 visualizadatosmarzo();
+		 deletedatamarzo();
+		 entrydatadiasabril();
+		 agregardatosabril();
+		 visualizadatosabril();
+		 deletedataabril();
 	}
 
 	@Override

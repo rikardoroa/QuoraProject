@@ -25,18 +25,18 @@
                               <HBox layoutX="87.0" layoutY="20.0" prefHeight="410.0" prefWidth="803.0">
                                  <children>
                                     <BorderPane prefHeight="279.0" prefWidth="385.0">
-                                       <left>
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <center>
+                                          <AnchorPane prefHeight="410.0" prefWidth="273.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <JFXButton fx:id="agregar" layoutX="51.0" layoutY="140.0" prefHeight="25.0" prefWidth="98.0" text="Agregar Dato" />
-                                                <DatePicker fx:id="dataentrydias" layoutX="13.0" layoutY="84.0" />
-                                                <JFXButton fx:id="vdata" layoutX="31.0" layoutY="180.0" prefHeight="25.0" prefWidth="138.0" text="Guardar Registros" />
-                                                <JFXButton fx:id="deletealldata" layoutX="28.0" layoutY="220.0" prefHeight="25.0" prefWidth="144.0" text="Eliminar Registros" />
+                                                <JFXButton fx:id="agregar" layoutX="107.0" layoutY="146.0" prefHeight="31.0" prefWidth="157.0" text="Agregar Dato" />
+                                                <DatePicker fx:id="dataentrydias" layoutX="84.0" layoutY="72.0" />
+                                                <JFXButton fx:id="vdata" layoutX="107.0" layoutY="190.0" prefHeight="31.0" prefWidth="157.0" text="Guardar Registros" />
+                                                <JFXButton fx:id="deletealldata" layoutX="107.0" layoutY="243.0" prefHeight="31.0" prefWidth="157.0" text="Eliminar Registros" />
                                              </children>
                                           </AnchorPane>
-                                       </left>
+                                       </center>
                                     </BorderPane>
-                                    <ListView fx:id="Listadedias" prefHeight="279.0" prefWidth="195.0" />
+                                    <ListView fx:id="Listadefechas" prefHeight="410.0" prefWidth="231.0" />
                                  </children>
                               </HBox>
                            </children></AnchorPane>
@@ -44,17 +44,74 @@
                 </Tab>
                 <Tab text="Enero">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="87.0" layoutY="20.0" prefHeight="410.0" prefWidth="803.0">
+                                 <children>
+                                    <BorderPane prefHeight="279.0" prefWidth="385.0">
+                                       <center>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="dataenero" layoutX="99.0" layoutY="81.0" />
+                                                <JFXButton fx:id="agregardatoe" layoutX="114.0" layoutY="146.0" prefHeight="31.0" prefWidth="157.0" text="Agregar Dato" />
+                                                <JFXButton fx:id="vdatae" layoutX="114.0" layoutY="205.0" prefHeight="31.0" prefWidth="157.0" text="Guardar Registros" />
+                                                <JFXButton fx:id="deletealldatae" layoutX="114.0" layoutY="266.0" prefHeight="31.0" prefWidth="157.0" text="Eliminar Registros" />
+                                             </children>
+                                          </AnchorPane>
+                                       </center>
+                                    </BorderPane>
+                                    <ListView fx:id="Listadiasenero" prefHeight="410.0" prefWidth="242.0" />
+                                 </children>
+                              </HBox>
+                           </children></AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="Marzo">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="87.0" layoutY="20.0" prefHeight="410.0" prefWidth="803.0">
+                                 <children>
+                                    <BorderPane prefHeight="279.0" prefWidth="385.0">
+                                       <center>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="datamarzo" layoutX="99.0" layoutY="81.0" />
+                                                <JFXButton fx:id="agregardatom" layoutX="114.0" layoutY="146.0" prefHeight="31.0" prefWidth="157.0" text="Agregar Dato" />
+                                                <JFXButton fx:id="vdatam" layoutX="114.0" layoutY="205.0" prefHeight="31.0" prefWidth="157.0" text="Guardar Registros" />
+                                                <JFXButton fx:id="deletealldatam" layoutX="114.0" layoutY="266.0" prefHeight="31.0" prefWidth="157.0" text="Eliminar Registros" />
+                                             </children>
+                                          </AnchorPane>
+                                       </center>
+                                    </BorderPane>
+                                    <ListView fx:id="Listadiasmarzo" prefHeight="410.0" prefWidth="242.0" />
+                                 </children>
+                              </HBox>
+                           </children></AnchorPane>
                      </content>
                   </Tab>
                   <Tab text="Abril">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox layoutX="87.0" layoutY="20.0" prefHeight="410.0" prefWidth="803.0">
+                                 <children>
+                                    <BorderPane prefHeight="279.0" prefWidth="385.0">
+                                       <center>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="dataabril" layoutX="99.0" layoutY="81.0" />
+                                                <JFXButton fx:id="agregardatoab" layoutX="114.0" layoutY="146.0" prefHeight="31.0" prefWidth="157.0" text="Agregar Dato" />
+                                                <JFXButton fx:id="vdataab" layoutX="114.0" layoutY="205.0" prefHeight="31.0" prefWidth="157.0" text="Guardar Registros" />
+                                                <JFXButton fx:id="deletealldataab" layoutX="114.0" layoutY="266.0" prefHeight="31.0" prefWidth="157.0" text="Eliminar Registros" />
+                                             </children>
+                                          </AnchorPane>
+                                       </center>
+                                    </BorderPane>
+                                    <ListView fx:id="Listadiasabril" prefHeight="410.0" prefWidth="242.0" />
+                                 </children>
+                              </HBox>
+                           </children></AnchorPane>
                      </content>
                   </Tab>
                   <Tab text="Mayo">
